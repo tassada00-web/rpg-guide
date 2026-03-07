@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRPG 시스템 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&family=Cinzel:wght@700&display=swap');
+        
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #0d0d0d; 
+            color: #d1d5db; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; }
+
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), #0d0d0d),
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page { display: none; min-height: 100vh; padding-top: 100px; padding-bottom: 80px; }
+        .page.active { display: block; animation: fadeIn 0.4s ease-out; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        nav {
+            background-color: rgba(10, 10, 10, 0.98);
+            border-bottom: 1px solid rgba(120, 53, 15, 0.5);
+            backdrop-filter: blur(10px);
+            height: 70px;
+        }
+
+        /* 사이드바 스타일 */
+        #sidebar {
+            position: fixed;
+            left: -280px;
+            top: 0;
+            width: 280px;
+            height: 100%;
+            background: #111;
+            border-right: 1px solid #333;
+            transition: left 0.3s ease;
+            z-index: 200;
+            padding-top: 80px;
+            overflow-y: auto;
+        }
+        #sidebar.open { left: 0; }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+        }
+        .sidebar-overlay.show { display: block; }
+
+        /* 사이드바 버튼 구조 */
+        .side-btn-container {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            transition: 0.2s;
+        }
+        .side-btn-container:hover { background: #1a1a1a; }
+        
+        .side-main-link {
+            flex-grow: 1;
+            padding: 15px 10px 15px 25px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #d1d5db;
+        }
+        .side-toggle {
+            padding: 15px 25px 15px 10px;
+            cursor: pointer;
+            color: #555;
+            transition: 0.2s;
+        }
+        .side-toggle:hover { color: #f59e0b; }
+
+        .side-btn-single {
+            width: 100%;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+            color: #d1d5db;
+        }
+        .side-btn-single:hover { background: #1a1a1a; color: #f59e0b; }
+
+        /* 주황색 강조 스타일 */
+        .active-menu { color: #f59e0b !important; font-weight: bold; }
+        .active-tab { color: #f59e0b !important; border-bottom: 2px solid #f59e0b; }
+
+        .submenu {
+            background: #0a0a0a;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .submenu.show { max-height: 300px; }
+        .sub-btn {
+            width: 100%;
+            padding: 12px 25px 12px 55px;
+            text-align: left;
+            font-size: 13px;
+            color: #888;
+            border-bottom: 1px solid #1a1a1a;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .sub-btn:hover { color: #f59e0b; background: #151515; }
+
+        .item-card { background: rgba(20, 20, 20, 0.8); border: 1px solid #444; padding: 2rem; margin-bottom: 2rem; border-radius: 8px; }
+        .status-item { background: rgba(20, 20, 20, 0.8); border-left: 4px solid #78350f; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 4px; }
+        .map-wrapper { max-width: 1400px; margin: 0 auto; border: 1px solid #333; background: #000; padding: 5px; }
+        .map-image { width: 100%; height: auto; display: block; }
+        
+        .label-return { color: #60a5fa; font-weight: bold; }
+        .label-risk { color: #f87171; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <aside id="sidebar">
+        <div class="px-6 py-4 text-amber-600 font-bold cinzel border-b border-amber-900/30 tracking-widest uppercase">Quick Menu</div>
+        
+        <div id="menu-stats" class="side-btn-single" onclick="showPage('stats')">
+            <i class="fa-solid fa-chart-simple mr-4 w-6"></i>캐릭터 스탯
+        </div>
+        
+        <div class="side-btn-container">
+            <div id="menu-equip" class="side-main-link" onclick="showPage('equip')">
+                <i class="fa-solid fa-shield-halved mr-4 w-6"></i>장비 카탈로그
+            </div>
+            <div class="side-toggle" onclick="toggleSubmenu('sub-equip')">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+        <div id="sub-equip" class="submenu">
+            <div id="menu-weapon-detail" class="sub-btn" onclick="showPage('weapon-detail')">ㄴ 무기 카탈로그</div>
+            <div id="menu-armor-detail" class="sub-btn" onclick="showPage('armor-detail')">ㄴ 방어구 카탈로그</div>
+        </div>
+
+        <div class="side-btn-container">
+            <div id="menu-world-map" class="side-main-link" onclick="showPage('world-map')">
+                <i class="fa-solid fa-map-location-dot mr-4 w-6"></i>전체 지도
+            </div>
+            <div class="side-toggle" onclick="toggleSubmenu('sub-map')">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+        <div id="sub-map" class="submenu">
+            <div id="menu-norriton-detail" class="sub-btn" onclick="showPage('norriton-detail')">ㄴ 타락한 노리튼</div>
+        </div>
+
+        <div id="menu-status" class="side-btn-single" onclick="showPage('status')">
+            <i class="fa-solid fa-skull-crossbones mr-4 w-6"></i>상태이상 가이드
+        </div>
+    </aside>
+
+    <nav class="fixed top-0 w-full z-[100] px-6 flex justify-between items-center text-left">
+        <div class="flex items-center">
+            <button onclick="toggleSidebar()" class="text-white text-2xl mr-6 hover:text-amber-500 transition"><i class="fa-solid fa-bars"></i></button>
+            <button onclick="showPage('home')" class="font-bold text-2xl text-amber-600 cinzel tracking-widest">SYSTEM GUIDE</button>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-400">
+            <button id="nav-stats" onclick="showPage('stats')" class="nav-link hover:text-amber-500 transition px-1 py-2">스탯</button>
+            <button id="nav-equip" onclick="showPage('equip')" class="nav-link hover:text-amber-500 transition px-1 py-2">장비</button>
+            <button id="nav-world-map" onclick="showPage('world-map')" class="nav-link hover:text-amber-500 transition px-1 py-2">지도</button>
+            <button id="nav-status" onclick="showPage('status')" class="nav-link hover:text-amber-500 transition px-1 py-2">상태이상</button>
+        </div>
+    </nav>
+
+    <section id="home" class="page active !p-0">
+        <div class="hero-section text-center">
+            <h1 class="cinzel text-6xl md:text-9xl text-white font-bold mb-4 tracking-[0.2em] drop-shadow-2xl">ETERNAL CITY</h1>
+            <p class="text-amber-600 text-xl md:text-3xl mb-16 tracking-[0.6em] font-light uppercase">System Archive</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full px-6">
+                <button onclick="showPage('stats')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">스탯</button>
+                <button onclick="showPage('equip')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">장비</button>
+                <button onclick="showPage('world-map')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">지도</button>
+                <button onclick="showPage('status')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">상태이상</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="page max-w-5xl mx-auto px-6">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Character Stats</h2>
+        <div class="mt-12 space-y-12 text-left">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="item-card !mb-0 border-l-4 border-l-red-700">
+                    <h3 class="text-xl font-bold text-red-500 mb-3">❤️ 체력 (HP)</h3>
+                    <p class="text-sm text-gray-400">캐릭터가 생존할 수 있는 총량입니다. 0이 되면 패배하게 됩니다.</p>
+                </div>
+                <div class="item-card !mb-0 border-l-4 border-l-green-700">
+                    <h3 class="text-xl font-bold text-green-500 mb-3">⚡ 스테미나 (SP)</h3>
+                    <p class="text-sm text-gray-400">전투나 활동의 원동력입니다. 과도 소모 시 피로 상태가 되어 제약이 생깁니다.</p>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">✊ 힘</h4><p class="text-sm text-gray-400">근접 공격력, 운동 능력 등 근력 관련 능력치입니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🛡️ 건강</h4><p class="text-sm text-gray-400">외부 질병 저항 및 체력/스테미나 담당 (스탯 당 +5씩 증가).</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🏃 속도</h4><p class="text-sm text-gray-400">회피 및 배틀 턴 순서에 영향을 미칩니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🎯 정밀</h4><p class="text-sm text-gray-400">명중률 및 원거리 보정.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🧠 지능</h4><p class="text-sm text-gray-400">마법 공격력 및 주문 횟수 결정.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">👁️ 지혜</h4><p class="text-sm text-gray-400">지각 및 정신적 내성.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">✨ 매력</h4><p class="text-sm text-gray-400">설득력 및 영향력 담당.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equip" class="page max-w-5xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-5xl text-white mb-16 tracking-widest uppercase">Equipment</h2>
+        <div class="grid md:grid-cols-2 gap-10 text-left">
+            <div class="item-card hover:border-amber-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('weapon-detail')">
+                <div class="text-5xl mb-6">⚔️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">무기 (Weapons)</h3>
+                <button class="w-full py-4 bg-amber-700 text-white font-bold rounded">무기 상세 카탈로그</button>
+            </div>
+            <div class="item-card hover:border-amber-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('armor-detail')">
+                <div class="text-5xl mb-6">🛡️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">방어구 (Armor)</h3>
+                <button class="w-full py-4 bg-amber-700 text-white font-bold rounded">방어구 상세 카탈로그</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="weapon-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Weapon Catalog</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-gray-400">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">방패 (Shield)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 원거리 피해 시 힘 1.5배 다이스 적용</li><li>• 모든 받는 피해 0으로 판정</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 움직임 민첩 -1 패널티</li><li>• 오버 피해량만큼 내구도 감소</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-blue-900">
+                <h3 class="text-2xl font-bold text-amber-500">한손검 (Short Sword)</h3>
+                <p class="text-sm text-gray-400 mt-4">특징: 리스크도 리턴도 없는 순수한 실력의 지표입니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-red-900">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">머스킷 (Musket)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 탄환 데미지 대폭 증가 (방관 추가)</li><li>• 회피 실패 시 골절 및 출혈 부여</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 매 사격 후 장전 행동 필수</li><li>• 소리에 의한 적 유입 가능성 증폭</li></ul></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="armor-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Armor Catalog</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-amber-900/50">
+                <h3 class="text-2xl font-bold text-amber-500">가죽 장비 (Leather Armor)</h3>
+                <p class="text-sm text-gray-400 mt-4">특징: 리턴과 리스크가 없는 기본적인 방어구입니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-stone-400">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">판금 갑옷 (Plate Armor)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400"><li>• 받는 물리 피해 고정 감소</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400"><li>• 속도(Speed) 스탯 감소</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-indigo-400">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">직물 의복 (Woven Garment)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400"><li>• 주문 사용 횟수 증가</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400"><li>• 내구도가 낮아 파손이 매우 쉬움</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-green-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">방호 외투 (Hazard Coat)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400"><li>• 건강 및 매력 관련 상태이상 스택 축적량 반감</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400"><li>• 물리 방어력 하락 및 화염 피해 추가</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-slate-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">사슬 갑옷 (Chainmail)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400"><li>• [출혈] 상태이상 스택 축적 반감</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400"><li>• 타격/둔기류 피격 시 내구도 크게 감소</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-yellow-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">장식용 의복 (Ornamental Attire)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400"><li>• 매력 판정 보너스 제공</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400"><li>• 적 어그로 증가 및 물리 보호 기능 전무</li></ul></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="world-map" class="page w-full px-4 text-center">
+        <h2 class="cinzel text-5xl text-white mb-10 tracking-widest uppercase">World Map</h2>
+        <div class="map-wrapper">
+            <img src="trpgmap.jpg" alt="World Map" class="map-image">
+        </div>
+        <p class="text-amber-700 mt-8 font-bold uppercase tracking-widest">중앙 대륙 - 모험가들의 땅</p>
+    </section>
+
+    <section id="norriton-detail" class="page max-w-6xl mx-auto px-6 text-left">
+        <div class="flex justify-between items-center mb-10 border-b border-amber-900/30 pb-6">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">CORRUPT NORRITON</h2>
+            <button onclick="showPage('world-map')" class="text-amber-500 font-bold hover:underline">← 지도로 돌아가기</button>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div class="map-wrapper !max-w-full"><img src="norriton.jpg" alt="Norriton Map" class="map-image"></div>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-3xl font-bold text-amber-600 mb-4">타락한 노리튼</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        중앙대륙의 남부도시 옛 대농장도시 노리튼. <br>
+                        중앙대륙의 식량을 책임질 정도로 식량 생산 비율이 매우 높은 대도시였습니다. <br>
+                        지금도 기름진 땅이 있지만 질서가 무너진 지금, 소수의 지주들이 대다수의 농민들을 부려먹는 안타까운 경제시스템을 가지고 있습니다. <br>
+                        식량이 많이 생산되는터라 고블린 같은 수많은 몬스터들 발견 신고가 많이 있습니다.
+                    </p>
+                </div>
+                <div class="grid gap-4">
+                    <div class="bg-blue-900/10 border border-blue-800/50 p-6 rounded">
+                        <h4 class="text-blue-400 font-bold">✅ 장점</h4>
+                        <p class="text-sm text-gray-400 mt-2">• 다양한 음식에 대한 수급 문제 없음.<br>• 고블린 같은 토벌 의뢰가 많음.</p>
+                    </div>
+                    <div class="bg-red-900/10 border border-red-800/50 p-6 rounded">
+                        <h4 class="text-red-400 font-bold">❌ 단점</h4>
+                        <p class="text-sm text-gray-400 mt-2">• 몬스터 토벌 시 배틀에 다른 몬스터가 중간 참전하는 확률이 높음.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="status" class="page max-w-5xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Status Effects</h2>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">영향 스탯별 상태이상 가이드</p>
+        
+        <div class="space-y-16">
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-amber-600 mr-3"></span>건강 (Health)</h3>
+                <div class="status-item">
+                    <h4 class="text-pink-500 font-bold mb-2">💖 쾌락</h4>
+                    <p class="text-sm text-gray-400">성적 공격 당할 시 스택이 쌓입니다. 스택이 현재 건강 수치까지 쌓일 경우 절정에 이릅니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">절정: 행동 불가가 되며 매턴 주사위(현재 건강)를 굴려 합계 값이 최대 건강 이상으로 나오면 해제됩니다.</p>
+                </div>
+                <div class="status-item">
+                    <h4 class="text-green-500 font-bold mb-2">🤢 구역질</h4>
+                    <p class="text-sm text-gray-400">악취나 혐오 피격 시 스택이 쌓입니다. 건강 수치만큼 쌓이면 구토합니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">구토: 이번턴 행동을 상실하며 복용중인 아이템 효과 상실합니다.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-blue-600 mr-3"></span>지혜 (Wisdom)</h3>
+                <div class="status-item">
+                    <h4 class="text-purple-500 font-bold mb-2">🌀 광기</h4>
+                    <p class="text-sm text-gray-400">광기 스택이 현재 지혜까지 중첩 된 경우 광란에 빠집니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">광란: 아군,적군 구별 없이 랜덤으로 지목합니다. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
+                </div>
+                <div class="status-item">
+                    <h4 class="text-blue-400 font-bold mb-2">😨 두려움</h4>
+                    <p class="text-sm text-gray-400">두려움 스택이 현재 지혜까지 중첩 된 경우 공포에 빠집니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">공포: 적에게서 멀어집니다. 원거리였을 경우 전투 이탈 됩니다. 부여한 적에게 공격 당하지 않을 시 해제 됩니다.</p>
+                </div>
+                <div class="status-item">
+                    <h4 class="text-rose-500 font-bold mb-2">💄 성욕</h4>
+                    <p class="text-sm text-gray-400">최음 등 특정 효과에 쌓이면 스택이 쌓입니다. 현재 지혜까지 중첩된 경우 욕정 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">욕정: 매턴 지혜 판정이 상대 매력 판정에 실패하면 가장 가까운 대상에게 성적 행동을 시도합니다. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-yellow-600 mr-3"></span>속도 (Speed)</h3>
+                <div class="status-item">
+                    <h4 class="text-yellow-500 font-bold mb-2">🕸️ 점착</h4>
+                    <p class="text-sm text-gray-400">점액 피격 시 스택이 쌓입니다. 속도만큼 쌓이면 둔화 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">둔화: 턴 우선순위가 항상 꼴찌로 고정됩니다. 점액을 닦아내는 행동을 2회 수행하면 해제됩니다.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-cyan-600 mr-3"></span>정밀 (Precision)</h3>
+                <div class="status-item">
+                    <h4 class="text-cyan-500 font-bold mb-2">💫 현기증</h4>
+                    <p class="text-sm text-gray-400">어지럼증 관련 스택이 현재 정밀 만큼 쌓이면 혼란 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">혼란: 정밀 결과값이 절반으로 떨어집니다. 매턴 주사위(현재 정밀)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-stone-500 mr-3"></span>매력 (Charisma)</h3>
+                <div class="status-item">
+                    <h4 class="text-stone-400 font-bold mb-2">💩 악취</h4>
+                    <p class="text-sm text-gray-400">오물이나 구토물 등이 몸에 묻을 때 스택이 쌓입니다. 매력 수치만큼 쌓이면 혐오대상자가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">혐오대상자: 아군이 무시하고 적군이 우선적으로 공격합니다. 청결(세척) 시 해제됩니다.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-red-800 mr-3"></span>데미지 (Damage)</h3>
+                <div class="status-item">
+                    <h4 class="text-purple-600 font-bold mb-2">🧪 독</h4>
+                    <p class="text-sm text-gray-400">매턴 대미지를 부여합니다. 중첩이 가능하며 매턴 시작 시 중첩이 1 감소합니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">해제: 해독제로 감소 폭을 늘이거나 해제할 수 있습니다.</p>
+                </div>
+                <div class="status-item">
+                    <h4 class="text-red-600 font-bold mb-2">🩸 출혈</h4>
+                    <p class="text-sm text-gray-400">출혈 공격 시 누적되며 출혈 스택 만큼 추가 피해를 입힙니다. 중첩이 가능합니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">해제: 붕대 사용 또는 회복 마법 시 감소 또는 해제 됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebar-overlay').classList.toggle('show');
+        }
+
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            // 아코디언 토글만 실행 (페이지 이동 X)
+            submenu.classList.toggle('show');
+        }
+
+        // 페이지 이동 및 History API (뒤로가기 지원) 적용
+        function showPage(pageId, pushToHistory = true) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+                
+                // 페이지 이동 시 사이드바 자동 닫기
+                document.getElementById('sidebar').classList.remove('open');
+                document.getElementById('sidebar-overlay').classList.remove('show');
+
+                updateActiveStyle(pageId);
+
+                // History API 적용 - 모바일 뒤로가기 지원
+                if (pushToHistory) {
+                    if (window.location.hash !== '#' + pageId) {
+                        history.pushState({ pageId: pageId }, "", "#" + pageId);
+                    }
+                }
+            }
+        }
+
+        function updateActiveStyle(pageId) {
+            // 상단 네비게이션 탭 초기화
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-tab'));
+            // 사이드바 모든 강조 초기화
+            document.querySelectorAll('.side-btn-single, .side-main-link, .sub-btn').forEach(menu => menu.classList.remove('active-menu'));
+
+            // 상단 네비게이션 현재 페이지 활성화
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) activeNav.classList.add('active-tab');
+
+            // 사이드바 현재 페이지 활성화
+            const activeSide = document.getElementById('menu-' + pageId);
+            if (activeSide) activeSide.classList.add('active-menu');
+
+            // 하위 메뉴 진입 시 부모(상위) 메뉴도 주황색 강조 유지
+            if(pageId === 'weapon-detail' || pageId === 'armor-detail') {
+                document.getElementById('menu-equip').classList.add('active-menu');
+                document.getElementById('nav-equip')?.classList.add('active-tab');
+            }
+            if(pageId === 'norriton-detail' || pageId === 'world-map') {
+                document.getElementById('menu-world-map').classList.add('active-menu');
+                document.getElementById('nav-world-map')?.classList.add('active-tab');
+            }
+        }
+
+        // 브라우저/모바일 뒤로가기 버튼 이벤트 리스너
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.pageId) {
+                showPage(event.state.pageId, false);
+            } else {
+                const hash = window.location.hash.substring(1);
+                if(hash) {
+                    showPage(hash, false);
+                } else {
+                    showPage('home', false);
+                }
+            }
+        });
+
+        // 초기 로드 시 해시 확인해서 해당 페이지 띄우기
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const hash = window.location.hash.substring(1);
+            if(hash && document.getElementById(hash)) {
+                showPage(hash, false);
+            } else {
+                history.replaceState({ pageId: 'home' }, "", "#home");
+            }
+        });
+    </script>
+</body>
+</html>

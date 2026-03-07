@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRPG 시스템 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&family=Cinzel:wght@700&display=swap');
+        
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #0d0d0d; 
+            color: #d1d5db; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; }
+
+        /* 대문 전용 배경 */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), #0d0d0d),
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page { display: none; min-height: 100vh; padding-top: 130px; padding-bottom: 80px; }
+        .page.active { display: block; animation: fadeIn 0.4s ease-out; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        nav {
+            background-color: rgba(10, 10, 10, 0.98);
+            border-bottom: 1px solid rgba(120, 53, 15, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 대문 페이지 버튼 스타일 (흰색 통일) */
+        .glass-card {
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transition: all 0.3s;
+        }
+
+        .glass-card:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active-tab { color: #f59e0b !important; font-weight: bold; border-bottom: 2px solid #f59e0b; }
+
+        .item-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #444;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        .status-item {
+            background: rgba(20, 20, 20, 0.8);
+            border-left: 4px solid #78350f;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .label-return { color: #60a5fa; font-weight: bold; }
+        .label-risk { color: #f87171; font-weight: bold; }
+
+        /* 지도 이미지 스타일 */
+        .map-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 2px solid #333;
+            background: #111;
+            padding: 10px;
+        }
+        .map-image { width: 100%; height: auto; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-[100]">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
+            <button onclick="showPage('home')" class="font-bold text-2xl text-amber-600 cinzel tracking-widest">SYSTEM GUIDE</button>
+            <div class="hidden md:flex space-x-10 text-[14px] font-semibold text-gray-400">
+                <button id="nav-stats" onclick="showPage('stats')" class="nav-link hover:text-amber-500 transition px-1 py-2">스탯</button>
+                <button id="nav-equip" onclick="showPage('equip')" class="nav-link hover:text-amber-500 transition px-1 py-2">장비</button>
+                <button id="nav-world-map" onclick="showPage('world-map')" class="nav-link hover:text-amber-500 transition px-1 py-2">지도</button>
+                <button id="nav-status" onclick="showPage('status')" class="nav-link hover:text-amber-500 transition px-1 py-2">상태이상</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="page active !p-0">
+        <div class="hero-section">
+            <h1 class="cinzel text-6xl md:text-9xl text-white font-bold mb-4 tracking-[0.2em] drop-shadow-2xl">ETERNAL CITY</h1>
+            <p class="text-amber-600 text-xl md:text-3xl mb-16 tracking-[0.6em] font-light uppercase">System Archive</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full px-6">
+                <button onclick="showPage('stats')" class="glass-card py-10 font-bold text-xl tracking-widest">스탯</button>
+                <button onclick="showPage('equip')" class="glass-card py-10 font-bold text-xl tracking-widest">장비</button>
+                <button onclick="showPage('world-map')" class="glass-card py-10 font-bold text-xl tracking-widest">지도</button>
+                <button onclick="showPage('status')" class="glass-card py-10 font-bold text-xl tracking-widest">상태이상</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="page max-w-5xl mx-auto px-6">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest">CHARACTER STATS</h2>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest">기본 능력치 및 시스템 지표</p>
+        
+        <div class="space-y-12">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="item-card !mb-0 border-l-4 border-l-red-700">
+                    <h3 class="text-xl font-bold text-red-500 mb-3">❤️ 체력 (HP)</h3>
+                    <p class="text-sm text-gray-400">캐릭터가 생존할 수 있는 총량입니다. 0이 되면 패배합니다.</p>
+                </div>
+                <div class="item-card !mb-0 border-l-4 border-l-green-700">
+                    <h3 class="text-xl font-bold text-green-500 mb-3">⚡ 스테미나 (SP)</h3>
+                    <p class="text-sm text-gray-400">행동의 원동력입니다. 과도한 소모 시 피로 상태가 됩니다.</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">✊ 힘</h4><p class="text-sm text-gray-400">물리적인 힘. 근접 공격력, 무거운 물건 들기, 문 부수기, 운동 능력 등 말 그대로 근력 관련 능력치입니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🛡️ 건강</h4><p class="text-sm text-gray-400">식중독 같은 외부 질병 요소에 버틸 수 있고 체력, 스테미나를 담당하는 스탯입니다. (스탯 당 체력, 스테미나 5씩 증가)</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🏃 속도</h4><p class="text-sm text-gray-400">회피같은 기동성과 관련된 스탯입니다. 배틀에서 턴 순서에 영향을 미칩니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🎯 정밀</h4><p class="text-sm text-gray-400">명중 관련 능력치입니다. 활동, 전투 시에는 높을 수록 원거리에 관련된 상황에 이점을 가집니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🧠 지능</h4><p class="text-sm text-gray-400">마법적 힘, 마법 공격력 등 마법 관련 능력치입니다. 스탯 5당 사용할 수 있는 주문 횟수가 1 추가됩니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">👁️ 지혜</h4><p class="text-sm text-gray-400">통찰력과 직관. 주변 살피기(지각), 상대방 의도 파악, 정신적 내성과 연관된 스탯입니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">✨ 매력</h4><p class="text-sm text-gray-400">카리스마, 존재감, 설득 등으로 직접적 전투가 아닌 간접적으로 타인에게 영향력을 줄 수 있는 스탯입니다.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equip" class="page max-w-5xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest">EQUIPMENT</h2>
+        <div class="grid md:grid-cols-2 gap-10 mt-16">
+            <div class="item-card flex flex-col items-center hover:border-amber-600 transition cursor-pointer" onclick="showPage('weapon-detail')">
+                <div class="text-5xl mb-6">⚔️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">무기 (Weapons)</h3>
+                <button class="w-full py-4 bg-amber-700 text-white font-bold rounded mt-4">무기 카탈로그 보기</button>
+            </div>
+            <div class="item-card flex flex-col items-center hover:border-amber-600 transition cursor-pointer" onclick="showPage('armor-detail')">
+                <div class="text-5xl mb-6">🛡️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">방어구 (Armor)</h3>
+                <button class="w-full py-4 bg-amber-700 text-white font-bold rounded mt-4">방어구 카탈로그 보기</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="weapon-detail" class="page max-w-4xl mx-auto px-6">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6">WEAPON CATALOG</h2>
+        <div class="space-y-10">
+            <div class="item-card">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">방패 (Shield)</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 원거리 피해 시 힘 1.5배 다이스</li><li>• 모든 받는 피해 0으로 판정</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 움직임 민첩 -1</li><li>• 오버 피해량만큼 내구도 감소</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-blue-900">
+                <h3 class="text-2xl font-bold text-amber-500">한손검 (Short Sword)</h3>
+                <p class="text-sm text-gray-300 mt-4">특징: 리스크도 리턴도 없는 순수한 실력의 지표입니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-red-900">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">머스킷 (Musket)</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 탄환 데미지 증가 (방관 추가)</li><li>• 회피 실패 시 골절 및 출혈</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 장전 필요</li><li>• 소리에 대한 추가 적 증가</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline font-bold">← 돌아가기</button>
+    </section>
+
+    <section id="armor-detail" class="page max-w-4xl mx-auto px-6">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6">ARMOR CATALOG</h2>
+        <div class="space-y-10">
+            <div class="item-card"><h3 class="text-2xl font-bold text-amber-500">가죽 장비</h3><p class="text-sm text-gray-300 mt-2">특징: 리턴, 리스크 없음.</p></div>
+            <div class="item-card border-l-4 border-stone-400">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">판금 갑옷</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 받는 피해 고정 감소</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 속도 감소</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-indigo-400">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">직물 의복</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 주문 사용 횟수 증가</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 내구도가 낮아 파손이 매우 쉬움</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-green-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">방호 외투</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 건강/매력 상태이상 스택 반감</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 물리 방어력 하락 및 화염 추가 피해</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-slate-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">사슬 갑옷</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 출혈 상태이상 스택 축적 반감</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 타격/둔기 공격 시 내구도 크게 감소</li></ul></div>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-yellow-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">장식용 의복</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div><span class="label-return">▲ RETURN</span><ul class="text-sm text-gray-300 mt-2"><li>• 매력 판정 보너스</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="text-sm text-gray-300 mt-2"><li>• 적대 개체 타겟 어그로</li><li>• 물리 보호 기능 없음</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline font-bold">← 돌아가기</button>
+    </section>
+
+    <section id="world-map" class="page max-w-6xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-5xl text-white mb-12 tracking-widest">WORLD MAP</h2>
+        <div class="map-container">
+            <img src="trpgmap.jpg" alt="World Map" class="map-image">
+        </div>
+        <p class="text-amber-700 mt-10 uppercase tracking-widest font-bold">중앙 대륙 - 모험가들의 땅</p>
+    </section>
+
+    <section id="status" class="page max-w-5xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-5xl text-white mb-16 tracking-widest">STATUS EFFECTS</h2>
+        <div class="item-card flex flex-col items-center hover:border-amber-600 transition cursor-pointer" onclick="showPage('status-stack')">
+            <div class="text-5xl mb-6">⚠️</div>
+            <h3 class="text-2xl font-bold text-white tracking-widest">상태이상 (스택형)</h3>
+            <button class="w-64 py-4 bg-amber-700 text-white font-bold rounded mt-8">목록 보기</button>
+        </div>
+    </section>
+
+    <section id="status-stack" class="page max-w-4xl mx-auto px-6">
+        <h2 class="cinzel text-4xl text-white mb-12 border-b border-amber-900/30 pb-6 text-center">STACK EFFECTS</h2>
+        <div class="space-y-16">
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-amber-600 mr-3"></span>건강 계열</h3>
+                <div class="status-item"><h4 class="text-pink-500 font-bold mb-2">💖 쾌락</h4><p class="text-sm text-gray-400">성적 공격 당할 시 스택 발생. 체질까지 쌓일 시 [절정] 상태 돌입.</p><p class="text-xs mt-2 text-pink-900 font-bold italic">절정: 행동 불가가 되며 매턴 주사위(현재 건강) 결과가 최대치 이상 시 해제.</p></div>
+                <div class="status-item"><h4 class="text-green-500 font-bold mb-2">🤢 구역질</h4><p class="text-sm text-gray-400">악취/혐오 피격 시 스택 발생. 건강 수치만큼 쌓이면 [구토] 상태 돌입.</p><p class="text-xs mt-2 text-green-900 font-bold italic">구토: 이번 턴 행동 상실 및 복용 아이템 효과 상실.</p></div>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-blue-600 mr-3"></span>지혜 계열</h3>
+                <div class="status-item"><h4 class="text-purple-500 font-bold mb-2">🌀 광기</h4><p class="text-sm text-gray-400">지혜만큼 중첩 시 [광란]. 피아 식별 없이 랜덤 공격. 주사위(지혜) 판정으로 해제.</p></div>
+                <div class="status-item"><h4 class="text-blue-400 font-bold mb-2">😨 두려움</h4><p class="text-sm text-gray-400">지혜만큼 중첩 시 [공포]. 전투 이탈 또는 거리 벌리기 강제.</p></div>
+                <div class="status-item"><h4 class="text-rose-500 font-bold mb-2">💄 성욕</h4><p class="text-sm text-gray-400">최음 중첩 시 [욕정]. 판정 실패 시 가장 가까운 대상에게 성적 행동 시도.</p></div>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-red-800 mr-3"></span>데미지 계열</h3>
+                <div class="status-item"><h4 class="text-purple-600 font-bold mb-2">🧪 독</h4><p class="text-sm text-gray-400">매턴 데미지 부여. 중첩마다 1씩 자연 감소.</p></div>
+                <div class="status-item"><h4 class="text-red-600 font-bold mb-2">🩸 출혈</h4><p class="text-sm text-gray-400">공격 시 스택만큼 추가 피해 발생. 붕대나 마법으로 해제 가능.</p></div>
+            </div>
+        </div>
+        <button onclick="showPage('status')" class="mt-10 text-amber-500 hover:underline font-bold">← 돌아가기</button>
+    </section>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(l => l.classList.remove('active-tab'));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+                let navId = pageId;
+                if(pageId === 'weapon-detail' || pageId === 'armor-detail') navId = 'equip';
+                if(pageId === 'status-stack') navId = 'status'; 
+                if (navId !== 'home') {
+                    const navBtn = document.getElementById('nav-' + navId);
+                    if (navBtn) navBtn.classList.add('active-tab');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

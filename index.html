@@ -140,10 +140,10 @@
     <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
     
     <aside id="sidebar">
-        <div class="px-6 py-4 text-amber-600 font-bold cinzel border-b border-amber-900/30 tracking-widest uppercase">Quick Menu</div>
+        <div class="px-6 py-4 text-amber-600 font-bold cinzel border-b border-amber-900/30 tracking-widest uppercase text-left">Quick Menu</div>
         
         <div id="menu-stats" class="side-btn-single" onclick="showPage('stats')">
-            <i class="fa-solid fa-chart-simple mr-4 w-6"></i>캐릭터 스탯
+            <i class="fa-solid fa-chart-simple mr-4 w-6 text-left"></i>캐릭터 스탯
         </div>
         
         <div class="side-btn-container">
@@ -157,6 +157,20 @@
         <div id="sub-equip" class="submenu">
             <div id="menu-weapon-detail" class="sub-btn" onclick="showPage('weapon-detail')">ㄴ 무기 카탈로그</div>
             <div id="menu-armor-detail" class="sub-btn" onclick="showPage('armor-detail')">ㄴ 방어구 카탈로그</div>
+        </div>
+
+        <div class="side-btn-container">
+            <div id="menu-farming" class="side-main-link" onclick="showPage('farming')">
+                <i class="fa-solid fa-wheat-awn mr-4 w-6"></i>파밍 시스템
+            </div>
+            <div class="side-toggle" onclick="toggleSubmenu('sub-farming')">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+        <div id="sub-farming" class="submenu">
+            <div id="menu-wild-system" class="sub-btn" onclick="showPage('wild-system')">ㄴ 야생</div>
+            <div id="menu-life-system" class="sub-btn" onclick="showPage('life-system')">ㄴ 생활</div>
+            <div id="menu-coming-soon" class="sub-btn opacity-50" onclick="showPage('coming-soon')">ㄴ COMING SOON</div>
         </div>
 
         <div class="side-btn-container">
@@ -184,6 +198,7 @@
         <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-400">
             <button id="nav-stats" onclick="showPage('stats')" class="nav-link hover:text-amber-500 transition px-1 py-2">스탯</button>
             <button id="nav-equip" onclick="showPage('equip')" class="nav-link hover:text-amber-500 transition px-1 py-2">장비</button>
+            <button id="nav-farming" onclick="showPage('farming')" class="nav-link hover:text-amber-500 transition px-1 py-2">파밍</button>
             <button id="nav-world-map" onclick="showPage('world-map')" class="nav-link hover:text-amber-500 transition px-1 py-2">지도</button>
             <button id="nav-status" onclick="showPage('status')" class="nav-link hover:text-amber-500 transition px-1 py-2">상태이상</button>
         </div>
@@ -193,9 +208,10 @@
         <div class="hero-section text-center">
             <h1 class="cinzel text-6xl md:text-9xl text-white font-bold mb-4 tracking-[0.2em] drop-shadow-2xl">ETERNAL CITY</h1>
             <p class="text-amber-600 text-xl md:text-3xl mb-16 tracking-[0.6em] font-light uppercase">System Archive</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-7xl w-full px-6">
                 <button onclick="showPage('stats')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">스탯</button>
                 <button onclick="showPage('equip')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">장비</button>
+                <button onclick="showPage('farming')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">파밍</button>
                 <button onclick="showPage('world-map')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">지도</button>
                 <button onclick="showPage('status')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">상태이상</button>
             </div>
@@ -265,6 +281,7 @@
                 </div>
             </div>
         </div>
+        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline">← 돌아가기</button>
     </section>
 
     <section id="armor-detail" class="page max-w-4xl mx-auto px-6 text-left">
@@ -310,6 +327,87 @@
                 </div>
             </div>
         </div>
+        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline">← 돌아가기</button>
+    </section>
+
+    <section id="farming" class="page max-w-5xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-5xl text-white mb-16 tracking-widest uppercase">Farming System</h2>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="item-card hover:border-amber-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('wild-system')">
+                <div class="text-5xl mb-6 text-green-500"><i class="fa-solid fa-leaf"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-4">야생</h3>
+                <button class="w-full py-4 bg-amber-700 text-white font-bold rounded mt-4 transition hover:bg-amber-600">상세 시스템 보기</button>
+            </div>
+            <div class="item-card hover:border-amber-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('life-system')">
+                <div class="text-5xl mb-6 text-blue-400"><i class="fa-solid fa-house-chimney-window"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-4">생활</h3>
+                <button class="w-full py-4 bg-amber-700 text-white font-bold rounded mt-4 transition hover:bg-amber-600">상세 시스템 보기</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="wild-system" class="page max-w-5xl mx-auto px-6 text-left">
+        <div class="flex justify-between items-center mb-10 border-b border-amber-900/30 pb-6">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">야생 (WILD)</h2>
+            <button onclick="showPage('farming')" class="text-amber-500 font-bold hover:underline">← 파밍으로 돌아가기</button>
+        </div>
+        <div class="space-y-12">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-amber-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/rcard.jpg" alt="보상카드" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">보상 카드</h3><p class="text-gray-300 leading-relaxed">이벤트를 완료하면 정산하면서 얻는 보상입니다. 사건 규모와 투자 시간이 많을수록 가치가 올라갑니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-blue-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/looting.jpg" alt="루팅" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">루팅</h3><p class="text-gray-300 leading-relaxed">쓰러뜨린 적이나 시체에서 자원을 확보하는 행동입니다. <span class="text-white font-bold">정밀</span> 판정에 비례해 보상의 질이 결정됩니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-green-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/gather.jpg" alt="채집" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">채집</h3><p class="text-gray-300 leading-relaxed">자연환경 속에서 자원을 거두어들이는 시스템입니다. <span class="text-white font-bold">건강</span> 판정에 따라 품질이 결정됩니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-purple-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/expl.jpg" alt="수색" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">수색</h3><p class="text-gray-300 leading-relaxed">버려진 장소에서 가치 있는 고대 유물을 찾아내는 활동입니다. <span class="text-white font-bold">지능</span> 판정에 영향을 받습니다.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="life-system" class="page max-w-5xl mx-auto px-6 text-left">
+        <div class="flex justify-between items-center mb-10 border-b border-amber-900/30 pb-6">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">생활 (LIFE)</h2>
+            <button onclick="showPage('farming')" class="text-amber-500 font-bold hover:underline">← 파밍으로 돌아가기</button>
+        </div>
+        <div class="space-y-12">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-amber-600">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/fish.jpg" alt="낚시" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">낚시</h3><p class="text-gray-300">수중 부산물을 낚아올리는 활동입니다. 탈출하려는 힘을 억제하는 <span class="text-white font-bold">힘</span> 판정으로 결정됩니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-blue-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/cook.jpg" alt="요리" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-blue-400">요리</h3><p class="text-gray-300">에너지를 얻는 활동입니다. 레시피 이해를 요구하는 <span class="text-white font-bold">지능</span> 판정에 따라 버프가 결정됩니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-cyan-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/cloth.jpg" alt="재봉" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-cyan-400">재봉</h3><p class="text-gray-300">의복을 제작/수선하는 활동입니다. 정교한 <span class="text-white font-bold">정밀</span> 판정에 따라 품질이 결정됩니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-red-600">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/smith.jpg" alt="야금" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-red-400">야금</h3><p class="text-gray-300">금속 장비를 단련하는 활동입니다. 무거운 망치질을 견디는 <span class="text-white font-bold">힘</span> 판정이 필요합니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-purple-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/potion.jpg" alt="연금" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-purple-400">연금</h3><p class="text-gray-300">특수 소모품을 조제하는 활동입니다. 변화를 감지하는 <span class="text-white font-bold">지혜</span> 판정에 따라 효능이 결정됩니다.</p></div>
+            </div>
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-green-500">
+                <div class="w-full md:w-2/5 shrink-0"><img src="images/farm.jpg" alt="농사" class="w-full h-auto rounded border border-gray-700"></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-green-400">농사</h3><p class="text-gray-300">작물을 재배하는 활동입니다. 고된 노동을 견디는 <span class="text-white font-bold">건강</span> 판정에 따라 양과 품질이 결정됩니다.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="coming-soon" class="page max-w-4xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Coming Soon</h2>
+        <p class="text-gray-500 text-2xl mt-20 font-bold">새로운 콘텐츠가 개발 중입니다.</p>
+        <button onclick="showPage('farming')" class="mt-10 text-amber-500 hover:underline">← 돌아가기</button>
     </section>
 
     <section id="world-map" class="page w-full px-4 text-center">
@@ -479,6 +577,10 @@
             if(pageId === 'weapon-detail' || pageId === 'armor-detail') {
                 document.getElementById('menu-equip').classList.add('active-menu');
                 document.getElementById('nav-equip')?.classList.add('active-tab');
+            }
+            if(pageId === 'wild-system' || pageId === 'life-system' || pageId === 'coming-soon') {
+                document.getElementById('menu-farming').classList.add('active-menu');
+                document.getElementById('nav-farming')?.classList.add('active-tab');
             }
             if(pageId === 'norriton-detail' || pageId === 'world-map') {
                 document.getElementById('menu-world-map').classList.add('active-menu');

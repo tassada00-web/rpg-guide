@@ -185,6 +185,10 @@
             <div id="menu-norriton-detail" class="sub-btn" onclick="showPage('norriton-detail')">ㄴ 타락한 노리튼</div>
         </div>
 
+        <div id="menu-battle" class="side-btn-single" onclick="showPage('battle')">
+            <i class="fa-solid fa-swords mr-4 w-6 text-left"></i>전투 시스템
+        </div>
+
         <div id="menu-status" class="side-btn-single" onclick="showPage('status')">
             <i class="fa-solid fa-skull-crossbones mr-4 w-6"></i>상태이상 가이드
         </div>
@@ -200,6 +204,9 @@
             <button id="nav-equip" onclick="showPage('equip')" class="nav-link hover:text-amber-500 transition px-1 py-2">장비</button>
             <button id="nav-farming" onclick="showPage('farming')" class="nav-link hover:text-amber-500 transition px-1 py-2">파밍</button>
             <button id="nav-world-map" onclick="showPage('world-map')" class="nav-link hover:text-amber-500 transition px-1 py-2">지도</button>
+            
+            <button id="nav-battle" onclick="showPage('battle')" class="nav-link hover:text-amber-500 transition px-1 py-2">전투</button>
+            
             <button id="nav-status" onclick="showPage('status')" class="nav-link hover:text-amber-500 transition px-1 py-2">상태이상</button>
         </div>
     </nav>
@@ -208,11 +215,11 @@
         <div class="hero-section text-center">
             <h1 class="cinzel text-6xl md:text-9xl text-white font-bold mb-4 tracking-[0.2em] drop-shadow-2xl">ETERNAL CITY</h1>
             <p class="text-amber-600 text-xl md:text-3xl mb-16 tracking-[0.6em] font-light uppercase">System Archive</p>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-7xl w-full px-6">
-                <button onclick="showPage('stats')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">스탯</button>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-7xl w-full px-6"> <button onclick="showPage('stats')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">스탯</button>
                 <button onclick="showPage('equip')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">장비</button>
                 <button onclick="showPage('farming')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">파밍</button>
                 <button onclick="showPage('world-map')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">지도</button>
+                <button onclick="showPage('battle')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-red-500 transition text-red-500">전투</button>
                 <button onclick="showPage('status')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">상태이상</button>
             </div>
         </div>
@@ -448,6 +455,10 @@
             </div>
         </div>
     </section>
+    <section id="battle" class="page max-w-5xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Battle Simulation</h2>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">전투 판정 및 행동 가이드</p>
+        </section>
 
     <section id="status" class="page max-w-5xl mx-auto px-6 text-left">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Status Effects</h2>
@@ -572,6 +583,11 @@
             // 사이드바 현재 페이지 활성화
             const activeSide = document.getElementById('menu-' + pageId);
             if (activeSide) activeSide.classList.add('active-menu');
+
+            if(pageId === 'battle') {
+        document.getElementById('nav-battle')?.classList.add('active-tab');
+        document.getElementById('menu-battle')?.classList.add('active-menu');
+    }
 
             // 하위 메뉴 진입 시 부모(상위) 메뉴도 주황색 강조 유지
             if(pageId === 'weapon-detail' || pageId === 'armor-detail') {

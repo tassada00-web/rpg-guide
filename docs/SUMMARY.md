@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Page](README.md)
+* [캐릭터 스탯](README.md)

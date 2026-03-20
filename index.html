@@ -542,11 +542,13 @@
         </div>
     </section>
 
-    <section id="attack-turn" class="page max-w-4xl mx-auto px-6 text-left">
+<section id="attack-turn" class="page max-w-4xl mx-auto px-6 text-left">
         <h2 class="cinzel text-4xl text-white mb-10 border-b border-red-900/30 pb-6 uppercase">Attack Turn Guide</h2>
         <div class="space-y-8">
             <div class="item-card border-l-4 border-red-600 flex flex-col md:flex-row gap-6 items-center">
                 <div class="w-full md:w-1/3"><img src="https://images.unsplash.com/photo-1589409514187-c21d14bf0d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="공격" class="rounded border border-gray-700 object-cover h-full aspect-video"></div>
+                
+                <div class="w-full md:w-2/3"> <!-- ✅ 이 줄이 복구되었습니다! -->
                     <h3 class="text-2xl font-bold text-red-500 mb-2">명중 판정 및 대미지</h3>
                     <p class="text-gray-300 text-sm leading-relaxed">공격자는 무기 타입에 맞는 주 스탯(힘, 정밀 등)을 사용하여 명중 굴림을 진행합니다. 상대의 회피 수치보다 높을 경우 명중하며, 무기 위력에 따른 대미지를 입힙니다.</p>
                 </div>
@@ -662,7 +664,8 @@
             submenu.classList.toggle('show');
         }
 
-        function showPage(pageId) {
+        // ✅ URL 기록(History) 기능이 추가된 페이지 이동 함수
+        function showPage(pageId, isHistory = false) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
             
@@ -676,6 +679,11 @@
                 document.getElementById('sidebar-overlay').classList.remove('show');
 
                 updateActiveStyle(pageId);
+
+                // ✅ 브라우저에 현재 페이지 이동을 '기록'합니다. (물리 뒤로가기 지원용)
+                if (!isHistory) {
+                    history.pushState({ pageId: pageId }, "", "#" + pageId);
+                }
             }
         }
 
@@ -712,6 +720,25 @@
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }
         }
+
+        // ✅ 기기의 뒤로 가기 / 앞으로 가기 버튼을 감지하는 이벤트
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.pageId) {
+                showPage(event.state.pageId, true);
+            } else {
+                showPage('home', true);
+            }
+        });
+
+        // ✅ 처음 사이트 접속 시 기본 홈 화면 기록
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                showPage(hash, true);
+            } else {
+                history.replaceState({ pageId: 'home' }, "", "#home");
+            }
+        });
     </script>
-</body>
+    </body>
 </html>

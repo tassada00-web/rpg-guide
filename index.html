@@ -317,7 +317,7 @@
                 <h3 class="text-2xl font-bold text-amber-500 mb-4">둔기 (Blunt)</h3>
                 <div class="grid md:grid-cols-2 gap-6 text-sm">
                     <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 명중 시 적에게 [현기증] 스택 N 부여</li><li>• 중갑 및 기계 적에게 최종 데미지 N배 적용</li></ul></div>
-                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• (현재 기획 보류 중)</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 비금속 방어구 대상 공격 시 데미지 N 감소</li></ul></div>
                 </div>
             </div>
 
@@ -557,18 +557,75 @@
         <button onclick="showPage('battle')" class="mt-10 text-red-500 hover:underline">← 전투 시스템으로</button>
     </section>
 
-    <section id="defense-turn" class="page max-w-4xl mx-auto px-6 text-left">
-        <h2 class="cinzel text-4xl text-white mb-10 border-b border-blue-900/30 pb-6 uppercase">Defense Turn Guide</h2>
-        <div class="space-y-8">
-            <div class="item-card border-l-4 border-blue-600 flex flex-col md:flex-row gap-6 items-center">
-                <div class="w-full md:w-1/3"><img src="https://images.unsplash.com/photo-1605651581452-19e13d961e69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="방어" class="rounded border border-gray-700 object-cover h-full aspect-video"></div>
-                <div class="w-full md:w-2/3">
-                    <h3 class="text-2xl font-bold text-blue-500 mb-2">회피 및 경감 판정</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">방어자는 속도 스탯을 통해 회피를 시도하거나, 건강 및 장비 수치를 통해 대미지를 경감합니다. 특정 상태이상은 방어 판정에 불이익을 줍니다.</p>
+<section id="defense-turn" class="page max-w-4xl mx-auto px-6 text-left">
+        <div class="flex flex-col items-center mb-10 border-b border-blue-900/30 pb-6 text-center">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold uppercase mb-2">Defense Turn Guide</h2>
+            <p class="text-blue-400 font-bold tracking-widest">"오는 공격을 정면으로 마주하고 버텨내기"</p>
+        </div>
+
+        <!-- A -> B/C 트리 구조 시각화 영역 -->
+        <div class="flex flex-col items-center mb-16 bg-gray-900/30 p-8 rounded-lg border border-gray-800">
+            <!-- A: 방어 준비 -->
+            <div class="text-center z-10">
+                <img src="battle_image/guard.jpg" alt="방어 준비자세" class="w-48 h-32 object-cover rounded border border-gray-500 mb-3 mx-auto shadow-lg">
+                <span class="bg-gray-700 text-white px-4 py-1 rounded-full text-sm font-bold">방어 준비 (Guard)</span>
+            </div>
+
+            <!-- 갈라지는 화살표 -->
+            <div class="flex justify-center w-full max-w-xs gap-24 -mt-2 -mb-2 text-3xl text-gray-600">
+                <i class="fa-solid fa-arrow-down-long transform -rotate-45 relative left-4"></i>
+                <i class="fa-solid fa-arrow-down-long transform rotate-45 relative right-4"></i>
+            </div>
+
+            <!-- B & C: 성공 / 실패 -->
+            <div class="flex justify-between gap-6 w-full max-w-2xl mt-2">
+                <!-- B: 성공 -->
+                <div class="text-center w-1/2">
+                    <img src="battle_image/perfect_guard.jpg" alt="방어 성공자세" class="w-full h-40 object-cover rounded border border-blue-500 mb-3 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                    <span class="bg-blue-900 text-blue-300 px-4 py-1 rounded-full text-sm font-bold">방어 성공 (Perfect Guard)</span>
+                </div>
+                <!-- C: 실패 -->
+                <div class="text-center w-1/2">
+                    <img src="battle_image/guard_break.jpg" alt="방어 실패자세" class="w-full h-40 object-cover rounded border border-red-600 mb-3 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                    <span class="bg-red-900 text-red-300 px-4 py-1 rounded-full text-sm font-bold">방어 실패 (Guard Break)</span>
                 </div>
             </div>
         </div>
-        <button onclick="showPage('battle')" class="mt-10 text-blue-500 hover:underline">← 전투 시스템으로</button>
+
+        <!-- 방어 설명 텍스트 -->
+        <div class="text-center mb-10">
+            <p class="text-lg text-gray-300 border-l-4 border-r-4 border-blue-500 inline-block px-6 py-2 bg-blue-900/10 rounded">
+                가장 기본적인 대응입니다. 충격을 받아내거나 기술로 상쇄합니다.
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- 자유 대응 -->
+            <div class="item-card border-l-4 border-blue-400">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-unlock-keyhole mr-2"></i>자유 대응 (Free Response)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    공격자가 위력만 제시할 때입니다. 방어자는 자신의 대응 방법을 골라 서술합니다. 그 행동에 어울리는 판정 스탯으로 선택되어 판정합니다. 본인의 강점을 가장 잘 활용할 수 있는 상태입니다.
+                </p>
+            </div>
+            
+            <!-- 지정 대항 -->
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-3"><i class="fa-solid fa-thumbtack mr-2"></i>지정 대항 (Specified Contest)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    공격자가 특정 스탯(예: 힘)을 요구하며 들어올 때입니다. 방어자는 반드시 해당 스탯으로만 맞서야 합니다. 본인의 약점 스탯을 공략당할 수 있어 주의가 필요합니다.
+                </p>
+            </div>
+
+            <!-- 스킬 대항 -->
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>스킬 대항 (Skill Counter)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    보유한 전용 스킬로 대응하는 방식입니다. 공격자가 요구한 판정 형식을 무시하고, 스킬에 명시된 스탯으로 판정 규칙을 대체합니다. (예: 속박 공격을 속도 기반 '되치기' 스킬로 가드)
+                </p>
+            </div>
+        </div>
+
+        <button onclick="showPage('battle')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
     </section>
 
     <section id="status" class="page max-w-5xl mx-auto px-6 text-left">

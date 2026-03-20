@@ -278,6 +278,8 @@
     <section id="weapon-detail" class="page max-w-4xl mx-auto px-6 text-left">
         <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Weapon Catalog</h2>
         <div class="space-y-6">
+            
+            <!-- 1. 방패 -->
             <div class="item-card border-l-4 border-gray-400">
                 <h3 class="text-2xl font-bold text-amber-500 mb-4">방패 (Shield)</h3>
                 <div class="grid md:grid-cols-2 gap-6 text-sm">
@@ -285,19 +287,78 @@
                     <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 움직임 민첩 -1 패널티</li><li>• 오버 피해량만큼 내구도 감소</li></ul></div>
                 </div>
             </div>
-            <div class="item-card border-l-4 border-blue-900">
+
+            <!-- 2. 한손검 -->
+            <div class="item-card border-l-4 border-blue-500">
                 <h3 class="text-2xl font-bold text-amber-500">한손검 (Short Sword)</h3>
                 <p class="text-sm text-gray-400 mt-4">특징: 리스크도 리턴도 없는 순수한 실력의 지표입니다.</p>
             </div>
-            <div class="item-card border-l-4 border-red-900">
-                <h3 class="text-2xl font-bold text-amber-500 mb-4">머스킷 (Musket)</h3>
+
+            <!-- 3. 단검 -->
+            <div class="item-card border-l-4 border-zinc-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">단검 (Dagger)</h3>
                 <div class="grid md:grid-cols-2 gap-6 text-sm">
-                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 탄환 데미지 대폭 증가 (방관 추가)</li><li>• 회피 실패 시 골절 및 출혈 부여</li></ul></div>
-                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 매 사격 후 장전 행동 필수</li><li>• 소리에 의한 적 유입 가능성 증폭</li></ul></div>
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 기습/배후 공격 시 [정밀] 판정 보너스 N 부여</li><li>• 치명타 시 [출혈] 스택 N 부여</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 정면 대결 시, [방패]나 [판금 갑옷] 착용 적에게 데미지 N 감소</li></ul></div>
                 </div>
             </div>
+
+            <!-- 4. 대검 -->
+            <div class="item-card border-l-4 border-red-700">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">대검 (Greatsword)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 근접 성공 시 [힘] 스탯의 N배 데미지 적용</li><li>• 적 장비 내구도 N 추가 감소</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 공격 시마다 [스테미나(SP)] 소모량 N 증가</li><li>• 착용 중 [속도] 스탯 N 패널티</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 5. 둔기 -->
+            <div class="item-card border-l-4 border-stone-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">둔기 (Blunt)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 명중 시 적에게 [현기증] 스택 N 부여</li><li>• 중갑 및 기계 적에게 최종 데미지 N배 적용</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• (현재 기획 보류 중)</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 6. 창 -->
+            <div class="item-card border-l-4 border-emerald-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">창 (Spear)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 긴 사거리로 선제 공격 판정 N 부여</li><li>• 상대가 근접 범위 이동 시 자동 추가 공격 N회</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 밀착 상태 시 공격 판정 및 데미지 N 감소</li><li>• 좁은 지형 사용 시 [속도] 패널티 N 부여</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 7. 활 -->
+            <div class="item-card border-l-4 border-green-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">활 (Bow)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 사격 시 소음 미발생</li><li>• [속도] 판정 성공 시 턴당 N회 사격 가능</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 인벤토리 내 [화살] 상시 필요</li><li>• [힘] 부족 시 명중률 및 데미지 N 감소</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 8. 석궁 -->
+            <div class="item-card border-l-4 border-yellow-700">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">석궁 (Crossbow)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 사용자 스탯 무관 최소 데미지 N 보장</li><li>• 장갑 관통 (물리 방어력 N 무시)</li></ul></div>
+                    <div><span class="label-risk">▼ RISK (도구 불량)</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 주사위 N 이하 시 기구 결함 발생</li><li>• N턴 동안 사용 불가 혹은 내구도 N 큰 하락</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 9. 머스킷 -->
+            <div class="item-card border-l-4 border-orange-800">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">머스킷 (Musket)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 탄환 데미지 대폭 증가 (방관 추가)</li><li>• 회피 실패 시 [골절] 및 [출혈] 부여</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 매 사격 후 장전 행동 필수</li><li>• 장전 중인 턴에는 [회피] 불가 판정</li></ul></div>
+                </div>
+            </div>
+
         </div>
-        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline">← 돌아가기</button>
+        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline">← 장비 카탈로그로 돌아가기</button>
     </section>
 
     <section id="armor-detail" class="page max-w-4xl mx-auto px-6 text-left">

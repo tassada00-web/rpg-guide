@@ -1,142 +1,142 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRPG 시스템 가이드</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TRPG 시스템 가이드</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&family=Cinzel:wght@700&display=swap');
-        
-        body { 
-            font-family: 'Pretendard', sans-serif; 
-            background-color: #0d0d0d; 
-            color: #d1d5db; 
-            margin: 0;
-            overflow-x: hidden;
-        }
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&family=Cinzel:wght@700&display=swap');
+            
+            body { 
+                font-family: 'Pretendard', sans-serif; 
+                background-color: #0d0d0d; 
+                color: #d1d5db; 
+                margin: 0;
+                overflow-x: hidden;
+            }
 
-        .cinzel { font-family: 'Cinzel', serif; }
+            .cinzel { font-family: 'Cinzel', serif; }
 
-        .hero-section {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6), #0d0d0d),
-                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+            .hero-section {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.6), #0d0d0d),
+                            url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
 
-        .page { display: none; min-height: 100vh; padding-top: 100px; padding-bottom: 80px; }
-        .page.active { display: block; animation: fadeIn 0.4s ease-out; }
+            .page { display: none; min-height: 100vh; padding-top: 100px; padding-bottom: 80px; }
+            .page.active { display: block; animation: fadeIn 0.4s ease-out; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        nav {
-            background-color: rgba(10, 10, 10, 0.98);
-            border-bottom: 1px solid rgba(120, 53, 15, 0.5);
-            backdrop-filter: blur(10px);
-            height: 70px;
-        }
+            nav {
+                background-color: rgba(10, 10, 10, 0.98);
+                border-bottom: 1px solid rgba(120, 53, 15, 0.5);
+                backdrop-filter: blur(10px);
+                height: 70px;
+            }
 
-        /* 사이드바 스타일 */
-        #sidebar {
-            position: fixed;
-            left: -280px;
-            top: 0;
-            width: 280px;
-            height: 100%;
-            background: #111;
-            border-right: 1px solid #333;
-            transition: left 0.3s ease;
-            z-index: 200;
-            padding-top: 80px;
-            overflow-y: auto;
-        }
-        #sidebar.open { left: 0; }
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 150;
-        }
-        .sidebar-overlay.show { display: block; }
+            /* 사이드바 스타일 */
+            #sidebar {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                width: 280px;
+                height: 100%;
+                background: #111;
+                border-right: 1px solid #333;
+                transition: left 0.3s ease;
+                z-index: 200;
+                padding-top: 80px;
+                overflow-y: auto;
+            }
+            #sidebar.open { left: 0; }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7);
+                z-index: 150;
+            }
+            .sidebar-overlay.show { display: block; }
 
-        /* 사이드바 버튼 구조 */
-        .side-btn-container {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #222;
-            transition: 0.2s;
-        }
-        .side-btn-container:hover { background: #1a1a1a; }
-        
-        .side-main-link {
-            flex-grow: 1;
-            padding: 15px 10px 15px 25px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            color: #d1d5db;
-        }
-        .side-toggle {
-            padding: 15px 25px 15px 10px;
-            cursor: pointer;
-            color: #555;
-            transition: 0.2s;
-        }
-        .side-toggle:hover { color: #f59e0b; }
+            /* 사이드바 버튼 구조 */
+            .side-btn-container {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #222;
+                transition: 0.2s;
+            }
+            .side-btn-container:hover { background: #1a1a1a; }
+            
+            .side-main-link {
+                flex-grow: 1;
+                padding: 15px 10px 15px 25px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                color: #d1d5db;
+            }
+            .side-toggle {
+                padding: 15px 25px 15px 10px;
+                cursor: pointer;
+                color: #555;
+                transition: 0.2s;
+            }
+            .side-toggle:hover { color: #f59e0b; }
 
-        .side-btn-single {
-            width: 100%;
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #222;
-            cursor: pointer;
-            color: #d1d5db;
-        }
-        .side-btn-single:hover { background: #1a1a1a; color: #f59e0b; }
+            .side-btn-single {
+                width: 100%;
+                padding: 15px 25px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #222;
+                cursor: pointer;
+                color: #d1d5db;
+            }
+            .side-btn-single:hover { background: #1a1a1a; color: #f59e0b; }
 
-        /* 주황색 강조 스타일 */
-        .active-menu { color: #f59e0b !important; font-weight: bold; }
-        .active-tab { color: #f59e0b !important; border-bottom: 2px solid #f59e0b; }
+            /* 주황색 강조 스타일 */
+            .active-menu { color: #f59e0b !important; font-weight: bold; }
+            .active-tab { color: #f59e0b !important; border-bottom: 2px solid #f59e0b; }
 
-        .submenu {
-            background: #0a0a0a;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .submenu.show { max-height: 400px; }
-        .sub-btn {
-            width: 100%;
-            padding: 12px 25px 12px 55px;
-            text-align: left;
-            font-size: 13px;
-            color: #888;
-            border-bottom: 1px solid #1a1a1a;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .sub-btn:hover { color: #f59e0b; background: #151515; }
+            .submenu {
+                background: #0a0a0a;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            .submenu.show { max-height: 400px; }
+            .sub-btn {
+                width: 100%;
+                padding: 12px 25px 12px 55px;
+                text-align: left;
+                font-size: 13px;
+                color: #888;
+                border-bottom: 1px solid #1a1a1a;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+            .sub-btn:hover { color: #f59e0b; background: #151515; }
 
-        .item-card { background: rgba(20, 20, 20, 0.8); border: 1px solid #444; padding: 2rem; margin-bottom: 2rem; border-radius: 8px; }
-        .status-item { background: rgba(20, 20, 20, 0.8); border-left: 4px solid #78350f; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 4px; }
-        .map-wrapper { max-width: 1400px; margin: 0 auto; border: 1px solid #333; background: #000; padding: 5px; }
-        .map-image { width: 100%; height: auto; display: block; }
-        
-        .label-return { color: #60a5fa; font-weight: bold; }
-        .label-risk { color: #f87171; font-weight: bold; }
-    </style>
-</head>
+            .item-card { background: rgba(20, 20, 20, 0.8); border: 1px solid #444; padding: 2rem; margin-bottom: 2rem; border-radius: 8px; }
+            .status-item { background: rgba(20, 20, 20, 0.8); border-left: 4px solid #78350f; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 4px; }
+            .map-wrapper { max-width: 1400px; margin: 0 auto; border: 1px solid #333; background: #000; padding: 5px; }
+            .map-image { width: 100%; height: auto; display: block; }
+            
+            .label-return { color: #60a5fa; font-weight: bold; }
+            .label-risk { color: #f87171; font-weight: bold; }
+        </style>
+    </head>
 <body>
 
     <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
@@ -642,9 +642,7 @@
     </script>
     <script>
         async function fetchTRPGStats() {
-            // 1. 여기에 본인의 GitHub Raw URL을 넣으세요!
-            // 예: "https://raw.githubusercontent.com/사용자명/저장소명/main/docs/캐릭터-스탯.md"
-            const rawUrl = "여기에_복사한_주소를_넣으세요"; 
+            const rawUrl = "https://raw.githubusercontent.com/tassada00-web/rpg-guide/main/docs/README.md";
             
             const contentDiv = document.getElementById('stats-content');
             

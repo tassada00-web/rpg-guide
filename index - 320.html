@@ -6,8 +6,6 @@
     <title>TRPG 시스템 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&family=Cinzel:wght@700&display=swap');
         
@@ -236,17 +234,31 @@
         </div>
     </section>
 
-<section id="stats" class="page max-w-5xl mx-auto px-6">
-    <!-- 제목은 그대로 둡니다 (디자인 유지) -->
-    <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Character Stats</h2>
-    
-    <!-- 여기가 핵심! 'id="stats-content"'라는 이름표를 붙인 빈 상자로 바꿉니다 -->
-    <div id="stats-content" class="mt-12 space-y-12 text-left">
-        <!-- 기존에 직접 적었던 ❤️체력, ✊힘 등 모든 카드 내용은 삭제되었습니다. -->
-        <!-- 이제 이 자리에 GitBook에 쓰신 내용이 자동으로 나타날 겁니다. -->
-        <p class="text-center text-gray-500 py-20">GitBook 아카이브에서 최신 데이터를 불러오는 중...</p>
-    </div>
-</section>
+    <section id="stats" class="page max-w-5xl mx-auto px-6">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Character Stats</h2>
+        <div class="mt-12 space-y-12 text-left">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="item-card !mb-0 border-l-4 border-l-red-700">
+                    <h3 class="text-xl font-bold text-red-500 mb-3">❤️ 체력 (HP)</h3>
+                    <p class="text-sm text-gray-400">캐릭터가 생존할 수 있는 총량입니다. 0이 되면 패배(사망 또는 행동불능)하게 됩니다.</p>
+                </div>
+                <div class="item-card !mb-0 border-l-4 border-l-green-700">
+                    <h3 class="text-xl font-bold text-green-500 mb-3">⚡ 스테미나 (SP)</h3>
+                    <p class="text-sm text-gray-400">전투나 활동의 원동력입니다. 과도하게 소모하여 0에 도달할 시 피로 상태가 되어 행동에 제약이 생깁니다.</p>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">✊ 힘</h4><p class="text-sm text-gray-400">물리적인 힘. 근접 공격력, 무거운 물건 들기, 문 부수기, 운동 능력 등 말 그대로 근력 관련 능력치입니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🛡️ 건강</h4><p class="text-sm text-gray-400">식중독 같은 외부 질병 요소에 버틸 수 있고 체력, 스테미나를 담당하는 스탯입니다. (스탯 당 체력, 스테미나 5씩 증가)</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🏃 속도</h4><p class="text-sm text-gray-400">회피같은 기동성과 관련된 스탯입니다. 배틀에서 턴 순서에 영향을 미칩니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🎯 정밀</h4><p class="text-sm text-gray-400">명중 관련 능력치입니다. 활동, 전투 시에는 높을 수록 원거리에 관련된 상황에 이점을 가집니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">🧠 지능</h4><p class="text-sm text-gray-400">마법적 힘, 마법 공격력 등 마법 관련 능력치입니다. 스탯 5당 사용할 수 있는 주문 횟수가 1 추가됩니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">👁️ 지혜</h4><p class="text-sm text-gray-400">통찰력과 직관. 주변 살피기(지각), 상대방 의도 파악, 정신적 내성과 연관된 스탯입니다.</p></div>
+                <div class="status-item border-l-amber-600"><h4 class="font-bold text-amber-500 mb-2">✨ 매력</h4><p class="text-sm text-gray-400">카리스마, 존재감, 설득 등으로 직접적 전투가 아닌 간접적으로 타인에게 영향력을 줄 수 있는 스탯입니다.</p></div>
+            </div>
+        </div>
+    </section>
+
     <section id="equip" class="page max-w-5xl mx-auto px-6 text-center">
         <h2 class="cinzel text-5xl text-white mb-16 tracking-widest uppercase">Equipment</h2>
         <div class="grid md:grid-cols-2 gap-10 text-left">
@@ -639,32 +651,6 @@
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }
         }
-    </script>
-    <script>
-        async function fetchTRPGStats() {
-            // 1. 여기에 본인의 GitHub Raw URL을 넣으세요!
-            // 예: "https://raw.githubusercontent.com/사용자명/저장소명/main/docs/캐릭터-스탯.md"
-            const rawUrl = "여기에_복사한_주소를_넣으세요"; 
-            
-            const contentDiv = document.getElementById('stats-content');
-            
-            try {
-                const response = await fetch(rawUrl);
-                if (!response.ok) throw new Error('네트워크 응답에 문제가 있습니다.');
-                
-                const markdownText = await response.text();
-                
-                // 2. 마크다운을 HTML로 변환하여 상자에 쏙 넣습니다.
-                contentDiv.innerHTML = marked.parse(markdownText);
-                
-            } catch (error) {
-                console.error("데이터 로드 실패:", error);
-                contentDiv.innerHTML = "<p class='text-center text-red-500'>데이터를 불러오지 못했습니다. URL을 확인해 주세요.</p>";
-            }
-        }
-
-        // 페이지가 로딩되면 바로 실행합니다.
-        window.addEventListener('DOMContentLoaded', fetchTRPGStats);
     </script>
 </body>
 </html>

@@ -577,25 +577,53 @@
                 <i class="fa-solid fa-arrow-down-long"></i>
             </div>
 
-            <!-- B & C: 성공 / 실패 (모바일 고려하여 세로 정렬 유지) -->
-            <div class="flex flex-col md:flex-row gap-8 w-full max-w-4xl mt-3">
+            <!-- B & C: 성공 / 실패 상세 결과 및 수식 -->
+            <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl mt-3">
                 
-                <!-- B: 성공 -->
+                <!-- B: 방어 성공 (방어자 승리) -->
                 <div class="item-card border-l-4 border-blue-500 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                    <img src="battle_image/perfect_guard.jpg" alt="방어 성공자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-blue-700 mb-4">
-                    <span class="bg-blue-900 text-blue-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider">B: 방어 성공 (Perfect Guard)</span>
+                    <img src="battle_image/perfect_guard.jpg" alt="방어 성공자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-blue-700 mb-6">
+                    
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-blue-900 text-blue-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">B: 방어 성공 (방어값 ≥ 공격값)</span>
+                        </div>
+                        <p class="text-xs text-blue-400 mb-3 text-center px-2 italic">"적의 공격은 막아냈지만, 주변의 위험 요소가 잔류 피해를 주는 상황입니다."</p>
+                        <div class="bg-black/60 p-4 rounded border border-blue-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-blue-300 text-sm font-bold">최종 피해 = 외부 요인 - 방어값 - 고정 방어</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-check mr-2 mt-1 text-blue-500"></i><span>단, 계산 결과가 0보다 작으면 0으로 처리</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-plus mr-2 mt-1 text-blue-500"></i><span>공격자에게 경직(Stagger) 스택 부여 가능</span></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- C: 실패 -->
+                <!-- C: 방어 실패 (공격자 승리) -->
                 <div class="item-card border-l-4 border-red-600 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
-                    <img src="battle_image/guard_break.jpg" alt="방어 실패자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-red-700 mb-4">
-                    <span class="bg-red-900 text-red-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider">C: 방어 실패 (Guard Break)</span>
+                    <img src="battle_image/guard_break.jpg" alt="방어 실패자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-red-700 mb-6">
+                    
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-red-900 text-red-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">C: 방어 실패 (공격값 > 방어값)</span>
+                        </div>
+                        <p class="text-xs text-red-400 mb-3 text-center px-2 italic">"적의 공격이 방어벽을 뚫고 직접적인 타격을 입힌 상황입니다."</p>
+                        <div class="bg-black/60 p-4 rounded border border-red-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-red-300 text-sm font-bold">최종 피해 = (공격값 ± 외부 요인) - 고정 방어</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-bolt mr-2 mt-1 text-red-500"></i><span>방어구 내구도 및 캐릭터 HP에 큰 타격</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-skull mr-2 mt-1 text-red-500"></i><span>추가 상태이상(골절, 출혈 등) 발생 확률 증가</span></li>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-        <!-- 방어 설명 텍스트 -->
+        <!-- 하단 방어 매커니즘 설명 -->
         <div class="text-center mb-10">
             <p class="text-lg text-gray-300 border-l-4 border-r-4 border-blue-500 inline-block px-6 py-2 bg-blue-900/10 rounded italic">
                 가장 기본적인 대응입니다. 충격을 받아내거나 기술로 상쇄합니다.
@@ -603,7 +631,6 @@
         </div>
 
         <div class="space-y-6">
-            <!-- 자유 대응 -->
             <div class="item-card border-l-4 border-blue-400">
                 <h3 class="text-2xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-unlock-keyhole mr-2"></i>자유 대응 (Free Response)</h3>
                 <p class="text-sm text-gray-300 leading-relaxed">
@@ -611,7 +638,6 @@
                 </p>
             </div>
             
-            <!-- 지정 대항 -->
             <div class="item-card border-l-4 border-amber-500">
                 <h3 class="text-2xl font-bold text-amber-500 mb-3"><i class="fa-solid fa-thumbtack mr-2"></i>지정 대항 (Specified Contest)</h3>
                 <p class="text-sm text-gray-300 leading-relaxed">
@@ -619,7 +645,6 @@
                 </p>
             </div>
 
-            <!-- 스킬 대항 -->
             <div class="item-card border-l-4 border-purple-500">
                 <h3 class="text-2xl font-bold text-purple-400 mb-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>스킬 대항 (Skill Counter)</h3>
                 <p class="text-sm text-gray-300 leading-relaxed">

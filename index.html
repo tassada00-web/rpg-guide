@@ -541,47 +541,62 @@
             </div>
         </div>
     </section>
-    <section id="defense-menu" class="page max-w-5xl mx-auto px-6 text-center">
-        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest uppercase">Defense Category</h2>
-        <p class="text-blue-500 mb-16 uppercase tracking-widest">방어 상황에서의 대응 방식 선택</p>
+<section id="defense-menu" class="page max-w-5xl mx-auto px-6 text-center">
+        <div class="flex flex-col items-center mb-16">
+            <h2 class="cinzel text-5xl text-white mb-4 tracking-[0.2em] uppercase font-bold drop-shadow-lg">Defense Category</h2>
+            <div class="w-24 h-1 bg-blue-600 mb-6 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+            <p class="text-blue-500 font-bold uppercase tracking-[0.4em] text-sm">방어 상황에서의 대응 방식 선택</p>
+        </div>
         
         <div class="grid md:grid-cols-3 gap-8 text-left">
-            <div class="item-card hover:border-blue-400 cursor-pointer p-0 overflow-hidden flex flex-col items-center text-center group" onclick="showPage('defense-detail')">
-                <div class="w-full h-48 overflow-hidden border-b border-gray-800">
-                    <img src="battle_image/guard.jpg" alt="방어" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+            
+            <div class="item-card group hover:border-blue-400 cursor-pointer p-10 flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-xl" onclick="showPage('defense-detail')">
+                <div class="text-5xl mb-6 text-blue-500 group-hover:text-blue-400 transition-colors">
+                    <i class="fa-solid fa-shield-halved drop-shadow-[0_0_8px_rgba(59,130,246,0.4)]"></i>
                 </div>
-                <div class="p-6">
-                    <div class="text-2xl mb-2 text-blue-400"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight">방어 (Guard)</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">정면으로 충격을 <br>온전히 마주하고 버텨내기</p>
-                </div>
+                <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">방어 (Guard)</h3>
+                <div class="w-8 h-0.5 bg-blue-900 mb-4 group-hover:w-12 transition-all"></div>
+                <p class="text-xs text-gray-400 leading-relaxed font-medium">
+                    가장 안정적인 선택입니다.<br>
+                    정면으로 오는 충격을 온몸으로 <br>
+                    받아내어 피해를 상쇄하고 버팁니다.
+                </p>
+                <div class="mt-8 text-[10px] text-blue-900 font-bold tracking-widest group-hover:text-blue-600 transition-colors">DETAILS VIEW</div>
             </div>
 
-            <div class="item-card hover:border-green-400 cursor-pointer p-0 overflow-hidden flex flex-col items-center text-center group" onclick="showPage('evade-detail')">
-                <div class="w-full h-48 overflow-hidden border-b border-gray-800">
-                    <img src="battle_image/dodge.jpg" alt="회피" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+            <div class="item-card group hover:border-green-500 cursor-pointer p-10 flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-xl" onclick="showPage('evade-detail')">
+                <div class="text-5xl mb-6 text-green-500 group-hover:text-green-400 transition-colors">
+                    <i class="fa-solid fa-person-running drop-shadow-[0_0_8px_rgba(34,197,94,0.4)]"></i>
                 </div>
-                <div class="p-6">
-                    <div class="text-2xl mb-2 text-green-400"><i class="fa-solid fa-person-running"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight">회피 (Evade)</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">공격 궤도에서 완전히 <br>벗어나 피해를 무효화하기</p>
-                </div>
+                <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">회피 (Evade)</h3>
+                <div class="w-8 h-0.5 bg-green-900 mb-4 group-hover:w-12 transition-all"></div>
+                <p class="text-xs text-gray-400 leading-relaxed font-medium">
+                    기동성을 활용한 전략입니다.<br>
+                    공격의 궤적을 예측하여 완전히 <br>
+                    벗어남으로써 피해를 무효화합니다.
+                </p>
+                <div class="mt-8 text-[10px] text-green-900 font-bold tracking-widest group-hover:text-green-600 transition-colors">DETAILS VIEW</div>
             </div>
 
-            <div class="item-card hover:border-purple-400 cursor-pointer p-0 overflow-hidden flex flex-col items-center text-center group" onclick="showPage('counter-detail')">
-                <div class="w-full h-48 overflow-hidden border-b border-gray-800 bg-gray-900 flex items-center justify-center">
-                    <i class="fa-solid fa-bolt-lightning text-6xl text-purple-900/30"></i>
+            <div class="item-card group hover:border-purple-500 cursor-pointer p-10 flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-xl" onclick="showPage('counter-detail')">
+                <div class="text-5xl mb-6 text-purple-500 group-hover:text-purple-400 transition-colors">
+                    <i class="fa-solid fa-bolt-lightning drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"></i>
                 </div>
-                <div class="p-6">
-                    <div class="text-2xl mb-2 text-purple-400"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight">역공 (Counter)</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">상대의 빈틈을 파고들어 <br>공격권을 강제로 탈취하기</p>
-                </div>
+                <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">역공 (Counter)</h3>
+                <div class="w-8 h-0.5 bg-purple-900 mb-4 group-hover:w-12 transition-all"></div>
+                <p class="text-xs text-gray-400 leading-relaxed font-medium">
+                    공격적인 방어 수단입니다.<br>
+                    상대의 힘을 이용하거나 틈을 노려<br>
+                    공격권을 강제로 탈취하여 되받아칩니다.
+                </p>
+                <div class="mt-8 text-[10px] text-purple-900 font-bold tracking-widest group-hover:text-purple-600 transition-colors">DETAILS VIEW</div>
             </div>
+
         </div>
 
-        <button onclick="showPage('battle')" class="mt-16 text-gray-500 hover:text-white transition uppercase text-xs tracking-[0.3em]">
-            <i class="fa-solid fa-arrow-left mr-2"></i>Back to Battle System
+        <button onclick="showPage('battle')" class="mt-24 group text-gray-500 hover:text-white transition-all text-xs tracking-[0.5em] font-bold uppercase">
+            <i class="fa-solid fa-angles-left mr-3 group-hover:-translate-x-2 transition-transform"></i>
+            Return to Battle System
         </button>
     </section>
 

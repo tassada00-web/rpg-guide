@@ -713,10 +713,100 @@
 
         <button onclick="showPage('defense-menu')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
     </section>
-<section id="evade-detail" class="page max-w-4xl mx-auto px-6 text-center">
-        <h2 class="cinzel text-4xl text-white mb-10 border-b border-green-900/30 pb-6">EVADE MECHANIC</h2>
-        <p class="text-gray-500 py-20">회피 시스템 기획 준비 중...</p>
-        <button onclick="showPage('defense-menu')" class="text-green-500 hover:underline">← 방어 메뉴로</button>
+<section id="evade-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <div class="flex flex-col items-center mb-10 border-b border-green-900/30 pb-6 text-center">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold uppercase mb-2">Evade Turn Guide</h2>
+            <p class="text-green-400 font-bold tracking-widest">"공격의 궤적을 읽고 찰나의 순간에 벗어나기"</p>
+        </div>
+
+        <div class="bg-green-900/10 border border-green-800/30 rounded-lg p-6 mb-12 flex flex-col md:flex-row justify-around items-center text-center gap-4">
+            <div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Attacker</p>
+                <p class="text-xl font-bold text-white">정밀 (Precision)</p>
+            </div>
+            <div class="text-2xl text-green-500 font-black">VS</div>
+            <div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Defender</p>
+                <p class="text-xl font-bold text-white">속도 (Speed)</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center mb-16 space-y-6 bg-gray-900/30 p-8 rounded-lg border border-gray-800 shadow-2xl">
+            
+            <div class="item-card border-l-4 border-gray-500 flex flex-col items-center p-6 w-full max-w-md shadow-lg z-10 bg-[#111]">
+                <img src="battle_image/dodge.jpg" alt="회피 시도" class="w-full h-auto max-h-[500px] object-contain rounded border border-gray-700 mb-4">
+                <span class="bg-gray-700 text-white px-5 py-2 rounded-full text-sm font-bold tracking-wider">A: 회피 시도 (Dodge)</span>
+            </div>
+
+            <div class="text-4xl text-gray-600 -my-2 z-0">
+                <i class="fa-solid fa-arrow-down-long"></i>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl mt-3">
+                
+                <div class="item-card border-l-4 border-green-500 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                    <img src="battle_image/dodge_success.jpg" alt="회피 성공" class="w-full h-auto max-h-[500px] object-contain rounded border border-green-700 mb-6">
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-green-900 text-green-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">B: 회피 성공 (속도 > 정밀)</span>
+                        </div>
+                        <div class="bg-black/60 p-4 rounded border border-green-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-green-300 text-sm font-bold">최종 피해 = 0</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-check mr-2 mt-1 text-green-500"></i><span>모든 물리/마법 데미지 완전 무효화</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-plus mr-2 mt-1 text-green-500"></i><span>위치 재선점 및 반격 기회 획득</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item-card border-l-4 border-orange-600 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(234,88,12,0.2)]">
+                    <img src="battle_image/dodge_fail.jpg" alt="회피 실패" class="w-full h-auto max-h-[500px] object-contain rounded border border-orange-700 mb-6">
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-orange-950 text-orange-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">C: 회피 실패 (정밀 ≥ 속도)</span>
+                        </div>
+                        <div class="bg-black/60 p-4 rounded border border-orange-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-orange-400 text-sm font-bold">최종 피해 = 100% (감소 없음) + 패널티</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-bolt mr-2 mt-1 text-orange-500"></i><span>적의 공격력을 그대로 모두 받아냄</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-triangle-exclamation mr-2 mt-1 text-orange-500"></i><span>아래 패널티 중 상황에 맞춰 부여</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center tracking-widest uppercase">
+            <span class="w-8 h-px bg-orange-600 mr-4"></span>Critical Penalties
+        </h3>
+        
+        <div class="grid md:grid-cols-3 gap-4 mb-12">
+            <div class="bg-orange-900/10 border border-orange-900/30 p-6 rounded shadow-lg">
+                <h4 class="text-orange-500 font-bold mb-3 flex items-center">
+                    <i class="fa-solid fa-person-falling mr-2"></i>자세 무너짐
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">회피 동작 중 균형을 잃습니다. 다음 턴 모든 방어/회피 판정에 불리한 보정을 받습니다.</p>
+            </div>
+            <div class="bg-red-900/10 border border-red-900/30 p-6 rounded shadow-lg">
+                <h4 class="text-red-500 font-bold mb-3 flex items-center">
+                    <i class="fa-solid fa-bullseye mr-2"></i>노출됨
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">적에게 결정적인 빈틈을 보입니다. 다음 피격 시 주사위 결과와 무관하게 무조건 치명타로 적중합니다.</p>
+            </div>
+            <div class="bg-gray-800/30 border border-gray-700 p-6 rounded shadow-lg">
+                <h4 class="text-gray-300 font-bold mb-3 flex items-center">
+                    <i class="fa-solid fa-dice mr-2"></i>기타 패널티
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">GM의 재량에 따라 주변 환경(지형지물)이나 공격의 성격에 맞는 추가적인 패널티를 부여합니다.</p>
+            </div>
+        </div>
+
+        <button onclick="showPage('defense-menu')" class="mt-12 text-green-500 font-bold hover:underline w-full text-center">← 방어 메뉴로 돌아가기</button>
     </section>
 
     <section id="counter-detail" class="page max-w-4xl mx-auto px-6 text-center">

@@ -183,7 +183,7 @@
         </div>
         <div id="sub-battle" class="submenu">
             <div id="menu-attack-turn" class="sub-btn" onclick="showPage('attack-turn')">ㄴ 공격 턴</div>
-            <div id="menu-defense-menu" class="sub-btn" onclick="showPage('defense-menu')">ㄴ 방어 턴</div>
+            <div id="menu-defense-turn" class="sub-btn" onclick="showPage('defense-turn')">ㄴ 방어 턴</div>
         </div>
 
         <div class="side-btn-container">
@@ -534,35 +534,12 @@
                 <h3 class="text-2xl font-bold text-white mb-4">공격 턴 (Attack)</h3>
                 <button class="w-full py-4 bg-red-900/50 text-white font-bold rounded mt-4 transition hover:bg-red-700">공격 매커니즘 보기</button>
             </div>
-            <div class="item-card hover:border-blue-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('defense-menu')">
+            <div class="item-card hover:border-blue-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('defense-turn')">
                 <div class="text-5xl mb-6 text-blue-500"><i class="fa-solid fa-shield"></i></div>
                 <h3 class="text-2xl font-bold text-white mb-4">방어 턴 (Defense)</h3>
                 <button class="w-full py-4 bg-blue-900/50 text-white font-bold rounded mt-4 transition hover:bg-blue-700">방어 매커니즘 보기</button>
             </div>
         </div>
-    </section>
-            <section id="defense-menu" class="page max-w-5xl mx-auto px-6 text-center">
-        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest uppercase">Defense Category</h2>
-        <p class="text-blue-500 mb-16 uppercase tracking-widest">방어 상황에서의 대응 방식 선택</p>
-        
-        <div class="grid md:grid-cols-3 gap-6 text-left">
-            <div class="item-card hover:border-blue-400 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('defense-detail')">
-                <div class="text-4xl mb-4 text-blue-400"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">방어 (Guard)</h3>
-                <p class="text-xs text-gray-500">정면으로 충격을 <br>버텨내는 대응</p>
-            </div>
-            <div class="item-card hover:border-green-400 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('evade-detail')">
-                <div class="text-4xl mb-4 text-green-400"><i class="fa-solid fa-person-running"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">회피 (Evade)</h3>
-                <p class="text-xs text-gray-500">공격 궤도에서 벗어나 <br>피해를 무효화</p>
-            </div>
-            <div class="item-card hover:border-purple-400 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('counter-detail')">
-                <div class="text-4xl mb-4 text-purple-400"><i class="fa-solid fa-bolt-lightning"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">역공 (Counter)</h3>
-                <p class="text-xs text-gray-500">받아치기를 통해 <br>공격권을 전환</p>
-            </div>
-        </div>
-        <button onclick="showPage('battle')" class="mt-12 text-gray-500 hover:underline">← 전투 시스템으로</button>
     </section>
 
 <section id="attack-turn" class="page max-w-4xl mx-auto px-6 text-left">
@@ -580,7 +557,7 @@
         <button onclick="showPage('battle')" class="mt-10 text-red-500 hover:underline">← 전투 시스템으로</button>
     </section>
 
-<section id="defense-detail" class="page max-w-4xl mx-auto px-6 text-left">
+<section id="defense-turn" class="page max-w-4xl mx-auto px-6 text-left">
         <div class="flex flex-col items-center mb-10 border-b border-blue-900/30 pb-6 text-center">
             <h2 class="cinzel text-4xl text-white tracking-widest font-bold uppercase mb-2">Defense Turn Guide</h2>
             <p class="text-blue-400 font-bold tracking-widest">"오는 공격을 정면으로 마주하고 버텨내기"</p>
@@ -676,20 +653,8 @@
             </div>
         </div>
 
-        <button onclick="showPage('defense-menu')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
+        <button onclick="showPage('battle')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
     </section>
-<section id="evade-detail" class="page max-w-4xl mx-auto px-6 text-center">
-        <h2 class="cinzel text-4xl text-white mb-10 border-b border-green-900/30 pb-6">EVADE MECHANIC</h2>
-        <p class="text-gray-500 py-20">회피 시스템 기획 준비 중...</p>
-        <button onclick="showPage('defense-menu')" class="text-green-500 hover:underline">← 방어 메뉴로</button>
-    </section>
-
-    <section id="counter-detail" class="page max-w-4xl mx-auto px-6 text-center">
-        <h2 class="cinzel text-4xl text-white mb-10 border-b border-purple-900/30 pb-6">COUNTER MECHANIC</h2>
-        <p class="text-gray-500 py-20">역공 시스템 기획 준비 중...</p>
-        <button onclick="showPage('defense-menu')" class="text-purple-500 hover:underline">← 방어 메뉴로</button>
-    </section>    
-
 
     <section id="status" class="page max-w-5xl mx-auto px-6 text-left">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Status Effects</h2>
@@ -821,7 +786,7 @@
             const activeSide = document.getElementById('menu-' + pageId);
             if (activeSide) activeSide.classList.add('active-menu');
 
-            if(pageId === 'attack-turn' || pageId === 'defense-menu' || pageId === 'defense-detail' || pageId === 'evade-detail' || pageId === 'counter-detail' || pageId === 'battle') {
+            if(pageId === 'attack-turn' || pageId === 'defense-turn' || pageId === 'battle') {
                 document.getElementById('menu-battle')?.classList.add('active-menu');
                 document.getElementById('nav-battle')?.classList.add('active-tab');
             }

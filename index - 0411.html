@@ -174,6 +174,19 @@
         </div>
 
         <div class="side-btn-container">
+            <div id="menu-battle" class="side-main-link" onclick="showPage('battle')">
+                <i class="fa-solid fa-khanda mr-4 w-6"></i>전투 시스템
+            </div>
+            <div class="side-toggle" onclick="toggleSubmenu('sub-battle')">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+        <div id="sub-battle" class="submenu">
+            <div id="menu-attack-turn" class="sub-btn" onclick="showPage('attack-turn')">ㄴ 공격 턴</div>
+            <div id="menu-defense-menu" class="sub-btn" onclick="showPage('defense-menu')">ㄴ 방어 턴</div>
+        </div>
+
+        <div class="side-btn-container">
             <div id="menu-world-map" class="side-main-link" onclick="showPage('world-map')">
                 <i class="fa-solid fa-map-location-dot mr-4 w-6"></i>전체 지도
             </div>
@@ -183,10 +196,6 @@
         </div>
         <div id="sub-map" class="submenu">
             <div id="menu-norriton-detail" class="sub-btn" onclick="showPage('norriton-detail')">ㄴ 타락한 노리튼</div>
-        </div>
-
-        <div id="menu-battle" class="side-btn-single" onclick="showPage('battle')">
-            <i class="fa-solid fa-swords mr-4 w-6 text-left"></i>전투 시스템
         </div>
 
         <div id="menu-status" class="side-btn-single" onclick="showPage('status')">
@@ -203,10 +212,10 @@
             <button id="nav-stats" onclick="showPage('stats')" class="nav-link hover:text-amber-500 transition px-1 py-2">스탯</button>
             <button id="nav-equip" onclick="showPage('equip')" class="nav-link hover:text-amber-500 transition px-1 py-2">장비</button>
             <button id="nav-farming" onclick="showPage('farming')" class="nav-link hover:text-amber-500 transition px-1 py-2">파밍</button>
+            
             <button id="nav-world-map" onclick="showPage('world-map')" class="nav-link hover:text-amber-500 transition px-1 py-2">지도</button>
             
             <button id="nav-battle" onclick="showPage('battle')" class="nav-link hover:text-amber-500 transition px-1 py-2">전투</button>
-            
             <button id="nav-status" onclick="showPage('status')" class="nav-link hover:text-amber-500 transition px-1 py-2">상태이상</button>
         </div>
     </nav>
@@ -269,6 +278,8 @@
     <section id="weapon-detail" class="page max-w-4xl mx-auto px-6 text-left">
         <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Weapon Catalog</h2>
         <div class="space-y-6">
+            
+            <!-- 1. 방패 -->
             <div class="item-card border-l-4 border-gray-400">
                 <h3 class="text-2xl font-bold text-amber-500 mb-4">방패 (Shield)</h3>
                 <div class="grid md:grid-cols-2 gap-6 text-sm">
@@ -276,19 +287,78 @@
                     <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 움직임 민첩 -1 패널티</li><li>• 오버 피해량만큼 내구도 감소</li></ul></div>
                 </div>
             </div>
-            <div class="item-card border-l-4 border-blue-900">
+
+            <!-- 2. 한손검 -->
+            <div class="item-card border-l-4 border-blue-500">
                 <h3 class="text-2xl font-bold text-amber-500">한손검 (Short Sword)</h3>
                 <p class="text-sm text-gray-400 mt-4">특징: 리스크도 리턴도 없는 순수한 실력의 지표입니다.</p>
             </div>
-            <div class="item-card border-l-4 border-red-900">
-                <h3 class="text-2xl font-bold text-amber-500 mb-4">머스킷 (Musket)</h3>
+
+            <!-- 3. 단검 -->
+            <div class="item-card border-l-4 border-zinc-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">단검 (Dagger)</h3>
                 <div class="grid md:grid-cols-2 gap-6 text-sm">
-                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 탄환 데미지 대폭 증가 (방관 추가)</li><li>• 회피 실패 시 골절 및 출혈 부여</li></ul></div>
-                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 매 사격 후 장전 행동 필수</li><li>• 소리에 의한 적 유입 가능성 증폭</li></ul></div>
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 기습/배후 공격 시 [정밀] 판정 보너스 N 부여</li><li>• 치명타 시 [출혈] 스택 N 부여</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 정면 대결 시, [방패]나 [판금 갑옷] 착용 적에게 데미지 N 감소</li></ul></div>
                 </div>
             </div>
+
+            <!-- 4. 대검 -->
+            <div class="item-card border-l-4 border-red-700">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">대검 (Greatsword)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 근접 성공 시 [힘] 스탯의 N배 데미지 적용</li><li>• 적 장비 내구도 N 추가 감소</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 공격 시마다 [스테미나(SP)] 소모량 N 증가</li><li>• 착용 중 [속도] 스탯 N 패널티</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 5. 둔기 -->
+            <div class="item-card border-l-4 border-stone-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">둔기 (Blunt)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 명중 시 적에게 [현기증] 스택 N 부여</li><li>• 중갑 및 기계 적에게 최종 데미지 N배 적용</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 비금속 방어구 대상 공격 시 데미지 N 감소</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 6. 창 -->
+            <div class="item-card border-l-4 border-emerald-600">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">창 (Spear)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 긴 사거리로 선제 공격 판정 N 부여</li><li>• 상대가 근접 범위 이동 시 자동 추가 공격 N회</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 밀착 상태 시 공격 판정 및 데미지 N 감소</li><li>• 좁은 지형 사용 시 [속도] 패널티 N 부여</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 7. 활 -->
+            <div class="item-card border-l-4 border-green-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">활 (Bow)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 사격 시 소음 미발생</li><li>• [속도] 판정 성공 시 턴당 N회 사격 가능</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 인벤토리 내 [화살] 상시 필요</li><li>• [힘] 부족 시 명중률 및 데미지 N 감소</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 8. 석궁 -->
+            <div class="item-card border-l-4 border-yellow-700">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">석궁 (Crossbow)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 사용자 스탯 무관 최소 데미지 N 보장</li><li>• 장갑 관통 (물리 방어력 N 무시)</li></ul></div>
+                    <div><span class="label-risk">▼ RISK (도구 불량)</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 주사위 N 이하 시 기구 결함 발생</li><li>• N턴 동안 사용 불가 혹은 내구도 N 큰 하락</li></ul></div>
+                </div>
+            </div>
+
+            <!-- 9. 머스킷 -->
+            <div class="item-card border-l-4 border-orange-800">
+                <h3 class="text-2xl font-bold text-amber-500 mb-4">머스킷 (Musket)</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div><span class="label-return">▲ RETURN</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 탄환 데미지 대폭 증가 (방관 추가)</li><li>• 회피 실패 시 [골절] 및 [출혈] 부여</li></ul></div>
+                    <div><span class="label-risk">▼ RISK</span><ul class="mt-2 text-gray-400 space-y-1"><li>• 매 사격 후 장전 행동 필수</li><li>• 장전 중인 턴에는 [회피] 불가 판정</li></ul></div>
+                </div>
+            </div>
+
         </div>
-        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline">← 돌아가기</button>
+        <button onclick="showPage('equip')" class="mt-10 text-amber-500 hover:underline">← 장비 카탈로그로 돌아가기</button>
     </section>
 
     <section id="armor-detail" class="page max-w-4xl mx-auto px-6 text-left">
@@ -455,10 +525,351 @@
             </div>
         </div>
     </section>
-    <section id="battle" class="page max-w-5xl mx-auto px-6 text-left">
-        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Battle Simulation</h2>
+<section id="battle" class="page max-w-5xl mx-auto px-6 text-center">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Battle System</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">전투 판정 및 행동 가이드</p>
-        </section>
+        <div class="grid md:grid-cols-2 gap-10 text-left">
+            <div class="item-card hover:border-red-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('attack-turn')">
+                <div class="text-5xl mb-6 text-red-500"><i class="fa-solid fa-fire"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-4">공격 턴 (Attack)</h3>
+                <button class="w-full py-4 bg-red-900/50 text-white font-bold rounded mt-4 transition hover:bg-red-700">공격 매커니즘 보기</button>
+            </div>
+            <div class="item-card hover:border-blue-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('defense-menu')">
+                <div class="text-5xl mb-6 text-blue-500"><i class="fa-solid fa-shield"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-4">방어 턴 (Defense)</h3>
+                <button class="w-full py-4 bg-blue-900/50 text-white font-bold rounded mt-4 transition hover:bg-blue-700">방어 매커니즘 보기</button>
+            </div>
+        </div>
+    </section>
+<section id="defense-menu" class="page max-w-5xl mx-auto px-6 text-center">
+        <div class="flex flex-col items-center mb-16">
+            <h2 class="cinzel text-5xl text-white mb-4 tracking-[0.2em] uppercase font-bold drop-shadow-lg">Defense Category</h2>
+            <div class="w-24 h-1 bg-blue-600 mb-6 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+            <p class="text-blue-500 font-bold uppercase tracking-[0.4em] text-sm">방어 상황에서의 대응 방식 선택</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+            
+            <div class="item-card group hover:border-blue-400 cursor-pointer p-10 flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-xl" onclick="showPage('defense-detail')">
+                <div class="text-5xl mb-6 text-blue-500 group-hover:text-blue-400 transition-colors">
+                    <i class="fa-solid fa-shield"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">방어 (Guard)</h3>
+                <div class="w-8 h-0.5 bg-blue-900 mb-4 group-hover:w-12 transition-all"></div>
+                <p class="text-xs text-gray-400 leading-relaxed font-medium">
+                    가장 안정적인 선택입니다.<br>
+                    정면으로 오는 충격을 온몸으로 <br>
+                    받아내어 피해를 상쇄하고 버팁니다.
+                </p>
+                <div class="mt-8 text-[10px] text-blue-900 font-bold tracking-widest group-hover:text-blue-600 transition-colors">DETAILS VIEW</div>
+            </div>
+
+            <div class="item-card group hover:border-green-500 cursor-pointer p-10 flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-xl" onclick="showPage('evade-detail')">
+                <div class="text-5xl mb-6 text-green-500 group-hover:text-green-400 transition-colors">
+                    <i class="fa-solid fa-person-running"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">회피 (Evade)</h3>
+                <div class="w-8 h-0.5 bg-green-900 mb-4 group-hover:w-12 transition-all"></div>
+                <p class="text-xs text-gray-400 leading-relaxed font-medium">
+                    기동성을 활용한 전략입니다.<br>
+                    공격의 궤적을 예측하여 완전히 <br>
+                    벗어남으로써 피해를 무효화합니다.
+                </p>
+                <div class="mt-8 text-[10px] text-green-900 font-bold tracking-widest group-hover:text-green-600 transition-colors">DETAILS VIEW</div>
+            </div>
+
+            <div class="item-card group hover:border-purple-500 cursor-pointer p-10 flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-xl" onclick="showPage('counter-detail')">
+                <div class="text-5xl mb-6 text-purple-500 group-hover:text-purple-400 transition-colors">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">역공 (Counter)</h3>
+                <div class="w-8 h-0.5 bg-purple-900 mb-4 group-hover:w-12 transition-all"></div>
+                <p class="text-xs text-gray-400 leading-relaxed font-medium">
+                    공격적인 방어 수단입니다.<br>
+                    상대의 힘을 이용하거나 틈을 노려<br>
+                    공격권을 강제로 탈취하여 되받아칩니다.
+                </p>
+                <div class="mt-8 text-[10px] text-purple-900 font-bold tracking-widest group-hover:text-purple-600 transition-colors">DETAILS VIEW</div>
+            </div>
+
+        </div>
+
+        <button onclick="showPage('battle')" class="mt-24 group text-gray-500 hover:text-white transition-all text-xs tracking-[0.5em] font-bold uppercase">
+            <i class="fa-solid fa-angles-left mr-3 group-hover:-translate-x-2 transition-transform"></i>
+            Return to Battle System
+        </button>
+    </section>
+
+<section id="attack-turn" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-red-900/30 pb-6 uppercase">Attack Turn Guide</h2>
+        <div class="space-y-8">
+            <div class="item-card border-l-4 border-red-600 flex flex-col md:flex-row gap-6 items-center">
+                <div class="w-full md:w-1/3"><img src="https://images.unsplash.com/photo-1589409514187-c21d14bf0d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="공격" class="rounded border border-gray-700 object-cover h-full aspect-video"></div>
+                
+                <div class="w-full md:w-2/3"> <!-- ✅ 이 줄이 복구되었습니다! -->
+                    <h3 class="text-2xl font-bold text-red-500 mb-2">명중 판정 및 대미지</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">공격자는 무기 타입에 맞는 주 스탯(힘, 정밀 등)을 사용하여 명중 굴림을 진행합니다. 상대의 회피 수치보다 높을 경우 명중하며, 무기 위력에 따른 대미지를 입힙니다.</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="showPage('battle')" class="mt-10 text-red-500 hover:underline">← 전투 시스템으로</button>
+    </section>
+
+<section id="defense-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <div class="flex flex-col items-center mb-10 border-b border-blue-900/30 pb-6 text-center">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold uppercase mb-2">방어 가이드</h2>
+            <p class="text-blue-400 font-bold tracking-widest">"오는 공격을 정면으로 마주하고 버텨내기"</p>
+        </div>
+
+        <!-- A -> B/C 세로형 트리 구조 -->
+        <div class="flex flex-col items-center mb-16 space-y-6 bg-gray-900/30 p-8 rounded-lg border border-gray-800">
+            
+            <!-- A: 방어 준비 -->
+            <div class="item-card border-l-4 border-gray-500 flex flex-col items-center p-6 w-full max-w-md shadow-lg z-10">
+                <img src="battle_image/guard.jpg" alt="방어 준비자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-gray-700 mb-4">
+                <span class="bg-gray-700 text-white px-5 py-2 rounded-full text-sm font-bold tracking-wider">A: 방어 준비 (Guard)</span>
+            </div>
+
+            <!-- 세로 화살표 -->
+            <div class="text-4xl text-gray-600 -my-2 z-0">
+                <i class="fa-solid fa-arrow-down-long"></i>
+            </div>
+
+            <!-- B & C: 성공 / 실패 상세 결과 및 수식 -->
+            <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl mt-3">
+                
+                <!-- B: 방어 성공 (방어자 승리) -->
+                <div class="item-card border-l-4 border-blue-500 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                    <img src="battle_image/perfect_guard.jpg" alt="방어 성공자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-blue-700 mb-6">
+                    
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-blue-900 text-blue-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">B: 방어 성공 (방어값 ≥ 공격값)</span>
+                        </div>
+                        <p class="text-xs text-blue-400 mb-3 text-center px-2 italic">"적의 공격은 막아냈지만, 주변의 위험 요소가 잔류 피해를 주는 상황입니다."</p>
+                        <div class="bg-black/60 p-4 rounded border border-blue-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-blue-300 text-sm font-bold">최종 피해 = 외부 요인 - 방어값 - 고정 방어</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-check mr-2 mt-1 text-blue-500"></i><span>단, 계산 결과가 0보다 작으면 0으로 처리</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-plus mr-2 mt-1 text-blue-500"></i><span>공격자에게 경직(Stagger) 스택 부여 가능</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- C: 방어 실패 (공격자 승리) -->
+                <div class="item-card border-l-4 border-red-600 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                    <img src="battle_image/guard_break.jpg" alt="방어 실패자세" class="w-full h-auto max-h-[500px] object-contain rounded border border-red-700 mb-6">
+                    
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-red-900 text-red-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">C: 방어 실패 (공격값 > 방어값)</span>
+                        </div>
+                        <p class="text-xs text-red-400 mb-3 text-center px-2 italic">"적의 공격이 방어벽을 뚫고 직접적인 타격을 입힌 상황입니다."</p>
+                        <div class="bg-black/60 p-4 rounded border border-red-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-red-300 text-sm font-bold">최종 피해 = (공격값 ± 외부 요인) - 고정 방어</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-bolt mr-2 mt-1 text-red-500"></i><span>방어구 내구도 및 캐릭터 HP에 큰 타격</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-skull mr-2 mt-1 text-red-500"></i><span>추가 상태이상(골절, 출혈 등) 발생 확률 증가</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 하단 방어 매커니즘 설명 -->
+        <div class="text-center mb-10">
+            <p class="text-lg text-gray-300 border-l-4 border-r-4 border-blue-500 inline-block px-6 py-2 bg-blue-900/10 rounded italic">
+                가장 기본적인 대응입니다. 충격을 받아내거나 기술로 상쇄합니다.
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-blue-400">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-unlock-keyhole mr-2"></i>자유 대응 (Free Response)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    공격자가 위력만 제시할 때입니다. 방어자는 자신의 대응 방법을 골라 서술합니다. 그 행동에 어울리는 판정 스탯으로 선택되어 판정합니다. 본인의 강점을 가장 잘 활용할 수 있는 상태입니다.
+                </p>
+            </div>
+            
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-500 mb-3"><i class="fa-solid fa-thumbtack mr-2"></i>지정 대항 (Specified Contest)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    공격자가 특정 스탯(예: 힘)을 요구하며 들어올 때입니다. 방어자는 반드시 해당 스탯으로만 맞서야 합니다. 본인의 약점 스탯을 공략당할 수 있어 주의가 필요합니다.
+                </p>
+            </div>
+
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>스킬 대항 (Skill Counter)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    보유한 전용 스킬로 대응하는 방식입니다. 공격자가 요구한 판정 형식을 무시하고, 스킬에 명시된 스탯으로 판정 규칙을 대체합니다. (예: 속박 공격을 속도 기반 '되치기' 스킬로 가드)
+                </p>
+            </div>
+        </div>
+
+        <button onclick="showPage('defense-menu')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
+    </section>
+<section id="evade-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <div class="flex flex-col items-center mb-10 border-b border-green-900/30 pb-6 text-center">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold uppercase mb-2">회피 가이드</h2>
+            <p class="text-green-400 font-bold tracking-widest">"공격의 궤적을 읽고 찰나의 순간에 벗어나기"</p>
+        </div>
+
+        <div class="bg-green-900/10 border border-green-800/30 rounded-lg p-6 mb-12 flex flex-col md:flex-row justify-around items-center text-center gap-4">
+            <div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Attacker</p>
+                <p class="text-xl font-bold text-white">정밀 (Precision)</p>
+            </div>
+            <div class="text-2xl text-green-500 font-black">VS</div>
+            <div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Defender</p>
+                <p class="text-xl font-bold text-white">속도 (Speed)</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center mb-16 space-y-6 bg-gray-900/30 p-8 rounded-lg border border-gray-800 shadow-2xl">
+            
+            <div class="item-card border-l-4 border-gray-500 flex flex-col items-center p-6 w-full max-w-md shadow-lg z-10 bg-[#111]">
+                <img src="battle_image/dodge.jpg" alt="회피 시도" class="w-full h-auto max-h-[500px] object-contain rounded border border-gray-700 mb-4">
+                <span class="bg-gray-700 text-white px-5 py-2 rounded-full text-sm font-bold tracking-wider">A: 회피 시도 (Dodge)</span>
+            </div>
+
+            <div class="text-4xl text-gray-600 -my-2 z-0">
+                <i class="fa-solid fa-arrow-down-long"></i>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl mt-3">
+                
+                <div class="item-card border-l-4 border-green-500 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                    <img src="battle_image/dodge_success.jpg" alt="회피 성공" class="w-full h-auto max-h-[500px] object-contain rounded border border-green-700 mb-6">
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-green-900 text-green-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">B: 회피 성공 (속도 > 정밀)</span>
+                        </div>
+                        <div class="bg-black/60 p-4 rounded border border-green-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-green-300 text-sm font-bold">최종 피해 = 0</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-check mr-2 mt-1 text-green-500"></i><span>모든 물리/마법 데미지 완전 무효화</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-plus mr-2 mt-1 text-green-500"></i><span>위치 재선점 및 반격 기회 획득</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item-card border-l-4 border-orange-600 flex flex-col items-center p-6 w-full md:w-1/2 shadow-[0_0_15px_rgba(234,88,12,0.2)]">
+                    <img src="battle_image/dodge_fail.jpg" alt="회피 실패" class="w-full h-auto max-h-[500px] object-contain rounded border border-orange-700 mb-6">
+                    <div class="w-full space-y-3">
+                        <div class="text-center mb-4">
+                            <span class="bg-orange-950 text-orange-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">C: 회피 실패 (정밀 ≥ 속도)</span>
+                        </div>
+                        <div class="bg-black/60 p-4 rounded border border-orange-900/50 mb-4 text-center">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
+                            <code class="text-orange-400 text-sm font-bold">최종 피해 = 100% (감소 없음) + 패널티</code>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-bolt mr-2 mt-1 text-orange-500"></i><span>적의 공격력을 그대로 모두 받아냄</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-triangle-exclamation mr-2 mt-1 text-orange-500"></i><span>아래 패널티 중 상황에 맞춰 부여</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center tracking-widest uppercase">
+            <span class="w-8 h-px bg-orange-600 mr-4"></span>Critical Penalties
+        </h3>
+        
+        <div class="grid md:grid-cols-3 gap-4 mb-12">
+            <div class="bg-orange-900/10 border border-orange-900/30 p-6 rounded shadow-lg">
+                <h4 class="text-orange-500 font-bold mb-3 flex items-center">
+                    <i class="fa-solid fa-person-falling mr-2"></i>자세 무너짐
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">회피 동작 중 균형을 잃습니다. 다음 턴 모든 방어/회피 판정에 불리한 보정을 받습니다.</p>
+            </div>
+            <div class="bg-red-900/10 border border-red-900/30 p-6 rounded shadow-lg">
+                <h4 class="text-red-500 font-bold mb-3 flex items-center">
+                    <i class="fa-solid fa-bullseye mr-2"></i>노출됨
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">적에게 결정적인 빈틈을 보입니다. 다음 피격 시 주사위 결과와 무관하게 무조건 치명타로 적중합니다.</p>
+            </div>
+            <div class="bg-gray-800/30 border border-gray-700 p-6 rounded shadow-lg">
+                <h4 class="text-gray-300 font-bold mb-3 flex items-center">
+                    <i class="fa-solid fa-dice mr-2"></i>기타 패널티
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">GM의 재량에 따라 주변 환경(지형지물)이나 공격의 성격에 맞는 추가적인 패널티를 부여합니다.</p>
+            </div>
+        </div>
+
+        <button onclick="showPage('defense-menu')" class="mt-12 text-green-500 font-bold hover:underline w-full text-center">← 방어 메뉴로 돌아가기</button>
+    </section>
+
+<section id="counter-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <div class="flex flex-col items-center mb-10 border-b border-purple-900/30 pb-6 text-center">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold uppercase mb-2">역공 가이드</h2>
+            <p class="text-purple-400 font-bold tracking-widest">"살을 내주고 뼈를 깎는, 단 한 번의 승부수"</p>
+        </div>
+
+        <div class="text-center mb-12">
+            <p class="text-lg text-gray-300 border-l-4 border-r-4 border-purple-500 inline-block px-8 py-3 bg-purple-900/10 rounded-lg italic leading-relaxed">
+                "적의 칼날이 내 어깨를 파고드는 순간, 나는 방패를 버리고 그자의 목에 단검을 꽂아 넣습니다."
+            </p>
+        </div>
+
+        <div class="flex flex-col items-center mb-16 space-y-8 bg-gray-900/30 p-10 rounded-xl border border-gray-800 shadow-2xl">
+            
+            <div class="item-card border-l-4 border-purple-600 flex flex-col items-center p-6 w-full max-w-2xl shadow-[0_0_30px_rgba(168,85,247,0.15)] bg-[#0f0f0f]">
+                <img src="battle_image/counter_strike.jpg" alt="역공의 순간" class="w-full h-auto rounded border border-purple-900/50 mb-8 shadow-inner">
+
+                <div class="w-full space-y-6">
+                    <div class="bg-black/60 p-6 rounded-lg border border-purple-900/40 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-600 to-transparent opacity-50"></div>
+                        <p class="text-[10px] text-gray-500 mb-4 uppercase tracking-[0.3em]">Trade-off Protocol</p>
+                        
+                        <div class="flex justify-around items-center px-4">
+                            <div class="flex flex-col items-center">
+                                <span class="text-[10px] text-red-500/70 font-bold mb-1">DEFENSE VALUE</span>
+                                <span class="text-4xl font-black text-red-600 drop-shadow-sm">0</span>
+                                <span class="text-[10px] text-gray-600 mt-1">모든 방어 포기</span>
+                            </div>
+                            
+                            <div class="text-purple-500 text-3xl animate-pulse">
+                                <i class="fa-solid fa-right-left"></i>
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <span class="text-[10px] text-purple-400/70 font-bold mb-1">COUNTER ACTION</span>
+                                <span class="text-2xl font-black text-purple-400">즉시 공격권</span>
+                                <span class="text-[10px] text-gray-600 mt-1">턴 강제 전환</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-gray-300 leading-relaxed bg-[#151515] p-6 rounded-lg border-t border-purple-900/20">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-skull-crossbones text-purple-500 mt-1 mr-4"></i>
+                            <p>공격자가 주사위를 굴려 위력을 결정한 직후 선언합니다. 방어자는 어떠한 판정 주사위도 굴리지 않으며, 상대의 공격 결과를 **고스란히 몸으로 받아냅니다.**</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-bolt-lightning text-purple-500 mt-1 mr-4"></i>
+                            <p>적의 대미지 계산이 종료됨과 동시에 방어자의 **[표준 공격 액션]**이 즉시 시작됩니다. 이는 적의 공격 시퀀스가 완전히 끝나기 전에 개입하는 강제적인 공격권 탈취입니다.</p>
+                        </div>
+                        <p class="text-xs text-purple-400/70 pl-10 italic">※ 반격 시 적은 자신의 공격 직후이므로 대응(방어/회피)에 심각한 제약을 받을 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="showPage('defense-menu')" class="mt-12 text-purple-500 font-bold hover:underline w-full text-center transition-all hover:text-purple-400">
+            <i class="fa-solid fa-chevron-left mr-2 text-xs"></i> 방어 메뉴로 돌아가기
+        </button>
+    </section>
+
 
     <section id="status" class="page max-w-5xl mx-auto px-6 text-left">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Status Effects</h2>
@@ -494,7 +905,7 @@
                 <div class="status-item">
                     <h4 class="text-rose-500 font-bold mb-2">💄 성욕</h4>
                     <p class="text-sm text-gray-400">최음 등 특정 효과에 쌓이면 스택이 쌓입니다. 현재 지혜까지 중첩된 경우 욕정 상태가 됩니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">욕정: 매턴 지혜 판정이 상대 매력 판정에 실패하면 가장 가까운 대상에게 성적 행동을 시도합니다. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">욕정: 적의 성행위에 저항 불가. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
                 </div>
             </div>
 
@@ -553,7 +964,8 @@
             submenu.classList.toggle('show');
         }
 
-        function showPage(pageId) {
+        // ✅ URL 기록(History) 기능이 추가된 페이지 이동 함수
+        function showPage(pageId, isHistory = false) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
             
@@ -567,6 +979,11 @@
                 document.getElementById('sidebar-overlay').classList.remove('show');
 
                 updateActiveStyle(pageId);
+
+                // ✅ 브라우저에 현재 페이지 이동을 '기록'합니다. (물리 뒤로가기 지원용)
+                if (!isHistory) {
+                    history.pushState({ pageId: pageId }, "", "#" + pageId);
+                }
             }
         }
 
@@ -584,10 +1001,10 @@
             const activeSide = document.getElementById('menu-' + pageId);
             if (activeSide) activeSide.classList.add('active-menu');
 
-            if(pageId === 'battle') {
-        document.getElementById('nav-battle')?.classList.add('active-tab');
-        document.getElementById('menu-battle')?.classList.add('active-menu');
-    }
+            if(pageId === 'attack-turn' || pageId === 'defense-menu' || pageId === 'defense-detail' || pageId === 'evade-detail' || pageId === 'counter-detail' || pageId === 'battle') {
+                document.getElementById('menu-battle')?.classList.add('active-menu');
+                document.getElementById('nav-battle')?.classList.add('active-tab');
+            }
 
             // 하위 메뉴 진입 시 부모(상위) 메뉴도 주황색 강조 유지
             if(pageId === 'weapon-detail' || pageId === 'armor-detail') {
@@ -603,6 +1020,25 @@
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }
         }
+
+        // ✅ 기기의 뒤로 가기 / 앞으로 가기 버튼을 감지하는 이벤트
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.pageId) {
+                showPage(event.state.pageId, true);
+            } else {
+                showPage('home', true);
+            }
+        });
+
+        // ✅ 처음 사이트 접속 시 기본 홈 화면 기록
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                showPage(hash, true);
+            } else {
+                history.replaceState({ pageId: 'home' }, "", "#home");
+            }
+        });
     </script>
-</body>
+    </body>
 </html>

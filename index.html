@@ -611,16 +611,79 @@
 <section id="attack-turn" class="page max-w-4xl mx-auto px-6 text-left">
         <h2 class="cinzel text-4xl text-white mb-10 border-b border-red-900/30 pb-6 uppercase">Attack Turn Guide</h2>
         <div class="space-y-8">
-            <div class="item-card border-l-4 border-red-600 flex flex-col md:flex-row gap-6 items-center">
-                <div class="w-full md:w-1/3"><img src="https://images.unsplash.com/photo-1589409514187-c21d14bf0d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="공격" class="rounded border border-gray-700 object-cover h-full aspect-video"></div>
-                
-                <div class="w-full md:w-2/3"> <!-- ✅ 이 줄이 복구되었습니다! -->
-                    <h3 class="text-2xl font-bold text-red-500 mb-2">명중 판정 및 대미지</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">공격자는 무기 타입에 맞는 주 스탯(힘, 정밀 등)을 사용하여 명중 굴림을 진행합니다. 상대의 회피 수치보다 높을 경우 명중하며, 무기 위력에 따른 대미지를 입힙니다.</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="item-card hover:border-red-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('melee-detail')">
+                    <h3 class="text-xl font-bold text-red-400 mb-3">근거리 피해</h3>
+                    <p class="text-sm text-gray-400">칼날과 주먹이 닿는 거리에서의 강력하고 안정적인 타격.</p>
+                </div>
+                <div class="item-card hover:border-orange-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('ranged-detail')">
+                    <h3 class="text-xl font-bold text-orange-400 mb-3">원거리 피해</h3>
+                    <p class="text-sm text-gray-400">거리와 각도를 이용해 안전하게 누적하는 정밀한 공격.</p>
+                </div>
+                <div class="item-card hover:border-purple-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('magic-detail')">
+                    <h3 class="text-xl font-bold text-purple-400 mb-3">마법 피해</h3>
+                    <p class="text-sm text-gray-400">마력과 원소를 활용해 방어의 허점을 노리는 비물리 타격.</p>
                 </div>
             </div>
         </div>
         <button onclick="showPage('battle')" class="mt-10 text-red-500 hover:underline">← 전투 시스템으로</button>
+    </section>
+
+<section id="melee-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-red-900/30 pb-6">근거리 피해 (Melee Damage)</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-red-500">
+                <p class="text-gray-300 text-sm leading-relaxed">직접 접촉하거나 근접 무기를 통해 발생하는 물리 피해입니다.<br>주로 힘 기반 판정과 연결되며, 방패와 방어구의 영향을 크게 받습니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-xl font-bold text-amber-400 mb-3">특징</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li>- 힘 기반 공격과 잘 어울림</li>
+                    <li>- 방어, 방패, 판금 갑옷의 영향을 크게 받음</li>
+                    <li>- 출혈, 골절, 경직 같은 상태이상과 연결 가능</li>
+                    <li>- 거리를 좁힌 상태에서 가장 안정적인 피해 방식</li>
+                </ul>
+            </div>
+        </div>
+        <button onclick="showPage('attack-turn')" class="mt-12 text-red-500 font-bold hover:underline w-full text-center">← 공격 턴으로 돌아가기</button>
+    </section>
+
+<section id="ranged-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-orange-900/30 pb-6">원거리 피해 (Ranged Damage)</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-orange-500">
+                <p class="text-gray-300 text-sm leading-relaxed">활, 석궁, 투척 무기, 총기처럼 거리를 두고 가하는 피해입니다.<br>주로 정밀 기반 명중 판정과 연결되며, 거리와 탄약 관리가 중요합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-xl font-bold text-amber-400 mb-3">특징</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li>- 정밀 기반 명중 판정과 잘 어울림</li>
+                    <li>- 거리 유지 시 유리함</li>
+                    <li>- 탄약, 재장전, 사격 각도 같은 조건을 받을 수 있음</li>
+                    <li>- 근접당하면 불리한 상황이 발생할 수 있음</li>
+                </ul>
+            </div>
+        </div>
+        <button onclick="showPage('attack-turn')" class="mt-12 text-orange-500 font-bold hover:underline w-full text-center">← 공격 턴으로 돌아가기</button>
+    </section>
+
+<section id="magic-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-purple-900/30 pb-6">마법 피해 (Magic Damage)</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-purple-500">
+                <p class="text-gray-300 text-sm leading-relaxed">마력, 주문, 저주, 원소 효과 등을 통해 발생하는 비물리 피해입니다.<br>주로 지능 기반 판정과 연결되며, 일반 방어구의 영향을 적게 받을 수 있습니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-xl font-bold text-amber-400 mb-3">특징</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li>- 지능 기반 공격과 잘 어울림</li>
+                    <li>- 일반 물리 방어를 일부 무시할 수 있음</li>
+                    <li>- 화상, 감전, 빙결, 저주 같은 상태이상과 연결 가능</li>
+                    <li>- 주문 횟수나 캐스팅 조건의 영향을 받을 수 있음</li>
+                </ul>
+            </div>
+        </div>
+        <button onclick="showPage('attack-turn')" class="mt-12 text-purple-500 font-bold hover:underline w-full text-center">← 공격 턴으로 돌아가기</button>
     </section>
 
 <section id="defense-detail" class="page max-w-4xl mx-auto px-6 text-left">

@@ -730,8 +730,7 @@
         <div class="bg-green-900/10 border border-green-800/30 rounded-lg p-6 mb-12 flex flex-col md:flex-row justify-around items-center text-center gap-4">
             <div>
                 <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Attacker</p>
-                <p class="text-xl font-bold text-white">정밀 (Precision)</p>
-            </div>
+                <p class="text-xl font-bold text-white">보통 능력치 판정</p> </div>
             <div class="text-2xl text-green-500 font-black">VS</div>
             <div>
                 <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Defender</p>
@@ -756,8 +755,7 @@
                     <img src="battle_image/dodge_success.jpg" alt="회피 성공" class="w-full h-auto max-h-[500px] object-contain rounded border border-green-700 mb-6">
                     <div class="w-full space-y-3">
                         <div class="text-center mb-4">
-                            <span class="bg-green-900 text-green-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">B: 회피 성공 (속도 > 정밀)</span>
-                        </div>
+                            <span class="bg-green-900 text-green-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">B: 회피 성공 (속도 > 공격 능력치 판정)</span>                        </div>
                         <div class="bg-black/60 p-4 rounded border border-green-900/50 mb-4 text-center">
                             <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>
                             <code class="text-green-300 text-sm font-bold">최종 피해 = 0</code>
@@ -773,7 +771,7 @@
                     <img src="battle_image/dodge_fail.jpg" alt="회피 실패" class="w-full h-auto max-h-[500px] object-contain rounded border border-orange-700 mb-6">
                     <div class="w-full space-y-3">
                         <div class="text-center mb-4">
-                            <span class="bg-orange-950 text-orange-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">C: 회피 실패 (정밀 ≥ 속도)</span>
+                            <span class="bg-orange-950 text-orange-300 px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase">C: 회피 실패 (공격 능력치 판정 ≥ 속도)</span>
                         </div>
                         <div class="bg-black/60 p-4 rounded border border-orange-900/50 mb-4 text-center">
                             <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-tighter">Damage Calculation</p>

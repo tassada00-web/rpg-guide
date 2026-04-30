@@ -139,6 +139,37 @@
         .status-item { background: rgba(20, 20, 20, 0.8); border-left: 4px solid #78350f; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 4px; }
         .map-wrapper { max-width: 1400px; margin: 0 auto; border: 1px solid #333; background: #000; padding: 5px; }
         .map-image { width: 100%; height: auto; display: block; }
+        .city-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(245, 158, 11, 0.8);
+            color: #fbbf24;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: 0.2s ease;
+        }
+
+        .city-marker:hover {
+            background: rgba(120, 53, 15, 0.9);
+            color: #fff;
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        .city-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: #f59e0b;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.9);
+        }
         
         .label-return { color: #60a5fa; font-weight: bold; }
         .label-risk { color: #f87171; font-weight: bold; }
@@ -497,8 +528,19 @@
 
     <section id="world-map" class="page w-full px-4 text-center">
         <h2 class="cinzel text-5xl text-white mb-10 tracking-widest uppercase">World Map</h2>
-        <div class="map-wrapper">
+        <div class="map-wrapper relative">
             <img src="trpgmap.jpg" alt="World Map" class="map-image">
+
+            <!-- 위치 조정: left/top 퍼센트 수정 -->
+            <button class="city-marker" style="left: 52%; top: 68%;" onclick="showPage('norriton-detail')">
+                <span class="city-dot"></span>
+                타락한 노리튼
+            </button>
+
+            <button class="city-marker" style="left: 50%; top: 48%;" onclick="showPage('arcana-detail')">
+                <span class="city-dot"></span>
+                무너진 아르카나
+            </button>
         </div>
         <p class="text-amber-700 mt-8 font-bold uppercase tracking-widest">중앙 대륙 - 모험가들의 땅</p>
     </section>
@@ -531,6 +573,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="arcana-detail" class="page max-w-6xl mx-auto px-6 text-left">
+        <div class="flex justify-between items-center mb-10 border-b border-amber-900/30 pb-6">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">무너진 아르카나</h2>
+            <button onclick="showPage('world-map')" class="text-amber-500 font-bold hover:underline">← 전체 지도로 돌아가기</button>
+        </div>
+        <div class="item-card border-l-4 border-amber-500">
+            <p class="text-gray-300 leading-relaxed">
+                지식의 도시라고 알려진 이터널 아르카나.<br>
+                하지만 과거의 대사건으로 인해 무너졌고, 현재는 중앙 대륙의 중심지라는 요충지 덕분에 수많은 사람들이 몰려드는 도시가 되었습니다.<br>
+                지금은 첫 모험의 도시라고 불리기도 하며, 마탑은 존재하지 않습니다.<br>
+                수많은 용병들이 하루하루를 살아남기 위해 경쟁하는 혼란스러운 장소입니다.
+            </p>
         </div>
     </section>
 <section id="battle" class="page max-w-5xl mx-auto px-6 text-center">
@@ -611,21 +668,6 @@
 <section id="attack-turn" class="page max-w-4xl mx-auto px-6 text-left">
         <h2 class="cinzel text-4xl text-white mb-10 border-b border-red-900/30 pb-6 uppercase">Attack Turn Guide</h2>
         <div class="space-y-8">
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="item-card hover:border-red-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('melee-detail')">
-                    <h3 class="text-xl font-bold text-red-400 mb-3">근거리 피해</h3>
-                    <p class="text-sm text-gray-400">칼날과 주먹이 닿는 거리에서의 강력하고 안정적인 타격.</p>
-                </div>
-                <div class="item-card hover:border-orange-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('ranged-detail')">
-                    <h3 class="text-xl font-bold text-orange-400 mb-3">원거리 피해</h3>
-                    <p class="text-sm text-gray-400">거리와 각도를 이용해 안전하게 누적하는 정밀한 공격.</p>
-                </div>
-                <div class="item-card hover:border-purple-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('magic-detail')">
-                    <h3 class="text-xl font-bold text-purple-400 mb-3">마법 피해</h3>
-                    <p class="text-sm text-gray-400">마력과 원소를 활용해 방어의 허점을 노리는 비물리 타격.</p>
-                </div>
-            </div>
-
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="item-card hover:border-red-500 cursor-pointer p-8 flex flex-col items-center text-center" onclick="showPage('melee-detail')">
                     <h3 class="text-xl font-bold text-red-400 mb-3">근거리 피해</h3>

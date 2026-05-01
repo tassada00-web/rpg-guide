@@ -536,9 +536,38 @@
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">휴식 및 야영 시스템 가이드</p>
 
         <!-- 야영 시스템 대표 이미지 추가 -->
-        <div class="map-wrapper mb-12">
-            <img src="images/encampment.jpg" 
-                 class="map-image rounded mx-auto max-w-md">
+        <div class="flex justify-center mb-16">
+            <div onclick="openCampModal()"
+                 class="bg-[#111] border border-amber-900/40 rounded-2xl overflow-hidden 
+                        shadow-[0_0_25px_rgba(245,158,11,0.15)] 
+                        max-w-md w-full transition duration-300 cursor-pointer
+                        hover:scale-[1.02] hover:-translate-y-1
+                        hover:shadow-[0_0_40px_rgba(245,158,11,0.3)]">
+
+                <div class="relative">
+                    <img src="images/encampment.jpg"
+                         class="w-full h-56 object-cover brightness-75">
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                    <div class="absolute bottom-4 left-4">
+                        <h3 class="text-xl font-bold text-amber-400 tracking-widest">⛺ CAMP</h3>
+                        <p class="text-xs text-gray-300">클릭해서 확대 보기</p>
+                    </div>
+                </div>
+
+                <div class="p-5">
+                    <p class="text-sm text-gray-400 leading-relaxed text-left">
+                        전투 사이, 생존을 위한 준비 단계.<br>
+                        자원을 정비하고 파티 상태를 회복하는 핵심 시스템.
+                    </p>
+                    <div class="flex gap-2 mt-4 flex-wrap">
+                        <span class="text-xs px-3 py-1 bg-green-900/40 text-green-400 rounded-full">회복</span>
+                        <span class="text-xs px-3 py-1 bg-blue-900/40 text-blue-400 rounded-full">전략</span>
+                        <span class="text-xs px-3 py-1 bg-red-900/40 text-red-400 rounded-full">위험</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="item-card border-l-4 border-amber-600">
@@ -696,20 +725,6 @@
         </div>
     </section>
 
-    <section id="arcana-detail" class="page max-w-6xl mx-auto px-6 text-left">
-        <div class="flex justify-between items-center mb-10 border-b border-amber-900/30 pb-6">
-            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">무너진 아르카나</h2>
-            <button onclick="showPage('world-map')" class="text-amber-500 font-bold hover:underline">← 전체 지도로 돌아가기</button>
-        </div>
-        <div class="item-card border-l-4 border-amber-500">
-            <p class="text-gray-300 leading-relaxed">
-                지식의 도시라고 알려진 이터널 아르카나.<br>
-                하지만 과거의 대사건으로 인해 무너졌고, 현재는 중앙 대륙의 중심지라는 요충지 덕분에 수많은 사람들이 몰려드는 도시가 되었습니다.<br>
-                지금은 첫 모험의 도시라고 불리기도 하며, 마탑은 존재하지 않습니다.<br>
-                수많은 용병들이 하루하루를 살아남기 위해 경쟁하는 혼란스러운 장소입니다.
-            </p>
-        </div>
-    </section>
 <section id="battle" class="page max-w-5xl mx-auto px-6 text-center">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Battle System</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">전투 판정 및 행동 가이드</p>
@@ -1198,11 +1213,70 @@
         </div>              
     </section>
 
+    <!-- 야영 모달 추가 -->
+    <div id="campModal"
+         class="fixed inset-0 bg-black/60 backdrop-blur-md z-[999] hidden items-center justify-center px-6"
+         onclick="closeCampModal()">
+
+        <div id="campModalBox"
+             class="relative max-w-4xl w-full bg-[#111] border border-amber-900/50 rounded-2xl overflow-hidden
+                    shadow-[0_0_60px_rgba(245,158,11,0.35)]
+                    scale-90 opacity-0 transition duration-300"
+             onclick="event.stopPropagation()">
+
+            <button onclick="closeCampModal()"
+                    class="absolute top-4 right-4 z-10 text-white bg-black/60 hover:bg-red-900
+                           w-10 h-10 rounded-full transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="images/encampment.jpg"
+                 class="w-full max-h-[75vh] object-contain bg-black">
+
+            <div class="p-6 border-t border-amber-900/30 text-left">
+                <h3 class="text-2xl font-bold text-amber-400 mb-2">⛺ Camping System</h3>
+                <p class="text-sm text-gray-400">
+                    야영지의 상황, 회복, 보초, 위험 관리를 한눈에 확인하는 대표 이미지입니다.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('open');
             document.getElementById('sidebar-overlay').classList.toggle('show');
         }
+
+        // 야영 모달 함수
+        function openCampModal() {
+            const modal = document.getElementById('campModal');
+            const box = document.getElementById('campModalBox');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                box.classList.remove('scale-90', 'opacity-0');
+                box.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeCampModal() {
+            const modal = document.getElementById('campModal');
+            const box = document.getElementById('campModalBox');
+            box.classList.remove('scale-100', 'opacity-100');
+            box.classList.add('scale-90', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 250);
+        }
+
+        // ESC 키로 야영 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCampModal();
+            }
+        });
 
         function toggleSubmenu(id) {
             const submenu = document.getElementById(id);
@@ -1265,7 +1339,7 @@
                 document.getElementById('menu-camp-system')?.classList.add('active-menu');
                 document.getElementById('nav-camp-system')?.classList.add('active-tab');
             }
-            if(pageId === 'norriton-detail' || pageId === 'world-map') {
+            if(pageId === 'norriton-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
                 document.getElementById('menu-world-map').classList.add('active-menu');
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }

@@ -570,115 +570,6 @@
             </div>
         </div>
 
-        <div class="item-card border-l-4 border-amber-600">
-            <h3 class="text-2xl font-bold text-amber-500 mb-4">⛺ 시스템 개요</h3>
-            <p class="text-gray-300 leading-relaxed">
-                야영 시스템은 단순한 휴식을 넘어, 수집한 자원을 정비하고 다음 전투를 위해 신체적·정신적 상태를 복구하는 전략적 단계입니다.
-                파티는 취침 전 각자의 능력치를 활용해 생존력을 높이고, 야영지의 위험을 관리해야 합니다.
-            </p>
-        </div>
-
-        <div class="space-y-8 mt-10">
-
-            <div class="item-card border-l-4 border-green-600">
-                <h3 class="text-2xl font-bold text-green-400 mb-4">1단계: 야영 활동 (Camping Activity)</h3>
-                <p class="text-gray-300 mb-6">
-                    취침 전, 캐릭터들은 각자의 스탯을 활용하여 파티의 생존력을 높이는 활동을 수행합니다.
-                </p>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="status-item">
-                        <h4 class="font-bold text-amber-500 mb-2">🍲 요리 (지능)</h4>
-                        <p class="text-sm text-gray-400">채집하거나 루팅한 식재료로 음식을 만듭니다. 판정 결과에 따라 다음날 특정 스탯 버프나 추가 회복 효과를 얻습니다.</p>
-                    </div>
-
-                    <div class="status-item">
-                        <h4 class="font-bold text-green-500 mb-2">🌿 채집 (건강)</h4>
-                        <p class="text-sm text-gray-400">야영지 주변의 자연환경에서 자원을 거둡니다. 건강 판정 수치에 따라 획득하는 아이템의 양과 품질이 결정됩니다.</p>
-                    </div>
-
-                    <div class="status-item">
-                        <h4 class="font-bold text-pink-400 mb-2">💬 파티원과 대화 (매력)</h4>
-                        <p class="text-sm text-gray-400">동료와 소통하며 정신적 결속을 다집니다. 두려움이나 광기 같은 정신적 상태이상 스택을 관리하는 데 효과적입니다.</p>
-                    </div>
-
-                    <div class="status-item">
-                        <h4 class="font-bold text-blue-400 mb-2">🛠️ 정비 및 제작 (기타)</h4>
-                        <p class="text-sm text-gray-400">
-                            야금은 힘, 재봉은 정밀, 연금은 지혜 판정과 연결됩니다.
-                            장비 수선, 의복 보수, 치료용 소모품 조제 등에 활용됩니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item-card border-l-4 border-blue-600">
-                <h3 class="text-2xl font-bold text-blue-400 mb-4">2단계: 장소 선정 및 경계 (Site & Watch)</h3>
-                <p class="text-gray-300 mb-6">
-                    야영지의 환경에 따라 리스크가 결정되며, 안전한 수면을 위해 보초를 서야 합니다.
-                </p>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="status-item">
-                        <h4 class="font-bold text-amber-500 mb-2">🏕️ 환경 및 지형 영향</h4>
-                        <p class="text-sm text-gray-400">
-                            지형에 따라 수색, 채집, 보초 판정에 보너스나 페널티를 받을 수 있습니다.
-                            지역 특성에 따라 습격 확률이나 자원 획득량도 달라집니다.
-                        </p>
-                    </div>
-
-                    <div class="status-item">
-                        <h4 class="font-bold text-cyan-400 mb-2">👁️ 보초 판정 (지혜 & 스테미나)</h4>
-                        <p class="text-sm text-gray-400">
-                            보초를 서는 캐릭터는 주변 기척을 살피는 지혜와 집중력을 유지하는 스테미나로 판정을 진행합니다.
-                            피로 상태라면 보초 판정에 큰 페널티를 받습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-red-900/10 border border-red-800/50 p-6 rounded mt-6">
-                    <h4 class="text-red-400 font-bold mb-2">⚠️ 실패 시 위험</h4>
-                    <p class="text-sm text-gray-400">
-                        보초 판정 실패 시 적의 기습을 허용하거나, 아군이 무방비한 상태에서 전투가 시작될 수 있습니다.
-                    </p>
-                </div>
-            </div>
-
-            <div class="item-card border-l-4 border-purple-600">
-                <h3 class="text-2xl font-bold text-purple-400 mb-4">3단계: 회복 및 정산 (Rest & Recovery)</h3>
-                <p class="text-gray-300 mb-6">
-                    장소의 안전도에 따라 회복 효율이 차등 적용됩니다.
-                </p>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm border border-gray-700 text-center">
-                        <thead class="bg-gray-900 text-amber-500">
-                            <tr>
-                                <th class="p-4 border border-gray-700">구분</th>
-                                <th class="p-4 border border-gray-700">시간당 회복 공식</th>
-                                <th class="p-4 border border-gray-700">완전 회복 시간</th>
-                                <th class="p-4 border border-gray-700">특징</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-300">
-                            <tr>
-                                <td class="p-4 border border-gray-700 font-bold text-green-400">야영 (야외)</td>
-                                <td class="p-4 border border-gray-700">최대 HP 및 SP의 1/10</td>
-                                <td class="p-4 border border-gray-700">10시간</td>
-                                <td class="p-4 border border-gray-700">보초 판정 필수, 습격 리스크 존재</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 border border-gray-700 font-bold text-blue-400">숙소 (마을)</td>
-                                <td class="p-4 border border-gray-700">최대 HP 및 SP의 1/6</td>
-                                <td class="p-4 border border-gray-700">6시간</td>
-                                <td class="p-4 border border-gray-700">보초 불필요, 안전 보장 및 추가 서비스</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
     </section>
 
     <section id="world-map" class="page w-full px-4 text-center">
@@ -1213,47 +1104,45 @@
         </div>              
     </section>
 
-    <!-- 야영 모달 추가 -->
+    <!-- 야영 모달 -->
     <div id="campModal"
-         class="fixed inset-0 bg-black/60 backdrop-blur-md z-[999] hidden items-center justify-center px-6"
+         class="fixed inset-0 bg-black/80 z-[999] hidden items-start justify-center px-6 py-10 overflow-y-auto"
          onclick="closeCampModal()">
 
         <div id="campModalBox"
              class="relative max-w-4xl w-full bg-[#111] border border-amber-900/50 rounded-2xl overflow-hidden
                     shadow-[0_0_60px_rgba(245,158,11,0.35)]
-                    scale-90 opacity-0 transition duration-300"
+                    scale-90 opacity-0 transition duration-300 my-8"
              onclick="event.stopPropagation()">
 
             <button onclick="closeCampModal()"
-                    class="absolute top-4 right-4 z-10 text-white bg-black/60 hover:bg-red-900
+                    class="sticky top-4 float-right mr-4 mt-4 z-20 text-white bg-black/70 hover:bg-red-900
                            w-10 h-10 rounded-full transition">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <img src="images/encampment.jpg"
-                 class="w-full max-h-[75vh] object-contain bg-black">
+                 class="w-full max-h-[55vh] object-contain bg-black">
 
-            <div class="p-6 border-t border-amber-900/30 text-left bg-[#111]">
-                <h3 class="text-2xl font-bold text-amber-400 mb-2">⛺ Camping System</h3>
-                <p class="text-sm text-gray-400 mb-6">
+            <div class="p-6 md:p-8 border-t border-amber-900/30 text-left bg-[#111] clear-both">
+                <h3 class="text-3xl font-bold text-amber-400 mb-2">⛺ Camping System</h3>
+                <p class="text-sm text-gray-400 mb-8">
                     야영은 전투 사이에 파티를 회복하고, 다음 위험에 대비하는 전략 단계입니다.
                 </p>
 
-                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                <div class="grid md:grid-cols-3 gap-4 text-sm mb-6">
                     <div class="bg-black/40 border border-green-900/40 rounded-xl p-4">
                         <h4 class="font-bold text-green-400 mb-2">1. 야영 활동</h4>
                         <p class="text-gray-400 leading-relaxed">
                             요리, 채집, 대화, 정비를 통해 회복과 버프를 준비합니다.
                         </p>
                     </div>
-
                     <div class="bg-black/40 border border-blue-900/40 rounded-xl p-4">
                         <h4 class="font-bold text-blue-400 mb-2">2. 장소 & 보초</h4>
                         <p class="text-gray-400 leading-relaxed">
                             지형과 안전도를 확인하고, 보초 판정으로 기습 위험을 줄입니다.
                         </p>
                     </div>
-
                     <div class="bg-black/40 border border-purple-900/40 rounded-xl p-4">
                         <h4 class="font-bold text-purple-400 mb-2">3. 회복 정산</h4>
                         <p class="text-gray-400 leading-relaxed">
@@ -1261,8 +1150,7 @@
                         </p>
                     </div>
                 </div>
-
-                <div class="mt-5 bg-red-900/10 border border-red-800/50 rounded-xl p-4">
+                <div class="bg-red-900/10 border border-red-800/50 rounded-xl p-5">
                     <h4 class="font-bold text-red-400 mb-2">⚠️ 실패 리스크</h4>
                     <p class="text-sm text-gray-400 leading-relaxed">
                         보초 판정 실패 시 적의 기습을 허용하거나, 무방비 상태로 전투가 시작될 수 있습니다.

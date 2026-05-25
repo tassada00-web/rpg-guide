@@ -1135,10 +1135,67 @@
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Instant Effects</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">스택 없이 즉시 적용되는 상태이상</p>
 
-        <div class="item-card text-center">
-            <i class="fa-solid fa-circle-info text-3xl text-amber-500 mb-5"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">현재 입력된 즉발형 상태이상이 없습니다</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">스택이 일정 수치까지 쌓여 발생하는 결과는 스택형 항목 안에 함께 유지했습니다.</p>
+        <div class="space-y-6">
+            <div class="status-item">
+                <h4 class="text-red-500 font-bold mb-2">💫 기절</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 강한 충격, 낙하, 급소 타격, 압도적인 물리 피해</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 1턴 동안 행동/반응 불가, 피격 시 방어 판정 불가</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 다음 자기 턴 시작 시 해제됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-orange-500 font-bold mb-2">🗡️ 무장해제</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 손, 손목, 무기, 방패를 노리는 전투 상황</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 장착 무기 1개를 떨어뜨림, 무기 사용 불가</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 행동 1회로 회수합니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-yellow-500 font-bold mb-2">🪨 넘어짐</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 밀치기, 폭발, 다리 걸기, 지형 붕괴, 균형 상실</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 이동 불가, 근접 공격 받을 때 방어 결과값 -3</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 이동 행동 1회로 일어납니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-purple-500 font-bold mb-2">🤐 침묵</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 입막음, 목 조르기, 음파 차단, 마법 봉쇄</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 주문, 외침, 지휘 행동 불가</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 유지 턴 경과 시 해제됩니다. 또는 매턴 자신의 지능 다이스를 굴려 결과값 합계가 상대의 지능 스탯 이상이면 해제됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-cyan-500 font-bold mb-2">✨ 실명</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 눈 공격, 섬광, 모래, 연기, 어둠, 시야 교란</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 명중 판정 -5, 원거리 공격 불가</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 지속 유지 턴 경과 시 해제됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-blue-400 font-bold mb-2">🔇 청각마비</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 폭음, 충격파, 음파 공격, 근거리 폭발</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 기습 감지 -5, 아군 지휘/명령 효과 받지 못함</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 2턴 지속 후 해제됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-emerald-500 font-bold mb-2">⛓️ 속박</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 그물, 사슬, 덩굴, 포획 장치, 끈적한 구속물</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 이동 불가, 속도 판정 -5, 회피 불가</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 물리 속박은 상대와 힘 다이스 결과를 비교합니다. 마법 속박은 속박시킨 상대의 지능 다이스 결과값보다 자신의 힘 다이스 결과값이 높으면 해제됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-rose-500 font-bold mb-2">🎭 도발</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 조롱, 위협, 심리전, 주의 끌기, 감정 자극</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 대상의 다음 공격 대상이 도발자로 고정됩니다. 공격이 불가능한 경우 도발자에게 접근하거나 도발자를 방해하는 행동을 우선합니다.</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 대상은 자신의 턴 시작 시 지혜 다이스를 굴립니다. 결과값 합계가 도발자의 지혜 스탯 이상이면 도발을 해제하고 자유롭게 행동합니다. 실패하면 이번 턴 공격 대상은 도발자로 고정됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-indigo-500 font-bold mb-2">⚡ 마비</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 전격, 신경독, 마비 마법, 신경계 교란</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 반응 행동 불가, 다음 행동 판정 -5</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 자기 턴 종료 시 건강 판정 14 성공 시 해제됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-amber-500 font-bold mb-2">🛡️ 경직</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 강한 충격, 방패 가격, 둔기 타격, 자세 붕괴</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 다음 방어/회피 판정 -3, 반응 행동 1회 사용 불가</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 다음 자기 턴 시작 시 해제됩니다.</p>
+            </div>
         </div>
     </section>
 

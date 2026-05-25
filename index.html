@@ -210,6 +210,8 @@
         <div id="sub-farming" class="submenu">
             <div id="menu-wild-system" class="sub-btn" onclick="showPage('wild-system')">ㄴ 야생</div>
             <div id="menu-life-system" class="sub-btn" onclick="showPage('life-system')">ㄴ 생활</div>
+            <div id="menu-fish-detail" class="sub-btn" onclick="showPage('fish-detail')">ㄴ 낚시</div>
+            <div id="menu-cook-detail" class="sub-btn" onclick="showPage('cook-detail')">ㄴ 요리</div>
             <div id="menu-coming-soon" class="sub-btn opacity-50" onclick="showPage('coming-soon')">ㄴ COMING SOON</div>
         </div>
 
@@ -508,13 +510,13 @@
             <button onclick="showPage('farming')" class="text-amber-500 font-bold hover:underline">← 파밍으로 돌아가기</button>
         </div>
         <div class="space-y-12">
-            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-amber-600">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-amber-600 cursor-pointer hover:border-amber-400 transition" onclick="showPage('fish-detail')">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/fish.jpg" alt="낚시" class="w-full h-auto rounded border border-gray-700"></div>
-                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">낚시</h3><p class="text-gray-300">수중 부산물을 낚아올리는 활동입니다. 탈출하려는 힘을 억제하는 <span class="text-white font-bold">힘</span> 판정으로 결정됩니다.</p></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">낚시</h3><p class="text-gray-300">턴마다 <span class="text-white font-bold">힘</span> 다이스를 굴려 물고기를 끌어올리는 생활 콘텐츠입니다.</p><div class="text-xs text-amber-700 font-bold tracking-widest">DETAILS VIEW</div></div>
             </div>
-            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-blue-500">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-blue-500 cursor-pointer hover:border-blue-400 transition" onclick="showPage('cook-detail')">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/cook.jpg" alt="요리" class="w-full h-auto rounded border border-gray-700"></div>
-                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-blue-400">요리</h3><p class="text-gray-300">에너지를 얻는 활동입니다. 레시피 이해를 요구하는 <span class="text-white font-bold">지능</span> 판정에 따라 버프가 결정됩니다.</p></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-blue-400">요리</h3><p class="text-gray-300">재료와 조리 과정마다 <span class="text-white font-bold">지능</span> 다이스를 굴려 요리 등급을 정하는 생활 콘텐츠입니다.</p><div class="text-xs text-blue-700 font-bold tracking-widest">DETAILS VIEW</div></div>
             </div>
             <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-cyan-500">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/cloth.jpg" alt="재봉" class="w-full h-auto rounded border border-gray-700"></div>
@@ -533,6 +535,56 @@
                 <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-green-400">농사</h3><p class="text-gray-300">작물을 재배하는 활동입니다. 고된 노동을 견디는 <span class="text-white font-bold">건강</span> 판정에 따라 양과 품질이 결정됩니다.</p></div>
             </div>
         </div>
+    </section>
+
+    <section id="fish-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Fishing</h2>
+        <img src="images/fish8bit.jpg" alt="낚시" class="w-full h-auto max-h-[520px] object-contain rounded border border-amber-900/50 mb-10 bg-black">
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">낚시 개요</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">낚시는 정해진 턴 안에 물고기의 저항을 누르고 끌어올리는 생활 콘텐츠입니다. 낚시 중에는 매턴 힘 다이스를 굴리고, 누적된 힘 결과값으로 성공 여부를 판정합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">진행 방식</h3>
+                <ol class="space-y-2 text-sm text-gray-300 list-decimal list-inside">
+                    <li>낚으려는 물고기의 낚시 성공 필요 결과값과 제한 턴을 정합니다.</li>
+                    <li>낚시가 시작되면 매턴 힘 다이스를 굴립니다.</li>
+                    <li>각 턴의 힘 다이스 결과값을 합산합니다.</li>
+                    <li>힘 다이스 합계값이 물고기의 낚시 성공 필요 결과값을 넘으면 낚시에 성공합니다.</li>
+                </ol>
+            </div>
+            <div class="item-card border-l-4 border-red-600">
+                <h3 class="text-2xl font-bold text-red-400 mb-3">실패 조건</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">정해진 턴이 모두 지났을 때 힘 결과값 합계가 낚시 성공 필요 결과값 미만이면 낚시에 실패합니다. 실패한 물고기는 도망치거나, 미끼와 시간을 소모한 것으로 처리됩니다.</p>
+            </div>
+        </div>
+        <button onclick="showPage('life-system')" class="mt-12 text-amber-500 font-bold hover:underline w-full text-center">← 생활로 돌아가기</button>
+    </section>
+
+    <section id="cook-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-blue-900/30 pb-6 uppercase">Cooking</h2>
+        <img src="images/cook8bit.jpg" alt="요리" class="w-full h-auto max-h-[520px] object-contain rounded border border-blue-900/50 mb-10 bg-black">
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">요리 개요</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">요리는 재료 선택과 조리 과정을 통해 음식의 완성도를 정하는 생활 콘텐츠입니다. 재료를 넣거나 끓이기, 졸이기, 볶기 같은 조리 행동을 할 때마다 지능 다이스를 굴립니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">진행 방식</h3>
+                <ol class="space-y-2 text-sm text-gray-300 list-decimal list-inside">
+                    <li>요리에 사용할 재료와 조리 방식을 정합니다.</li>
+                    <li>재료를 추가할 때마다 지능 다이스를 굴립니다.</li>
+                    <li>끓이기, 졸이기, 볶기 등 조리 행동을 할 때마다 지능 다이스를 굴립니다.</li>
+                    <li>모든 지능 결과값의 평균값으로 최종 요리 등급을 결정합니다.</li>
+                </ol>
+            </div>
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-3">요리 등급</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">요리 등급은 지능 결과값의 평균으로 결정됩니다. 평균값이 높을수록 맛, 보존성, 회복량, 버프 효과가 좋아지며, 낮을수록 효과가 약해지거나 실패 요리가 될 수 있습니다.</p>
+            </div>
+        </div>
+        <button onclick="showPage('life-system')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 생활로 돌아가기</button>
     </section>
 
     <section id="coming-soon" class="page max-w-4xl mx-auto px-6 text-center">
@@ -681,15 +733,6 @@
                     이때 피습자의 턴은 모두 후발로 밀리며, 기습자의 행동이 먼저 처리된 뒤 남은 유닛들이 순서를 이어갑니다.
                     기습 효과는 첫 1턴에만 적용되며, 2턴부터는 다시 기본 속도 순서대로 전투를 진행합니다.
                 </p>
-            </div>
-            <div class="item-card border-l-4 border-gray-500">
-                <h3 class="text-2xl font-bold text-white mb-3">요약</h3>
-                <ul class="space-y-2 text-sm text-gray-300">
-                    <li>- 전투는 유저의 판단 또는 적대 유닛의 행동으로 시작됩니다.</li>
-                    <li>- 기본 턴 순서는 각 캐릭터의 속도 순서입니다.</li>
-                    <li>- 기습 시 첫 1턴만 기습자가 선공하고 피습자는 후발로 밀립니다.</li>
-                    <li>- 기습 1턴이 끝나면 다시 속도 순서로 돌아갑니다.</li>
-                </ul>
             </div>
         </div>
         <button onclick="showPage('battle')" class="mt-12 text-amber-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
@@ -1397,7 +1440,7 @@
                 document.getElementById('menu-equip').classList.add('active-menu');
                 document.getElementById('nav-equip')?.classList.add('active-tab');
             }
-            if(pageId === 'wild-system' || pageId === 'life-system' || pageId === 'coming-soon') {
+            if(pageId === 'wild-system' || pageId === 'life-system' || pageId === 'fish-detail' || pageId === 'cook-detail' || pageId === 'coming-soon') {
                 document.getElementById('menu-farming').classList.add('active-menu');
                 document.getElementById('nav-farming')?.classList.add('active-tab');
             }

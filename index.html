@@ -242,8 +242,17 @@
             <div id="menu-norriton-detail" class="sub-btn" onclick="showPage('norriton-detail')">ㄴ 타락한 노리튼</div>
         </div>
 
-        <div id="menu-status" class="side-btn-single" onclick="showPage('status')">
-            <i class="fa-solid fa-skull-crossbones mr-4 w-6"></i>상태이상 가이드
+        <div class="side-btn-container">
+            <div id="menu-status" class="side-main-link" onclick="showPage('status')">
+                <i class="fa-solid fa-skull-crossbones mr-4 w-6"></i>상태이상 가이드
+            </div>
+            <div class="side-toggle" onclick="toggleSubmenu('sub-status')">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+        <div id="sub-status" class="submenu">
+            <div id="menu-status-stack" class="sub-btn" onclick="showPage('status-stack')">스택형 상태이상</div>
+            <div id="menu-status-instant" class="sub-btn" onclick="showPage('status-instant')">즉발형 상태이상</div>
         </div>
     </aside>
 
@@ -1025,7 +1034,25 @@
 
     <section id="status" class="page max-w-5xl mx-auto px-6 text-left">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Status Effects</h2>
-        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">영향 스탯별 상태이상 가이드</p>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">상태이상 하위 카탈로그</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <button onclick="showPage('status-stack')" class="item-card !mb-0 text-left hover:border-amber-500 transition">
+                <i class="fa-solid fa-layer-group text-3xl text-amber-500 mb-5"></i>
+                <h3 class="text-2xl font-bold text-white mb-3">스택형</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">일정 수치까지 누적되거나 매턴 감소/유지되는 상태이상입니다. 쾌락, 구역질, 광기, 출혈처럼 스택 관리가 핵심인 항목을 모았습니다.</p>
+            </button>
+            <button onclick="showPage('status-instant')" class="item-card !mb-0 text-left hover:border-red-500 transition">
+                <i class="fa-solid fa-bolt-lightning text-3xl text-red-500 mb-5"></i>
+                <h3 class="text-2xl font-bold text-white mb-3">즉발형</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 조건을 만족하는 즉시 적용되는 상태이상입니다. 현재 입력된 즉발형 항목은 따로 정리할 예정입니다.</p>
+            </button>
+        </div>
+    </section>
+
+    <section id="status-stack" class="page max-w-5xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Stack Effects</h2>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">누적되는 상태이상</p>
         
         <div class="space-y-16">
             <div class="space-y-6">
@@ -1102,6 +1129,17 @@
                 </div>
             </div>
         </div>              
+    </section>
+
+    <section id="status-instant" class="page max-w-5xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Instant Effects</h2>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">스택 없이 즉시 적용되는 상태이상</p>
+
+        <div class="item-card text-center">
+            <i class="fa-solid fa-circle-info text-3xl text-amber-500 mb-5"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">현재 입력된 즉발형 상태이상이 없습니다</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">스택이 일정 수치까지 쌓여 발생하는 결과는 스택형 항목 안에 함께 유지했습니다.</p>
+        </div>
     </section>
 
     <!-- 야영 모달 -->
@@ -1260,6 +1298,10 @@
             if(pageId === 'norriton-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
                 document.getElementById('menu-world-map').classList.add('active-menu');
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
+            }
+            if(pageId === 'status-stack' || pageId === 'status-instant') {
+                document.getElementById('menu-status')?.classList.add('active-menu');
+                document.getElementById('nav-status')?.classList.add('active-tab');
             }
         }
 

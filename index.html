@@ -226,6 +226,7 @@
             </div>
         </div>
         <div id="sub-battle" class="submenu">
+            <div id="menu-battle-basic" class="sub-btn" onclick="showPage('battle-basic')">ㄴ 전투 기본 설명</div>
             <div id="menu-attack-turn" class="sub-btn" onclick="showPage('attack-turn')">ㄴ 공격 턴</div>
             <div id="menu-defense-menu" class="sub-btn" onclick="showPage('defense-menu')">ㄴ 방어 턴</div>
         </div>
@@ -628,18 +629,59 @@
 <section id="battle" class="page max-w-5xl mx-auto px-6 text-center">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Battle System</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">전투 판정 및 행동 가이드</p>
-        <div class="grid md:grid-cols-2 gap-10 text-left">
-            <div class="item-card hover:border-red-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('attack-turn')">
+        <div class="space-y-10 text-left">
+            <div class="item-card hover:border-amber-500 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('battle-basic')">
+                <div class="text-5xl mb-6 text-amber-500"><i class="fa-solid fa-scroll"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-4">전투 기본 설명 (Basics)</h3>
+                <p class="text-sm text-gray-400 leading-relaxed max-w-2xl">전투의 기본 흐름, 판정 방식, 공격자와 방어자의 선언 순서를 정리합니다.</p>
+                <button class="w-full md:w-auto px-10 py-4 bg-amber-900/50 text-white font-bold rounded mt-6 transition hover:bg-amber-700">기본 설명 보기</button>
+            </div>
+
+            <div class="text-center pt-6">
+                <p class="text-xs text-gray-500 uppercase tracking-[0.4em] font-bold">Detail Catalog</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="item-card hover:border-red-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('attack-turn')">
                 <div class="text-5xl mb-6 text-red-500"><i class="fa-solid fa-fire"></i></div>
                 <h3 class="text-2xl font-bold text-white mb-4">공격 턴 (Attack)</h3>
                 <button class="w-full py-4 bg-red-900/50 text-white font-bold rounded mt-4 transition hover:bg-red-700">공격 매커니즘 보기</button>
-            </div>
-            <div class="item-card hover:border-blue-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('defense-menu')">
+                </div>
+                <div class="item-card hover:border-blue-600 cursor-pointer p-12 flex flex-col items-center text-center" onclick="showPage('defense-menu')">
                 <div class="text-5xl mb-6 text-blue-500"><i class="fa-solid fa-shield"></i></div>
                 <h3 class="text-2xl font-bold text-white mb-4">방어 턴 (Defense)</h3>
                 <button class="w-full py-4 bg-blue-900/50 text-white font-bold rounded mt-4 transition hover:bg-blue-700">방어 매커니즘 보기</button>
+                </div>
             </div>
         </div>
+    </section>
+
+<section id="battle-basic" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Battle Basics</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">전투의 기본 흐름</h3>
+                <ol class="space-y-2 text-sm text-gray-300 list-decimal list-inside">
+                    <li>상황을 확인하고 전투 거리를 정합니다.</li>
+                    <li>공격자는 행동, 목표, 사용 스탯 또는 스킬을 선언합니다.</li>
+                    <li>방어자는 방어, 회피, 역공 등 대응 방식을 선택합니다.</li>
+                    <li>양측 판정 결과를 비교해 피해, 상태이상, 위치 변화를 적용합니다.</li>
+                </ol>
+            </div>
+            <div class="item-card border-l-4 border-red-600">
+                <h3 class="text-2xl font-bold text-red-400 mb-3">공격자의 역할</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">공격자는 어떤 방식으로 위협을 가하는지 먼저 제시합니다. 단순 피해, 특정 스탯 대항, 상태이상 부여, 위치 변경 등 구체적인 목적을 함께 선언합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-blue-600">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">방어자의 역할</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">방어자는 공격에 맞춰 대응 방식을 고릅니다. 공격자가 특정 판정을 요구하지 않았다면 상황에 맞는 스탯으로 자유 대응할 수 있고, 스킬이 있다면 스킬 대항으로 판정 방식을 바꿀 수 있습니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-3">결과 적용</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">판정 결과는 피해량뿐 아니라 밀림, 넘어짐, 무장해제, 상태이상 같은 부가 결과로 이어질 수 있습니다. 스킬에 명시된 효과가 있다면 해당 효과를 우선 적용합니다.</p>
+            </div>
+        </div>
+        <button onclick="showPage('battle')" class="mt-12 text-amber-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>
     </section>
 <section id="defense-menu" class="page max-w-5xl mx-auto px-6 text-center">
         <div class="flex flex-col items-center mb-16">
@@ -1334,7 +1376,7 @@
             const activeSide = document.getElementById('menu-' + pageId);
             if (activeSide) activeSide.classList.add('active-menu');
 
-            if(pageId === 'attack-turn' || pageId === 'defense-menu' || pageId === 'defense-detail' || pageId === 'evade-detail' || pageId === 'counter-detail' || pageId === 'battle') {
+            if(pageId === 'battle-basic' || pageId === 'attack-turn' || pageId === 'defense-menu' || pageId === 'defense-detail' || pageId === 'evade-detail' || pageId === 'counter-detail' || pageId === 'battle') {
                 document.getElementById('menu-battle')?.classList.add('active-menu');
                 document.getElementById('nav-battle')?.classList.add('active-tab');
             }

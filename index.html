@@ -658,27 +658,38 @@
 
 <section id="battle-basic" class="page max-w-4xl mx-auto px-6 text-left">
         <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Battle Basics</h2>
+        <img src="battle_image/battlestart.jpg" alt="전투 시작" class="w-full h-auto max-h-[560px] object-contain rounded border border-amber-900/50 mb-10 bg-black">
         <div class="space-y-6">
             <div class="item-card border-l-4 border-amber-500">
-                <h3 class="text-2xl font-bold text-amber-400 mb-3">전투의 기본 흐름</h3>
-                <ol class="space-y-2 text-sm text-gray-300 list-decimal list-inside">
-                    <li>상황을 확인하고 전투 거리를 정합니다.</li>
-                    <li>공격자는 행동, 목표, 사용 스탯 또는 스킬을 선언합니다.</li>
-                    <li>방어자는 방어, 회피, 역공 등 대응 방식을 선택합니다.</li>
-                    <li>양측 판정 결과를 비교해 피해, 상태이상, 위치 변화를 적용합니다.</li>
-                </ol>
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">전투의 시작</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    전투는 유저의 판단 하에 시작될 수 있습니다. 플레이어가 적대적인 행동을 선언하거나, 상황을 더 이상 대화와 탐색으로 해결할 수 없다고 판단할 때 전투가 개시됩니다.
+                    반대로 적대적인 유닛이 먼저 공격 의사를 드러내거나, 매복과 습격처럼 선제 행동을 취하는 경우에도 전투가 시작됩니다.
+                </p>
+            </div>
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">턴 순서</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    전투가 시작되면 참여한 모든 캐릭터와 유닛은 기본적으로 속도 순서대로 턴을 진행합니다.
+                    속도가 높은 대상부터 행동하며, 같은 속도일 경우 상황에 맞는 보조 판정이나 진행자의 판단으로 순서를 정합니다.
+                </p>
             </div>
             <div class="item-card border-l-4 border-red-600">
-                <h3 class="text-2xl font-bold text-red-400 mb-3">공격자의 역할</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">공격자는 어떤 방식으로 위협을 가하는지 먼저 제시합니다. 단순 피해, 특정 스탯 대항, 상태이상 부여, 위치 변경 등 구체적인 목적을 함께 선언합니다.</p>
+                <h3 class="text-2xl font-bold text-red-400 mb-3">기습</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    기습이 성립한 경우, 첫 1턴에 한해 기습자가 선공합니다.
+                    이때 피습자의 턴은 모두 후발로 밀리며, 기습자의 행동이 먼저 처리된 뒤 남은 유닛들이 순서를 이어갑니다.
+                    기습 효과는 첫 1턴에만 적용되며, 2턴부터는 다시 기본 속도 순서대로 전투를 진행합니다.
+                </p>
             </div>
-            <div class="item-card border-l-4 border-blue-600">
-                <h3 class="text-2xl font-bold text-blue-400 mb-3">방어자의 역할</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">방어자는 공격에 맞춰 대응 방식을 고릅니다. 공격자가 특정 판정을 요구하지 않았다면 상황에 맞는 스탯으로 자유 대응할 수 있고, 스킬이 있다면 스킬 대항으로 판정 방식을 바꿀 수 있습니다.</p>
-            </div>
-            <div class="item-card border-l-4 border-purple-500">
-                <h3 class="text-2xl font-bold text-purple-400 mb-3">결과 적용</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">판정 결과는 피해량뿐 아니라 밀림, 넘어짐, 무장해제, 상태이상 같은 부가 결과로 이어질 수 있습니다. 스킬에 명시된 효과가 있다면 해당 효과를 우선 적용합니다.</p>
+            <div class="item-card border-l-4 border-gray-500">
+                <h3 class="text-2xl font-bold text-white mb-3">요약</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li>- 전투는 유저의 판단 또는 적대 유닛의 행동으로 시작됩니다.</li>
+                    <li>- 기본 턴 순서는 각 캐릭터의 속도 순서입니다.</li>
+                    <li>- 기습 시 첫 1턴만 기습자가 선공하고 피습자는 후발로 밀립니다.</li>
+                    <li>- 기습 1턴이 끝나면 다시 속도 순서로 돌아갑니다.</li>
+                </ul>
             </div>
         </div>
         <button onclick="showPage('battle')" class="mt-12 text-amber-500 font-bold hover:underline w-full text-center">← 전투 시스템으로 돌아가기</button>

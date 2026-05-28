@@ -209,6 +209,8 @@
         </div>
         <div id="sub-farming" class="submenu">
             <div id="menu-wild-system" class="sub-btn" onclick="showPage('wild-system')">ㄴ 야생</div>
+            <div id="menu-reward-card-detail" class="sub-btn" onclick="showPage('reward-card-detail')">ㄴ 보상 카드</div>
+            <div id="menu-looting-detail" class="sub-btn" onclick="showPage('looting-detail')">ㄴ 루팅</div>
             <div id="menu-life-system" class="sub-btn" onclick="showPage('life-system')">ㄴ 생활</div>
             <div id="menu-fish-detail" class="sub-btn" onclick="showPage('fish-detail')">ㄴ 낚시</div>
             <div id="menu-cook-detail" class="sub-btn" onclick="showPage('cook-detail')">ㄴ 요리</div>
@@ -489,13 +491,13 @@
             <button onclick="showPage('farming')" class="text-amber-500 font-bold hover:underline">← 파밍으로 돌아가기</button>
         </div>
         <div class="space-y-12">
-            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-amber-500">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-amber-500 cursor-pointer hover:border-amber-400 transition" onclick="showPage('reward-card-detail')">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/rcard.jpg" alt="보상카드" class="w-full h-auto rounded border border-gray-700"></div>
-                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">보상 카드</h3><p class="text-gray-300 leading-relaxed">이벤트를 완료하면 정산하면서 얻는 보상입니다. 사건 규모와 투자 시간이 많을수록 가치가 올라갑니다.</p></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">보상 카드</h3><p class="text-gray-300 leading-relaxed">이벤트 종료 후 성장 정산으로 등장하는 카드입니다. 성공과 실패 모두 보상이 발생하지만 카드 후보의 성격이 달라집니다.</p><div class="text-xs text-amber-700 font-bold tracking-widest">DETAILS VIEW</div></div>
             </div>
-            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-blue-500">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-blue-500 cursor-pointer hover:border-blue-400 transition" onclick="showPage('looting-detail')">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/looting.jpg" alt="루팅" class="w-full h-auto rounded border border-gray-700"></div>
-                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">루팅</h3><p class="text-gray-300 leading-relaxed">쓰러뜨린 적이나 시체에서 자원을 확보하는 행동입니다. <span class="text-white font-bold">정밀</span> 판정에 비례해 보상의 질이 결정됩니다.</p></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">루팅</h3><p class="text-gray-300 leading-relaxed">쓰러뜨린 적이나 시체에서 전리품을 회수하는 행동입니다. <span class="text-white font-bold">정밀</span> 판정과 도감 확률을 비교합니다.</p><div class="text-xs text-blue-700 font-bold tracking-widest">DETAILS VIEW</div></div>
             </div>
             <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-green-500">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/gather.jpg" alt="채집" class="w-full h-auto rounded border border-gray-700"></div>
@@ -506,6 +508,55 @@
                 <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">수색</h3><p class="text-gray-300 leading-relaxed">버려진 장소에서 가치 있는 고대 유물을 찾아내는 활동입니다. <span class="text-white font-bold">지능</span> 판정에 영향을 받습니다.</p></div>
             </div>
         </div>
+    </section>
+
+    <section id="reward-card-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-amber-900/30 pb-6 uppercase">Reward Cards</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">보상 카드 개요</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">보상 카드는 이벤트 종료 후 지급되는 성장 정산 카드입니다. 이벤트가 성공했든 실패했든 정산 보상은 발생하며, 사건에서 캐릭터가 얻은 경험을 성장 선택지로 변환합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">카드 후보</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">성공한 이벤트에서는 안정적인 성장 카드가 중심이 됩니다. 실패한 이벤트에서는 성장 카드와 함께 불리하거나 왜곡된 성격의 카드가 후보에 섞일 수 있습니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-3">성장 요소</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">보상 카드에서 다루는 성장 요소는 주능력치 숙련도, 새로운 스킬, 기존 스킬 강화입니다. 실제 카드의 세부 효과와 이름은 이벤트의 성격과 캐릭터의 행동에 맞춰 정합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-green-500">
+                <h3 class="text-2xl font-bold text-green-400 mb-3">주능력치 숙련도</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">주능력치 숙련도는 즉시 1씩 증가하지 않습니다. 현재 유저의 해당 능력치 최대값을 a, 최대값에서 굴린 값을 b라고 할 때 숙련도는 <span class="text-white font-bold">(b / a x 100)%</span>만큼 증가합니다.</p>
+            </div>
+        </div>
+        <button onclick="showPage('wild-system')" class="mt-12 text-amber-500 font-bold hover:underline w-full text-center">← 야생으로 돌아가기</button>
+    </section>
+
+    <section id="looting-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-blue-900/30 pb-6 uppercase">Looting</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">루팅 개요</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">루팅은 쓰러뜨린 적, 시체, 상자, 잔해 등에서 전리품을 회수하는 행동입니다. 루팅 시 유저는 정밀 주사위를 굴리고, 결과값을 도감에 등록된 전리품 확률과 비교합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">도감 연계</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">루팅 결과물은 도감의 전리품 목록 확률에 따라 적용합니다. 적의 전리품 후보와 확률은 적 도감에서 확인합니다.</p>
+                <a href="https://tassada00-web.github.io/trpg-archive/#enemies" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-amber-500 font-bold hover:text-amber-300 transition">
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i>적 도감 / 전리품 목록 열기
+                </a>
+            </div>
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-3">루팅 결과 확률</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">현재 유저의 정밀 최대값을 a, 최대값에서 굴린 값을 b, 도감에 나오는 전리품 확률을 c라고 합니다. 루팅 결과값은 <span class="text-white font-bold">(b / a x 100)%</span>로 계산합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-green-500">
+                <h3 class="text-2xl font-bold text-green-400 mb-3">획득 규칙</h3>
+                <p class="text-sm text-gray-300 leading-relaxed"><span class="text-white font-bold">(b / a x 100)%</span>로 나온 값이 c 이하라면, 해당 확률 이하의 전리품들을 모두 획득합니다. 즉, 정밀 판정 결과로 도감의 전리품 확률 구간을 통과한 항목들이 루팅 결과가 됩니다.</p>
+            </div>
+        </div>
+        <button onclick="showPage('wild-system')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 야생으로 돌아가기</button>
     </section>
 
     <section id="life-system" class="page max-w-5xl mx-auto px-6 text-left">
@@ -1536,7 +1587,7 @@
                 document.getElementById('menu-equip').classList.add('active-menu');
                 document.getElementById('nav-equip')?.classList.add('active-tab');
             }
-            if(pageId === 'wild-system' || pageId === 'life-system' || pageId === 'fish-detail' || pageId === 'cook-detail' || pageId === 'cloth-detail' || pageId === 'smith-detail' || pageId === 'alchemy-detail' || pageId === 'farm-detail' || pageId === 'coming-soon') {
+            if(pageId === 'wild-system' || pageId === 'reward-card-detail' || pageId === 'looting-detail' || pageId === 'life-system' || pageId === 'fish-detail' || pageId === 'cook-detail' || pageId === 'cloth-detail' || pageId === 'smith-detail' || pageId === 'alchemy-detail' || pageId === 'farm-detail' || pageId === 'coming-soon') {
                 document.getElementById('menu-farming').classList.add('active-menu');
                 document.getElementById('nav-farming')?.classList.add('active-tab');
             }

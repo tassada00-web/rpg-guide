@@ -551,19 +551,15 @@
                 <p class="text-sm text-gray-300 leading-relaxed">루팅은 쓰러뜨린 적, 시체, 상자, 잔해 등에서 전리품을 회수하는 행동입니다. 루팅 시 유저는 정밀 주사위를 굴리고, 결과값을 도감에 등록된 전리품 확률과 비교합니다.</p>
             </div>
             <div class="item-card border-l-4 border-amber-500">
-                <h3 class="text-2xl font-bold text-amber-400 mb-3">도감 연계</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">루팅 결과물은 도감의 전리품 목록 확률에 따라 적용합니다. 적의 전리품 후보와 확률은 적 도감에서 확인합니다.</p>
-                <a href="https://tassada00-web.github.io/trpg-archive/#enemies" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-amber-500 font-bold hover:text-amber-300 transition">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">루팅 규칙</h3>
+                <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
+                    <p>현재 유저의 정밀 최대값을 a, 최대값에서 굴린 값을 b, 도감에 나오는 전리품 확률을 c라고 합니다. 루팅 결과값은 <span class="text-white font-bold">(b / a x 100)%</span>로 계산합니다.</p>
+                    <p><span class="text-white font-bold">(b / a x 100)%</span>로 나온 값이 c 이하라면, 해당 확률 이하의 전리품들을 모두 획득합니다. 즉, 정밀 판정 결과로 도감의 전리품 확률 구간을 통과한 항목들이 루팅 결과가 됩니다.</p>
+                    <p>루팅 결과물은 도감의 전리품 목록 확률에 따라 적용합니다. 적의 전리품 후보와 확률은 적 도감에서 확인합니다.</p>
+                </div>
+                <a href="https://tassada00-web.github.io/trpg-archive/#enemies" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-5 text-amber-500 font-bold hover:text-amber-300 transition">
                     <i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i>적 도감 / 전리품 목록 열기
                 </a>
-            </div>
-            <div class="item-card border-l-4 border-purple-500">
-                <h3 class="text-2xl font-bold text-purple-400 mb-3">루팅 결과 확률</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">현재 유저의 정밀 최대값을 a, 최대값에서 굴린 값을 b, 도감에 나오는 전리품 확률을 c라고 합니다. 루팅 결과값은 <span class="text-white font-bold">(b / a x 100)%</span>로 계산합니다.</p>
-            </div>
-            <div class="item-card border-l-4 border-green-500">
-                <h3 class="text-2xl font-bold text-green-400 mb-3">획득 규칙</h3>
-                <p class="text-sm text-gray-300 leading-relaxed"><span class="text-white font-bold">(b / a x 100)%</span>로 나온 값이 c 이하라면, 해당 확률 이하의 전리품들을 모두 획득합니다. 즉, 정밀 판정 결과로 도감의 전리품 확률 구간을 통과한 항목들이 루팅 결과가 됩니다.</p>
             </div>
         </div>
         <button onclick="showPage('wild-system')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 야생으로 돌아가기</button>

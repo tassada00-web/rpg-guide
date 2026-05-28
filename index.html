@@ -211,6 +211,7 @@
             <div id="menu-wild-system" class="sub-btn" onclick="showPage('wild-system')">ㄴ 야생</div>
             <div id="menu-reward-card-detail" class="sub-btn" onclick="showPage('reward-card-detail')">ㄴ 보상 카드</div>
             <div id="menu-looting-detail" class="sub-btn" onclick="showPage('looting-detail')">ㄴ 루팅</div>
+            <div id="menu-gather-detail" class="sub-btn" onclick="showPage('gather-detail')">ㄴ 채집</div>
             <div id="menu-life-system" class="sub-btn" onclick="showPage('life-system')">ㄴ 생활</div>
             <div id="menu-fish-detail" class="sub-btn" onclick="showPage('fish-detail')">ㄴ 낚시</div>
             <div id="menu-cook-detail" class="sub-btn" onclick="showPage('cook-detail')">ㄴ 요리</div>
@@ -499,9 +500,9 @@
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/looting.jpg" alt="루팅" class="w-full h-auto rounded border border-gray-700"></div>
                 <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">루팅</h3><p class="text-gray-300 leading-relaxed">쓰러뜨린 적이나 시체에서 전리품을 회수하는 행동입니다. <span class="text-white font-bold">정밀</span> 판정과 도감 확률을 비교합니다.</p><div class="text-xs text-blue-700 font-bold tracking-widest">DETAILS VIEW</div></div>
             </div>
-            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-green-500">
+            <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-green-500 cursor-pointer hover:border-green-400 transition" onclick="showPage('gather-detail')">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/gather.jpg" alt="채집" class="w-full h-auto rounded border border-gray-700"></div>
-                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">채집</h3><p class="text-gray-300 leading-relaxed">자연환경 속에서 자원을 거두어들이는 시스템입니다. <span class="text-white font-bold">건강</span> 판정에 따라 품질이 결정됩니다.</p></div>
+                <div class="w-full md:w-3/5 space-y-4"><h3 class="text-2xl font-bold text-amber-500">채집</h3><p class="text-gray-300 leading-relaxed">자연환경 속에서 자원을 거두어들이는 행동입니다. <span class="text-white font-bold">건강</span> 판정과 환경 보정의 영향을 받습니다.</p><div class="text-xs text-green-700 font-bold tracking-widest">DETAILS VIEW</div></div>
             </div>
             <div class="item-card flex flex-col md:flex-row gap-8 items-center border-l-4 border-purple-500">
                 <div class="w-full md:w-2/5 shrink-0"><img src="images/expl.jpg" alt="수색" class="w-full h-auto rounded border border-gray-700"></div>
@@ -563,6 +564,29 @@
             </div>
         </div>
         <button onclick="showPage('wild-system')" class="mt-12 text-blue-500 font-bold hover:underline w-full text-center">← 야생으로 돌아가기</button>
+    </section>
+
+    <section id="gather-detail" class="page max-w-4xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-4xl text-white mb-10 border-b border-green-900/30 pb-6 uppercase">Gathering</h2>
+        <div class="space-y-6">
+            <div class="item-card border-l-4 border-green-500">
+                <h3 class="text-2xl font-bold text-green-400 mb-3">채집 개요</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">채집은 숲, 늪, 산, 동굴, 초원 같은 자연 환경에서 자원을 확보하는 행동입니다. 유저는 환경을 버티며 자원을 찾아야 하므로 기본 판정은 건강을 사용합니다.</p>
+            </div>
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-2xl font-bold text-amber-400 mb-3">채집 규칙</h3>
+                <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
+                    <p>현재 유저의 건강 최대값을 a, 최대값에서 굴린 값을 b, 지역별 채집 자원 확률을 c라고 합니다. 채집 결과값은 <span class="text-white font-bold">(b / a x 100)%</span>로 계산합니다.</p>
+                    <p><span class="text-white font-bold">(b / a x 100)%</span>로 나온 값이 c 이하라면, 해당 확률 이하의 채집 자원들을 모두 획득합니다.</p>
+                    <p>채집 결과물과 계절별 자원 목록은 별도 도감에 등록된 정보를 기준으로 적용합니다.</p>
+                </div>
+            </div>
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">환경(날씨)</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">채집은 날씨의 영향을 크게 받습니다. 비, 눈, 강풍, 안개, 폭염, 한파 같은 환경은 채집 난이도와 위험도를 변화시킵니다. 나쁜 날씨는 판정에 불리하게 작용하거나 위험 이벤트를 발생시킬 수 있고, 특정 날씨는 특수 자원의 등장 조건이 될 수 있습니다.</p>
+            </div>
+        </div>
+        <button onclick="showPage('wild-system')" class="mt-12 text-green-500 font-bold hover:underline w-full text-center">← 야생으로 돌아가기</button>
     </section>
 
     <section id="life-system" class="page max-w-5xl mx-auto px-6 text-left">
@@ -1546,6 +1570,19 @@
             submenu.classList.toggle('show');
         }
 
+        const parentPageMap = {
+            'reward-card-detail': 'wild-system',
+            'looting-detail': 'wild-system',
+            'gather-detail': 'wild-system',
+            'fish-detail': 'life-system',
+            'cook-detail': 'life-system',
+            'cloth-detail': 'life-system',
+            'smith-detail': 'life-system',
+            'alchemy-detail': 'life-system',
+            'farm-detail': 'life-system'
+        };
+        let currentPageId = 'home';
+
         // ✅ URL 기록(History) 기능이 추가된 페이지 이동 함수
         function showPage(pageId, isHistory = false) {
             const pages = document.querySelectorAll('.page');
@@ -1553,6 +1590,7 @@
             
             const target = document.getElementById(pageId);
             if (target) {
+                currentPageId = pageId;
                 target.classList.add('active');
                 window.scrollTo(0, 0);
                 
@@ -1593,7 +1631,7 @@
                 document.getElementById('menu-equip').classList.add('active-menu');
                 document.getElementById('nav-equip')?.classList.add('active-tab');
             }
-            if(pageId === 'wild-system' || pageId === 'reward-card-detail' || pageId === 'looting-detail' || pageId === 'life-system' || pageId === 'fish-detail' || pageId === 'cook-detail' || pageId === 'cloth-detail' || pageId === 'smith-detail' || pageId === 'alchemy-detail' || pageId === 'farm-detail' || pageId === 'coming-soon') {
+            if(pageId === 'wild-system' || pageId === 'reward-card-detail' || pageId === 'looting-detail' || pageId === 'gather-detail' || pageId === 'life-system' || pageId === 'fish-detail' || pageId === 'cook-detail' || pageId === 'cloth-detail' || pageId === 'smith-detail' || pageId === 'alchemy-detail' || pageId === 'farm-detail' || pageId === 'coming-soon') {
                 document.getElementById('menu-farming').classList.add('active-menu');
                 document.getElementById('nav-farming')?.classList.add('active-tab');
             }
@@ -1613,8 +1651,14 @@
 
         // ✅ 기기의 뒤로 가기 / 앞으로 가기 버튼을 감지하는 이벤트
         window.addEventListener('popstate', function(event) {
-            if (event.state && event.state.pageId) {
-                showPage(event.state.pageId, true);
+            const targetPageId = event.state && event.state.pageId ? event.state.pageId : 'home';
+            const parentPageId = parentPageMap[currentPageId];
+
+            if (parentPageId && targetPageId !== parentPageId) {
+                history.pushState({ pageId: parentPageId }, "", "#" + parentPageId);
+                showPage(parentPageId, true);
+            } else if (targetPageId) {
+                showPage(targetPageId, true);
             } else {
                 showPage('home', true);
             }
@@ -1625,6 +1669,7 @@
             const hash = window.location.hash.replace('#', '');
             if (hash) {
                 showPage(hash, true);
+                history.replaceState({ pageId: hash }, "", "#" + hash);
             } else {
                 history.replaceState({ pageId: 'home' }, "", "#home");
             }

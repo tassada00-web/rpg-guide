@@ -517,17 +517,27 @@
                 <h3 class="text-2xl font-bold text-amber-400 mb-3">보상 카드 개요</h3>
                 <p class="text-sm text-gray-300 leading-relaxed">보상 카드는 이벤트 종료 후 지급되는 성장 정산 카드입니다. 이벤트가 성공했든 실패했든 정산 보상은 발생하며, 사건에서 캐릭터가 얻은 경험을 성장 선택지로 변환합니다.</p>
             </div>
-            <div class="item-card border-l-4 border-blue-500">
-                <h3 class="text-2xl font-bold text-blue-400 mb-3">카드 후보</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">성공한 이벤트에서는 안정적인 성장 카드가 중심이 됩니다. 실패한 이벤트에서는 성장 카드와 함께 불리하거나 왜곡된 성격의 카드가 후보에 섞일 수 있습니다.</p>
-            </div>
             <div class="item-card border-l-4 border-purple-500">
                 <h3 class="text-2xl font-bold text-purple-400 mb-3">성장 요소</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">보상 카드에서 다루는 성장 요소는 주능력치 숙련도, 새로운 스킬, 기존 스킬 강화입니다. 실제 카드의 세부 효과와 이름은 이벤트의 성격과 캐릭터의 행동에 맞춰 정합니다.</p>
+                <p class="text-sm text-gray-300 leading-relaxed">보상 카드는 캐릭터가 사건을 통해 얻은 경험을 성장 요소로 변환합니다. 성장 요소는 카드 후보에 반영되며, 이벤트의 성격과 캐릭터가 실제로 사용한 행동을 기준으로 구성됩니다.</p>
             </div>
-            <div class="item-card border-l-4 border-green-500">
-                <h3 class="text-2xl font-bold text-green-400 mb-3">주능력치 숙련도</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">주능력치 숙련도는 즉시 1씩 증가하지 않습니다. 현재 유저의 해당 능력치 최대값을 a, 최대값에서 굴린 값을 b라고 할 때 숙련도는 <span class="text-white font-bold">(b / a x 100)%</span>만큼 증가합니다.</p>
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-3">카드 후보</h3>
+                <p class="text-sm text-gray-300 leading-relaxed mb-5">카드 후보에는 다음 성장 요소가 등장합니다. 성공한 이벤트에서는 안정적인 후보가 중심이 되고, 실패한 이벤트에서는 불리하거나 왜곡된 성격의 카드가 함께 섞일 수 있습니다.</p>
+                <div class="space-y-4 text-sm text-gray-300">
+                    <div>
+                        <h4 class="text-green-400 font-bold mb-1">주능력치 숙련도</h4>
+                        <p class="leading-relaxed">주능력치 숙련도는 즉시 1씩 증가하지 않습니다. 현재 유저의 해당 능력치 최대값을 a, 최대값에서 굴린 값을 b라고 할 때 숙련도는 <span class="text-white font-bold">(b / a x 100)%</span>만큼 증가합니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-amber-400 font-bold mb-1">새로운 스킬</h4>
+                        <p class="leading-relaxed">이벤트에서 얻은 경험을 바탕으로 새로운 행동 방식이나 기술을 획득하는 후보입니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-purple-400 font-bold mb-1">기존 스킬 강화</h4>
+                        <p class="leading-relaxed">이미 보유한 스킬의 효과, 판정 방식, 사용 조건 등을 강화하는 후보입니다.</p>
+                    </div>
+                </div>
             </div>
         </div>
         <button onclick="showPage('wild-system')" class="mt-12 text-amber-500 font-bold hover:underline w-full text-center">← 야생으로 돌아가기</button>

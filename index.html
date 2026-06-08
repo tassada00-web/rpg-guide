@@ -1318,7 +1318,7 @@
             <button onclick="showPage('status-instant')" class="item-card !mb-0 text-left hover:border-red-500 transition">
                 <i class="fa-solid fa-bolt-lightning text-3xl text-red-500 mb-5"></i>
                 <h3 class="text-2xl font-bold text-white mb-3">즉발형</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 조건을 만족하는 즉시 적용되는 상태이상입니다. 기절, 무장해제, 구토처럼 한 번 처리되거나 짧게 지속되는 항목을 모았습니다.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 조건을 만족하는 즉시 적용되는 상태이상입니다. 기절, 무장해제, 구토, 점착처럼 한 번 처리되거나 짧게 지속되는 항목을 모았습니다.</p>
             </button>
         </div>
     </section>
@@ -1353,8 +1353,10 @@
                 <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-blue-600 mr-3"></span>지혜 (Wisdom)</h3>
                 <div class="status-item">
                     <h4 class="text-purple-500 font-bold mb-2">🌀 광기</h4>
-                    <p class="text-sm text-gray-400">광기 스택이 최대 지혜까지 중첩 된 경우 광란에 빠집니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">광란: 아군,적군 구별 없이 랜덤으로 지목합니다. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
+                    <p class="text-sm text-gray-400">광기 스택이 최대 지혜까지 중첩 된 경우 광란에 빠집니다. 최대 임계점에 도달하면 완전 광란에 빠집니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">광란: 아군,적군 구별 없이 랜덤으로 지목합니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">완전 광란: 근접 대상(아군 우선)에게 공격 또는 방해 행동을 수행합니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">해제: 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
                 </div>
                 <div class="status-item">
                     <h4 class="text-blue-400 font-bold mb-2">😨 두려움</h4>
@@ -1365,15 +1367,6 @@
                     <h4 class="text-rose-500 font-bold mb-2">💄 성욕</h4>
                     <p class="text-sm text-gray-400">최음 등 특정 효과에 쌓이면 스택이 쌓입니다. 최대 지혜까지 중첩된 경우 욕정 상태가 됩니다.</p>
                     <p class="text-xs mt-3 text-white font-bold">욕정: 적의 성행위에 저항 불가. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
-                </div>
-            </div>
-
-            <div class="space-y-6">
-                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-yellow-600 mr-3"></span>속도 (Speed)</h3>
-                <div class="status-item">
-                    <h4 class="text-yellow-500 font-bold mb-2">🕸️ 점착</h4>
-                    <p class="text-sm text-gray-400">점액 피격 시 스택이 쌓입니다. 최대 속도만큼 쌓이면 둔화 상태가 됩니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">둔화: 턴 우선순위가 항상 꼴찌로 고정됩니다. 점액을 닦아내는 행동을 2회 수행하면 해제됩니다.</p>
                 </div>
             </div>
 
@@ -1421,6 +1414,12 @@
                 <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 독성 음식, 강한 악취, 혐오스러운 광경, 내장 충격, 특정 몬스터의 악취 공격</p>
                 <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 이번 턴 행동을 상실하며, 복용 중인 아이템 효과를 상실합니다.</p>
                 <p class="text-xs mt-3 text-white font-bold">해제: 즉시 처리 후 종료됩니다.</p>
+            </div>
+            <div class="status-item">
+                <h4 class="text-yellow-500 font-bold mb-2">🕸️ 점착</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 점액 피격, 끈적한 함정, 접착성 투척물, 점성 마법</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 턴 우선순위가 꼴찌로 고정되고, 속도 판정 -3을 받습니다.</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 점액을 닦아내는 행동을 2회 수행하면 해제됩니다.</p>
             </div>
             <div class="status-item">
                 <h4 class="text-red-500 font-bold mb-2">💫 기절</h4>

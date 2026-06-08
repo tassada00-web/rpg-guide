@@ -1333,7 +1333,7 @@
                 <li>- 임계점은 관련 능력치의 최대 수치입니다.</li>
                 <li>- 최대 임계점은 관련 능력치의 최대 수치 x2입니다.</li>
                 <li>- 임계점에 도달하면 각 항목에 적힌 발현 상태가 됩니다.</li>
-                <li>- 최대 임계점에 도달하면 해당 상태이상을 부여한 효과의 강화 리턴을 적용합니다.</li>
+                <li>- 최대 임계점에 도달하면 각 항목에 적힌 강화 발현 상태가 됩니다.</li>
                 <li>- 발현 상태가 해제되면 해당 스택은 0이 되며, 이후 같은 원인으로 다시 스택을 받을 수 있습니다.</li>
                 <li>- 독과 출혈은 임계점 없이 스택 자체가 피해량이 되는 누적 피해형으로 처리합니다.</li>
             </ul>
@@ -1344,8 +1344,10 @@
                 <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-amber-600 mr-3"></span>건강 (Health)</h3>
                 <div class="status-item">
                     <h4 class="text-pink-500 font-bold mb-2">💖 쾌락</h4>
-                    <p class="text-sm text-gray-400">성적 공격 당할 시 스택이 쌓입니다. 스택이 최대 건강 수치까지 쌓일 경우 절정에 이릅니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">절정: 행동 불가가 되며 매턴 주사위(현재 건강)를 굴려 합계 값이 최대 건강 이상으로 나오면 해제됩니다.</p>
+                    <p class="text-sm text-gray-400">성적 공격 당할 시 스택이 쌓입니다. 스택이 최대 건강 수치까지 쌓일 경우 절정에 이릅니다. 최대 임계점에 도달하면 탈진 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">절정: 행동 불가가 됩니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">탈진: 절정 효과에 더해 해제 후 다음 1턴 동안 모든 판정 -3을 받습니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">해제: 매턴 주사위(현재 건강)를 굴려 합계 값이 최대 건강 이상으로 나오면 해제됩니다.</p>
                 </div>
             </div>
 
@@ -1360,13 +1362,17 @@
                 </div>
                 <div class="status-item">
                     <h4 class="text-blue-400 font-bold mb-2">😨 두려움</h4>
-                    <p class="text-sm text-gray-400">두려움 스택이 최대 지혜까지 중첩 된 경우 공포에 빠집니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">공포: 적에게서 멀어집니다. 원거리였을 경우 전투 이탈 됩니다. 부여한 적에게 공격 당하지 않을 시 해제 됩니다.</p>
+                    <p class="text-sm text-gray-400">두려움 스택이 최대 지혜까지 중첩 된 경우 공포에 빠집니다. 최대 임계점에 도달하면 패닉 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">공포: 적에게서 멀어집니다. 원거리였을 경우 전투 이탈 됩니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">패닉: 즉시 후퇴 행동을 우선하며, 원거리 상태라면 전투 이탈을 시도합니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">해제: 부여한 적에게 공격 당하지 않을 시 해제 됩니다.</p>
                 </div>
                 <div class="status-item">
                     <h4 class="text-rose-500 font-bold mb-2">💄 성욕</h4>
-                    <p class="text-sm text-gray-400">최음 등 특정 효과에 쌓이면 스택이 쌓입니다. 최대 지혜까지 중첩된 경우 욕정 상태가 됩니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">욕정: 적의 성행위에 저항 불가. 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
+                    <p class="text-sm text-gray-400">최음 등 특정 효과에 쌓이면 스택이 쌓입니다. 최대 지혜까지 중첩된 경우 욕정 상태가 됩니다. 최대 임계점에 도달하면 도취 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">욕정: 적의 성행위에 저항 불가.</p>
+                    <p class="text-xs mt-2 text-white font-bold">도취: 욕정 효과에 더해 이번 턴 공격/방어보다 욕정 원인에게 접근하거나 반응하는 행동을 우선합니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">해제: 매턴 주사위(현재 지혜)를 굴려 합계 값이 최대 지혜 이상으로 나오면 해제됩니다.</p>
                 </div>
             </div>
 
@@ -1374,8 +1380,10 @@
                 <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-cyan-600 mr-3"></span>정밀 (Precision)</h3>
                 <div class="status-item">
                     <h4 class="text-cyan-500 font-bold mb-2">💫 현기증</h4>
-                    <p class="text-sm text-gray-400">어지럼증 관련 스택이 최대 정밀 만큼 쌓이면 혼란 상태가 됩니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">혼란: 정밀 결과값이 절반으로 떨어집니다. 매턴 주사위(현재 정밀)를 굴려 합계 값이 최대 정밀 이상으로 나오면 해제됩니다.</p>
+                    <p class="text-sm text-gray-400">어지럼증 관련 스택이 최대 정밀 만큼 쌓이면 혼란 상태가 됩니다. 최대 임계점에 도달하면 방향감각 상실 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">혼란: 정밀 결과값이 절반으로 떨어집니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">방향감각 상실: 혼란 효과에 더해 대상 지정이 필요한 행동의 판정 실패 시 목표가 무작위로 변경됩니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">해제: 매턴 주사위(현재 정밀)를 굴려 합계 값이 최대 정밀 이상으로 나오면 해제됩니다.</p>
                 </div>
             </div>
 
@@ -1383,8 +1391,10 @@
                 <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-stone-500 mr-3"></span>매력 (Charisma)</h3>
                 <div class="status-item">
                     <h4 class="text-stone-400 font-bold mb-2">💩 악취</h4>
-                    <p class="text-sm text-gray-400">오물이나 구토물 등이 몸에 묻을 때 스택이 쌓입니다. 최대 매력 수치만큼 쌓이면 혐오대상자가 됩니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold">혐오대상자: 아군이 무시하고 적군이 우선적으로 공격합니다. 청결(세척) 시 해제됩니다.</p>
+                    <p class="text-sm text-gray-400">오물이나 구토물 등이 몸에 묻을 때 스택이 쌓입니다. 최대 매력 수치만큼 쌓이면 혐오대상자가 됩니다. 최대 임계점에 도달하면 오염원 상태가 됩니다.</p>
+                    <p class="text-xs mt-3 text-white font-bold">혐오대상자: 아군이 무시하고 적군이 우선적으로 공격합니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">오염원: 혐오대상자 효과에 더해 인접한 아군의 건강/매력 관련 판정 -3을 유발합니다.</p>
+                    <p class="text-xs mt-2 text-white font-bold">해제: 청결(세척) 시 해제됩니다.</p>
                 </div>
             </div>
 

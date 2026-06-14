@@ -213,6 +213,10 @@
             <i class="fa-solid fa-campground mr-4 w-6"></i>야영 시스템
         </div>
 
+        <div id="menu-environment-system" class="side-btn-single" onclick="showPage('environment-system')">
+            <i class="fa-solid fa-cloud-sun-rain mr-4 w-6"></i>환경 시스템
+        </div>
+
         <div class="side-btn-container">
             <div id="menu-battle" class="side-main-link" onclick="showPage('battle')">
                 <i class="fa-solid fa-khanda mr-4 w-6"></i>전투 시스템
@@ -262,6 +266,7 @@
             <button id="nav-stats" onclick="showPage('stats')" class="nav-link hover:text-amber-500 transition px-1 py-2">스탯</button>
             <button id="nav-farming" onclick="showPage('farming')" class="nav-link hover:text-amber-500 transition px-1 py-2">파밍</button>
             <button id="nav-camp-system" onclick="showPage('camp-system')" class="nav-link hover:text-amber-500 transition px-1 py-2">야영</button>
+            <button id="nav-environment-system" onclick="showPage('environment-system')" class="nav-link hover:text-amber-500 transition px-1 py-2">환경</button>
             <button id="nav-world-map" onclick="showPage('world-map')" class="nav-link hover:text-amber-500 transition px-1 py-2">지도</button>
             
             <button id="nav-battle" onclick="showPage('battle')" class="nav-link hover:text-amber-500 transition px-1 py-2">전투</button>
@@ -272,9 +277,10 @@
     <section id="home" class="page active !p-0">
         <div class="hero-section text-center">
             <h1 class="cinzel hero-title text-5xl md:text-8xl font-bold mb-12">ASHES OF NEOND</h1>
-            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-7xl w-full px-6"> <button onclick="showPage('stats')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">스탯</button>
+            <div class="grid grid-cols-2 md:grid-cols-7 gap-4 max-w-7xl w-full px-6"> <button onclick="showPage('stats')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">스탯</button>
                 <button onclick="showPage('farming')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">파밍</button>
                 <button onclick="showPage('camp-system')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">야영</button>
+                <button onclick="showPage('environment-system')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">환경</button>
                 <button onclick="showPage('world-map')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">지도</button>
                 <button onclick="showPage('battle')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-red-500 transition text-red-500">전투</button>
                 <button onclick="showPage('status')" class="item-card !p-10 font-bold text-xl tracking-widest hover:border-amber-500 transition">상태이상</button>
@@ -646,6 +652,144 @@
             </div>
         </div>
 
+    </section>
+
+    <section id="environment-system" class="page max-w-6xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Environment System</h2>
+        <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">날씨 · 계절 · 시간표 가이드</p>
+
+        <div class="item-card border-l-4 border-amber-500">
+            <h3 class="text-2xl font-bold text-amber-400 mb-3">환경 시스템 개요</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                환경 시스템은 탐험의 흐름을 정리하는 보조 규칙입니다. 하루의 시간대, 현재 계절, 당일 날씨를 정해두면 채집, 농사, 낚시, 야영, 이동, 수색의 위험과 보상이 더 선명해집니다.
+                날씨와 계절은 판정 자체를 복잡하게 바꾸기보다, 어떤 활동이 유리하고 어떤 위험 이벤트가 등장하는지를 정하는 기준으로 사용합니다.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <div class="item-card border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-400 mb-5">하루 시간대</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead class="text-gray-200 border-b border-gray-700">
+                            <tr>
+                                <th class="py-3 pr-4">시간대</th>
+                                <th class="py-3 pr-4">성격</th>
+                                <th class="py-3">주요 활용</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-400 divide-y divide-gray-800">
+                            <tr><td class="py-3 pr-4 text-amber-300 font-bold">새벽 05-08</td><td class="py-3 pr-4">기온 안정, 흔적 선명</td><td class="py-3">추적, 채집 시작, 보초 교대</td></tr>
+                            <tr><td class="py-3 pr-4 text-yellow-300 font-bold">낮 08-17</td><td class="py-3 pr-4">시야 확보, 활동량 최대</td><td class="py-3">이동, 농사, 거래, 제작</td></tr>
+                            <tr><td class="py-3 pr-4 text-orange-300 font-bold">저녁 17-20</td><td class="py-3 pr-4">소문과 이동이 교차</td><td class="py-3">시장 정보, 암거래, 야영 준비</td></tr>
+                            <tr><td class="py-3 pr-4 text-indigo-300 font-bold">밤 20-05</td><td class="py-3 pr-4">시야 저하, 위험 증가</td><td class="py-3">잠입, 야영, 야행성 몬스터</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="item-card border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-400 mb-5">시간 소모 기준</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead class="text-gray-200 border-b border-gray-700">
+                            <tr>
+                                <th class="py-3 pr-4">활동</th>
+                                <th class="py-3 pr-4">소요</th>
+                                <th class="py-3">메모</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-400 divide-y divide-gray-800">
+                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">짧은 대화/구매</td><td class="py-3 pr-4">1시간</td><td class="py-3">소문 수집, 상점 이용, 간단한 정비</td></tr>
+                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">구역 탐색</td><td class="py-3 pr-4">2시간</td><td class="py-3">수색, 채집, 낚시, 주변 조사</td></tr>
+                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">제작/농사 작업</td><td class="py-3 pr-4">3시간</td><td class="py-3">요리 대량 제작, 재봉, 단조, 밭 관리</td></tr>
+                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">장거리 이동</td><td class="py-3 pr-4">4시간</td><td class="py-3">지역 이동, 날씨가 나쁘면 위험 이벤트 추가</td></tr>
+                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">야영/숙박</td><td class="py-3 pr-4">8시간</td><td class="py-3">기존 회복 규칙과 함께 정산</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="item-card border-l-4 border-green-500">
+            <h3 class="text-2xl font-bold text-green-400 mb-5">계절 효과</h3>
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 text-sm">
+                <div class="bg-black/40 border border-green-900/40 rounded-lg p-4">
+                    <h4 class="text-green-300 font-bold mb-2">봄</h4>
+                    <p class="text-gray-400 leading-relaxed">약초와 어린 작물이 늘어납니다. 비가 잦아 채집 보상은 좋아지지만, 진흙길과 감기성 질환 이벤트가 발생하기 쉽습니다.</p>
+                </div>
+                <div class="bg-black/40 border border-red-900/40 rounded-lg p-4">
+                    <h4 class="text-red-300 font-bold mb-2">여름</h4>
+                    <p class="text-gray-400 leading-relaxed">농작물 성장과 낚시가 활발합니다. 낮 활동이 길어지는 대신 폭염, 식수 부족, 음식 부패 이벤트를 함께 확인합니다.</p>
+                </div>
+                <div class="bg-black/40 border border-amber-900/40 rounded-lg p-4">
+                    <h4 class="text-amber-300 font-bold mb-2">가을</h4>
+                    <p class="text-gray-400 leading-relaxed">수확과 사냥의 계절입니다. 식량 확보가 쉬워지고 시장 물자가 늘어나지만, 겨울을 앞둔 약탈자와 짐승 출몰이 증가합니다.</p>
+                </div>
+                <div class="bg-black/40 border border-cyan-900/40 rounded-lg p-4">
+                    <h4 class="text-cyan-300 font-bold mb-2">겨울</h4>
+                    <p class="text-gray-400 leading-relaxed">채집과 이동이 어려워집니다. 음식 보존은 쉬워지지만 한파, 동상, 눈길 조난, 야영 난이도 상승을 적용합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item-card border-l-4 border-cyan-500">
+            <h3 class="text-2xl font-bold text-cyan-400 mb-5">날씨 표</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                하루가 시작될 때 1d12로 날씨를 정합니다. 지역의 성격에 맞춰 결과를 위아래로 1칸 조정해도 됩니다.
+            </p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left border-collapse">
+                    <thead class="text-gray-200 border-b border-gray-700">
+                        <tr>
+                            <th class="py-3 pr-4">1d12</th>
+                            <th class="py-3 pr-4">날씨</th>
+                            <th class="py-3 pr-4">태그</th>
+                            <th class="py-3">효과</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-400 divide-y divide-gray-800">
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">1</td><td class="py-3 pr-4">맑음</td><td class="py-3 pr-4 text-green-300">안정</td><td class="py-3">시야가 좋습니다. 이동, 수색, 원거리 행동을 정상 진행합니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">2</td><td class="py-3 pr-4">흐림</td><td class="py-3 pr-4 text-green-300">안정</td><td class="py-3">기온 변화가 적습니다. 긴 이동과 노동에 적합합니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">3</td><td class="py-3 pr-4">약한 비</td><td class="py-3 pr-4 text-yellow-300">불리</td><td class="py-3">약초 채집 단서가 늘지만, 장비 젖음과 진흙길 이벤트가 추가됩니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">4</td><td class="py-3 pr-4">폭우</td><td class="py-3 pr-4 text-red-300">위험</td><td class="py-3">이동, 야영, 수색이 불안정해집니다. 강, 늪, 절벽 주변 위험 이벤트를 우선합니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">5</td><td class="py-3 pr-4">안개</td><td class="py-3 pr-4 text-yellow-300">불리</td><td class="py-3">원거리 전투와 길 찾기가 어려워집니다. 잠입과 은신에는 유리한 상황을 줄 수 있습니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">6</td><td class="py-3 pr-4">강풍</td><td class="py-3 pr-4 text-yellow-300">불리</td><td class="py-3">화살, 투척, 모닥불, 천막 설치에 문제가 생깁니다. 고지대 이동 위험이 증가합니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">7</td><td class="py-3 pr-4">폭염</td><td class="py-3 pr-4 text-red-300">위험</td><td class="py-3">낮 시간 장시간 행동 후 SP 소모나 탈수 이벤트를 확인합니다. 밤 활동의 가치가 올라갑니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">8</td><td class="py-3 pr-4">한파</td><td class="py-3 pr-4 text-red-300">위험</td><td class="py-3">야영과 장거리 이동이 위험해집니다. 방한 장비가 없으면 회복 효율이 낮아질 수 있습니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">9</td><td class="py-3 pr-4">눈</td><td class="py-3 pr-4 text-yellow-300">불리</td><td class="py-3">흔적 추적은 쉬워지지만 이동 속도가 떨어집니다. 소리와 발자국이 노출됩니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">10</td><td class="py-3 pr-4">오염비</td><td class="py-3 pr-4 text-purple-300">이변</td><td class="py-3">타락 지역 전용 날씨입니다. 독, 광기, 변질 자원, 몬스터 난입 이벤트를 확인합니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">11</td><td class="py-3 pr-4">별빛 청명</td><td class="py-3 pr-4 text-blue-300">특수</td><td class="py-3">밤 시야가 안정됩니다. 지혜 판정, 마법 단서, 야간 수색 이벤트에 보너스 상황을 줄 수 있습니다.</td></tr>
+                        <tr><td class="py-3 pr-4 text-gray-200 font-bold">12</td><td class="py-3 pr-4">기상이변</td><td class="py-3 pr-4 text-purple-300">이변</td><td class="py-3">지역 고유 사건을 발생시킵니다. 붉은 달, 검은 눈, 역류하는 비 같은 장면을 사용합니다.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="item-card border-l-4 border-amber-500">
+                <h3 class="text-xl font-bold text-amber-400 mb-3">진행 절차</h3>
+                <ol class="list-decimal list-inside text-sm text-gray-400 leading-relaxed space-y-2">
+                    <li>현재 계절과 날짜를 확인합니다.</li>
+                    <li>새벽에 당일 날씨를 정합니다.</li>
+                    <li>플레이어의 활동을 시간표에 기록합니다.</li>
+                    <li>날씨 태그에 맞는 위험 이벤트를 더합니다.</li>
+                    <li>밤이 되면 야영, 숙박, 피로를 정산합니다.</li>
+                </ol>
+            </div>
+            <div class="item-card border-l-4 border-red-500">
+                <h3 class="text-xl font-bold text-red-400 mb-3">위험 태그 적용</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    안정 날씨는 추가 효과가 없습니다. 불리 날씨는 실패했을 때 작은 문제를 붙이고, 위험 날씨는 실패했을 때 상태이상, 자원 손실, 조우 중 하나를 적용합니다. 이변 날씨는 지역 고유 사건으로 취급합니다.
+                </p>
+            </div>
+            <div class="item-card border-l-4 border-green-500">
+                <h3 class="text-xl font-bold text-green-400 mb-3">기존 시스템 연결</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    채집은 계절 자원과 날씨 태그를 보고 결과물을 고릅니다. 농사는 계절과 폭염/한파를 반영합니다. 야영은 밤 시간대와 당일 날씨를 기준으로 보초, 회복, 기습 위험을 정산합니다.
+                </p>
+            </div>
+        </div>
     </section>
 
     <section id="world-map" class="page w-full px-4 text-center">
@@ -1493,6 +1637,10 @@
             if(pageId === 'camp-system') {
                 document.getElementById('menu-camp-system')?.classList.add('active-menu');
                 document.getElementById('nav-camp-system')?.classList.add('active-tab');
+            }
+            if(pageId === 'environment-system') {
+                document.getElementById('menu-environment-system')?.classList.add('active-menu');
+                document.getElementById('nav-environment-system')?.classList.add('active-tab');
             }
             if(pageId === 'norriton-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
                 document.getElementById('menu-world-map').classList.add('active-menu');

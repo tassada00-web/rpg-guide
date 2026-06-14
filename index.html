@@ -666,48 +666,24 @@
             </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8">
-            <div class="item-card border-l-4 border-blue-500">
-                <h3 class="text-2xl font-bold text-blue-400 mb-5">하루 시간대</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left border-collapse">
-                        <thead class="text-gray-200 border-b border-gray-700">
-                            <tr>
-                                <th class="py-3 pr-4">시간대</th>
-                                <th class="py-3 pr-4">성격</th>
-                                <th class="py-3">주요 활용</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-400 divide-y divide-gray-800">
-                            <tr><td class="py-3 pr-4 text-amber-300 font-bold">새벽 05-08</td><td class="py-3 pr-4">기온 안정, 흔적 선명</td><td class="py-3">추적, 채집 시작, 보초 교대</td></tr>
-                            <tr><td class="py-3 pr-4 text-yellow-300 font-bold">낮 08-17</td><td class="py-3 pr-4">시야 확보, 활동량 최대</td><td class="py-3">이동, 농사, 거래, 제작</td></tr>
-                            <tr><td class="py-3 pr-4 text-orange-300 font-bold">저녁 17-20</td><td class="py-3 pr-4">소문과 이동이 교차</td><td class="py-3">시장 정보, 암거래, 야영 준비</td></tr>
-                            <tr><td class="py-3 pr-4 text-indigo-300 font-bold">밤 20-05</td><td class="py-3 pr-4">시야 저하, 위험 증가</td><td class="py-3">잠입, 야영, 야행성 몬스터</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="item-card border-l-4 border-purple-500">
-                <h3 class="text-2xl font-bold text-purple-400 mb-5">시간 소모 기준</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left border-collapse">
-                        <thead class="text-gray-200 border-b border-gray-700">
-                            <tr>
-                                <th class="py-3 pr-4">활동</th>
-                                <th class="py-3 pr-4">소요</th>
-                                <th class="py-3">메모</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-400 divide-y divide-gray-800">
-                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">짧은 대화/구매</td><td class="py-3 pr-4">1시간</td><td class="py-3">소문 수집, 상점 이용, 간단한 정비</td></tr>
-                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">구역 탐색</td><td class="py-3 pr-4">2시간</td><td class="py-3">수색, 채집, 낚시, 주변 조사</td></tr>
-                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">제작/농사 작업</td><td class="py-3 pr-4">3시간</td><td class="py-3">요리 대량 제작, 재봉, 단조, 밭 관리</td></tr>
-                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">장거리 이동</td><td class="py-3 pr-4">4시간</td><td class="py-3">지역 이동, 날씨가 나쁘면 위험 이벤트 추가</td></tr>
-                            <tr><td class="py-3 pr-4 text-gray-200 font-bold">야영/숙박</td><td class="py-3 pr-4">8시간</td><td class="py-3">기존 회복 규칙과 함께 정산</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="item-card border-l-4 border-blue-500">
+            <h3 class="text-2xl font-bold text-blue-400 mb-5">하루 시간대</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left border-collapse">
+                    <thead class="text-gray-200 border-b border-gray-700">
+                        <tr>
+                            <th class="py-3 pr-4">시간대</th>
+                            <th class="py-3 pr-4">성격</th>
+                            <th class="py-3">주요 활동</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-400 divide-y divide-gray-800">
+                        <tr><td class="py-3 pr-4 text-amber-300 font-bold">6시~12시</td><td class="py-3 pr-4">하루가 열리고 흔적과 소문이 새로 드러나는 시간</td><td class="py-3">이동 시작, 채집, 추적, 농사 작업, 시장 준비</td></tr>
+                        <tr><td class="py-3 pr-4 text-yellow-300 font-bold">12시~18시</td><td class="py-3 pr-4">시야와 활동량이 가장 높지만 피로가 쌓이는 시간</td><td class="py-3">장거리 이동, 거래, 제작, 수색, 공개 전투</td></tr>
+                        <tr><td class="py-3 pr-4 text-orange-300 font-bold">18시~0시</td><td class="py-3 pr-4">사람과 정보가 모이고 은밀한 거래가 늘어나는 시간</td><td class="py-3">의뢰 확인, 소문 수집, 암거래, 야영 준비, 잠입</td></tr>
+                        <tr><td class="py-3 pr-4 text-indigo-300 font-bold">0시~6시</td><td class="py-3 pr-4">시야가 가장 낮고 기습과 야행성 위협이 커지는 시간</td><td class="py-3">야영, 휴식, 보초, 야간 조우, 몬스터 출몰</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

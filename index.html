@@ -190,7 +190,34 @@
             color: #fff;
             transform: translateY(-2px);
         }
-        .location-panel { display: none; animation: fadeIn 0.25s ease; }
+        .location-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(4px);
+        }
+        .location-modal.open { display: flex; animation: fadeIn 0.2s ease; }
+        .location-modal-window {
+            position: relative;
+            width: min(760px, 100%);
+            max-height: min(80vh, 720px);
+            overflow-y: auto;
+            border: 1px solid #92400e;
+            border-radius: 12px;
+            background: linear-gradient(160deg, #17100a, #090909 55%);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.75), 0 0 30px rgba(180,83,9,0.15);
+            animation: locationWindowIn 0.22s ease;
+        }
+        @keyframes locationWindowIn {
+            from { opacity: 0; transform: translateY(18px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .location-panel { display: none; }
         .location-panel.active { display: block; }
         
         .label-return { color: #60a5fa; font-weight: bold; }
@@ -853,33 +880,38 @@
         <div class="item-card">
             <h3 class="text-2xl text-white font-bold mb-2">주요 장소</h3>
             <p class="text-sm text-gray-500 mb-6">장소를 선택하면 시설과 관련된 정보를 확인할 수 있습니다.</p>
-            <div class="flex flex-wrap gap-3 mb-8" role="tablist" aria-label="노리튼 주요 장소">
-                <button class="location-chip active" role="tab" aria-selected="true" onclick="showLocation('norr-farm', this)">🍫 대농장 지대</button>
-                <button class="location-chip" role="tab" aria-selected="false" onclick="showLocation('norr-market', this)">🍫 중앙 곡물 시장</button>
-                <button class="location-chip" role="tab" aria-selected="false" onclick="showLocation('norr-estate', this)">🍫 지주 저택가</button>
-                <button class="location-chip" role="tab" aria-selected="false" onclick="showLocation('norr-outskirts', this)">🍫 외곽 토벌지</button>
+            <div class="flex flex-wrap gap-3" aria-label="노리튼 주요 장소">
+                <button class="location-chip" onclick="openLocationModal('norr-farm', this)">🍫 대농장 지대</button>
+                <button class="location-chip" onclick="openLocationModal('norr-market', this)">🍫 중앙 곡물 시장</button>
+                <button class="location-chip" onclick="openLocationModal('norr-estate', this)">🍫 지주 저택가</button>
+                <button class="location-chip" onclick="openLocationModal('norr-outskirts', this)">🍫 외곽 토벌지</button>
             </div>
+        </div>
 
-            <div id="norr-farm" class="location-panel active rounded-lg border border-amber-900/50 bg-black/30 p-6" role="tabpanel">
+        <div id="norritonLocationModal" class="location-modal" role="dialog" aria-modal="true" aria-label="노리튼 주요 장소 상세 정보" onclick="closeLocationModal(event)">
+          <div class="location-modal-window" onclick="event.stopPropagation()">
+            <button type="button" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full border border-gray-700 bg-black/70 text-gray-300 hover:text-white hover:border-amber-500 transition" aria-label="미니페이지 닫기" onclick="closeLocationModal()">✕</button>
+            <div id="norr-farm" class="location-panel p-7 sm:p-10" role="document">
                 <h4 class="text-xl font-bold text-amber-400 mb-3">대농장 지대</h4>
                 <p class="text-gray-300 leading-relaxed mb-5">노리튼의 비옥한 토지와 대규모 경작지가 펼쳐진 핵심 생산 시설입니다. 현재는 소수 지주가 토지를 장악하고 다수의 농민을 고용해 운영합니다.</p>
                 <div class="grid sm:grid-cols-3 gap-4 text-sm"><div><strong class="text-red-400 block mb-1">등장 몬스터</strong><span class="text-gray-400">고블린, 농작물을 노리는 야생 몬스터</span></div><div><strong class="text-blue-400 block mb-1">관련 인물</strong><span class="text-gray-400">대농장 지주, 소작농 대표</span></div><div><strong class="text-purple-400 block mb-1">관련 세력</strong><span class="text-gray-400">노리튼 지주층, 농민 공동체</span></div></div>
             </div>
-            <div id="norr-market" class="location-panel rounded-lg border border-amber-900/50 bg-black/30 p-6" role="tabpanel">
+            <div id="norr-market" class="location-panel p-7 sm:p-10" role="document">
                 <h4 class="text-xl font-bold text-amber-400 mb-3">중앙 곡물 시장</h4>
                 <p class="text-gray-300 leading-relaxed mb-5">노리튼에서 생산된 곡물과 각종 식재료가 모이는 대형 시장입니다. 풍부한 물자와 함께 상권을 둘러싼 지주들의 영향력도 짙게 드러납니다.</p>
                 <div class="grid sm:grid-cols-3 gap-4 text-sm"><div><strong class="text-red-400 block mb-1">등장 몬스터</strong><span class="text-gray-400">창고에 숨어든 고블린, 거대 들쥐</span></div><div><strong class="text-blue-400 block mb-1">관련 인물</strong><span class="text-gray-400">곡물 상인, 시장 관리인</span></div><div><strong class="text-purple-400 block mb-1">관련 세력</strong><span class="text-gray-400">곡물 상인회, 지주 대리인</span></div></div>
             </div>
-            <div id="norr-estate" class="location-panel rounded-lg border border-amber-900/50 bg-black/30 p-6" role="tabpanel">
+            <div id="norr-estate" class="location-panel p-7 sm:p-10" role="document">
                 <h4 class="text-xl font-bold text-amber-400 mb-3">지주 저택가</h4>
                 <p class="text-gray-300 leading-relaxed mb-5">노리튼의 토지와 생산권을 차지한 지주들의 저택이 모인 구역입니다. 도시의 풍요와 농민들의 고단한 삶이 가장 선명하게 대비되는 장소입니다.</p>
                 <div class="grid sm:grid-cols-3 gap-4 text-sm"><div><strong class="text-red-400 block mb-1">등장 몬스터</strong><span class="text-gray-400">공개 정보 없음</span></div><div><strong class="text-blue-400 block mb-1">관련 인물</strong><span class="text-gray-400">대지주, 저택 관리인</span></div><div><strong class="text-purple-400 block mb-1">관련 세력</strong><span class="text-gray-400">노리튼 지주층, 사설 경비대</span></div></div>
             </div>
-            <div id="norr-outskirts" class="location-panel rounded-lg border border-amber-900/50 bg-black/30 p-6" role="tabpanel">
+            <div id="norr-outskirts" class="location-panel p-7 sm:p-10" role="document">
                 <h4 class="text-xl font-bold text-amber-400 mb-3">외곽 토벌지</h4>
                 <p class="text-gray-300 leading-relaxed mb-5">농경지와 황야가 맞닿는 노리튼 외곽입니다. 식량을 노리는 몬스터의 발견 신고와 토벌 의뢰가 집중되며, 전투 중 다른 무리가 난입할 위험이 큽니다.</p>
                 <div class="grid sm:grid-cols-3 gap-4 text-sm"><div><strong class="text-red-400 block mb-1">등장 몬스터</strong><span class="text-gray-400">고블린 및 식량을 노리는 몬스터 무리</span></div><div><strong class="text-blue-400 block mb-1">관련 인물</strong><span class="text-gray-400">토벌 의뢰인, 용병</span></div><div><strong class="text-purple-400 block mb-1">관련 세력</strong><span class="text-gray-400">지역 용병단, 농민 자경대</span></div></div>
             </div>
+          </div>
         </div>
     </section>
 
@@ -1673,17 +1705,32 @@
             }
         }
 
-        function showLocation(panelId, button) {
-            const section = button.closest('#norriton-detail');
-            section.querySelectorAll('.location-panel').forEach(panel => panel.classList.remove('active'));
-            section.querySelectorAll('.location-chip').forEach(chip => {
-                chip.classList.remove('active');
-                chip.setAttribute('aria-selected', 'false');
-            });
+        let lastLocationButton = null;
+
+        function openLocationModal(panelId, button) {
+            const modal = document.getElementById('norritonLocationModal');
+            modal.querySelectorAll('.location-panel').forEach(panel => panel.classList.remove('active'));
             document.getElementById(panelId)?.classList.add('active');
-            button.classList.add('active');
-            button.setAttribute('aria-selected', 'true');
+            lastLocationButton = button;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            modal.querySelector('[aria-label="미니페이지 닫기"]')?.focus();
         }
+
+        function closeLocationModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('norritonLocationModal');
+            modal.classList.remove('open');
+            modal.querySelectorAll('.location-panel').forEach(panel => panel.classList.remove('active'));
+            document.body.style.overflow = '';
+            lastLocationButton?.focus();
+        }
+
+        window.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && document.getElementById('norritonLocationModal')?.classList.contains('open')) {
+                closeLocationModal();
+            }
+        });
 
         function updateActiveStyle(pageId) {
             // 상단 네비게이션 탭 초기화

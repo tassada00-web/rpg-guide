@@ -190,6 +190,17 @@
             color: #fff;
             transform: translateY(-2px);
         }
+        .location-chip.dungeon-chip {
+            border-color: #7e22ce;
+            background: linear-gradient(135deg, #2e1065, #581c87 55%, #2e1065);
+            color: #f3e8ff;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 4px 14px rgba(88,28,135,0.35);
+        }
+        .location-chip.dungeon-chip:hover, .location-chip.dungeon-chip.active {
+            border-color: #c084fc;
+            background: linear-gradient(135deg, #581c87, #7e22ce 55%, #581c87);
+            color: #fff;
+        }
         .location-modal {
             position: fixed;
             inset: 0;
@@ -887,6 +898,9 @@
                 <button class="location-chip" onclick="openLocationModal('norr-estate', this)">🍫 지주 저택가</button>
                 <button class="location-chip" onclick="openLocationModal('norr-alley', this)">🍫 뒷골목</button>
                 <button class="location-chip" onclick="openLocationModal('norr-outskirts', this)">🍫 외곽 토벌지</button>
+                <button class="location-chip dungeon-chip" onclick="openLocationModal('norr-dungeon-1', this)">◆ 던전 1</button>
+                <button class="location-chip dungeon-chip" onclick="openLocationModal('norr-dungeon-2', this)">◆ 던전 2</button>
+                <button class="location-chip dungeon-chip" onclick="openLocationModal('norr-dungeon-3', this)">◆ 던전 3</button>
             </div>
         </div>
 
@@ -917,6 +931,21 @@
                 <h4 class="text-xl font-bold text-amber-400 mb-3">외곽 토벌지</h4>
                 <p class="text-gray-300 leading-relaxed mb-5">농경지와 황야가 맞닿는 노리튼 외곽입니다. 식량을 노리는 몬스터의 발견 신고와 토벌 의뢰가 집중되며, 전투 중 다른 무리가 난입할 위험이 큽니다.</p>
                 <div class="grid sm:grid-cols-3 gap-4 text-sm"><div><strong class="text-red-400 block mb-1">등장 몬스터</strong><span class="text-gray-400">노리튼 사슬 홉고블린 [견인형·구속형], 전사한 검사, 전사한 습격병, 전사한 석궁병, 전사한 마도사, 전사한 돌격병, 전사한 중갑병, 마나 흡수 슬라임, 사지 용해 슬라임, 포식 슬라임 군체</span></div><div><strong class="text-blue-400 block mb-1">관련 인물</strong><span class="text-gray-400">토벌 의뢰인, 용병</span></div><div><strong class="text-purple-400 block mb-1">관련 세력</strong><span class="text-gray-400">지역 용병단, 농민 자경대</span></div></div>
+            </div>
+            <div id="norr-dungeon-1" class="location-panel p-7 sm:p-12" role="document">
+                <p class="text-xs font-bold text-purple-400 uppercase tracking-[0.25em] mb-3">Dungeon</p>
+                <h4 class="text-2xl font-bold text-purple-300 mb-5">던전 1</h4>
+                <p class="text-gray-400">던전 이름과 설명, 등장 몬스터, 관련 인물 및 세력 정보가 준비 중입니다.</p>
+            </div>
+            <div id="norr-dungeon-2" class="location-panel p-7 sm:p-12" role="document">
+                <p class="text-xs font-bold text-purple-400 uppercase tracking-[0.25em] mb-3">Dungeon</p>
+                <h4 class="text-2xl font-bold text-purple-300 mb-5">던전 2</h4>
+                <p class="text-gray-400">던전 이름과 설명, 등장 몬스터, 관련 인물 및 세력 정보가 준비 중입니다.</p>
+            </div>
+            <div id="norr-dungeon-3" class="location-panel p-7 sm:p-12" role="document">
+                <p class="text-xs font-bold text-purple-400 uppercase tracking-[0.25em] mb-3">Dungeon</p>
+                <h4 class="text-2xl font-bold text-purple-300 mb-5">던전 3</h4>
+                <p class="text-gray-400">던전 이름과 설명, 등장 몬스터, 관련 인물 및 세력 정보가 준비 중입니다.</p>
             </div>
           </div>
         </div>

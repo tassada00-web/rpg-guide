@@ -302,6 +302,7 @@
         </div>
         <div id="sub-map" class="submenu">
             <div id="menu-norriton-detail" class="sub-btn" onclick="showPage('norriton-detail')">ㄴ 타락한 노리튼</div>
+            <div id="menu-twisted-detail" class="sub-btn" onclick="showPage('twisted-detail')">ㄴ 악독한 트위스타드</div>
         </div>
 
         <div class="side-btn-container">
@@ -856,6 +857,11 @@
                 타락한 노리튼
             </button>
 
+            <button class="city-marker" style="left: 68%; top: 66%;" onclick="showPage('twisted-detail')">
+                <span class="city-dot"></span>
+                악독한 트위스타드
+            </button>
+
             <button class="city-marker" style="left: 50%; top: 48%;" onclick="showPage('arcana-detail')">
                 <span class="city-dot"></span>
                 무너진 아르카나
@@ -948,6 +954,37 @@
                 <p class="text-gray-400">던전 이름과 설명, 등장 몬스터, 관련 인물 및 세력 정보가 준비 중입니다.</p>
             </div>
           </div>
+        </div>
+    </section>
+
+    <section id="twisted-detail" class="page max-w-6xl mx-auto px-6 text-left">
+        <div class="flex justify-between items-center mb-10 border-b border-amber-900/30 pb-6">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">VICIOUS TWISTED</h2>
+            <button onclick="showPage('world-map')" class="text-amber-500 font-bold hover:underline">← 지도로 돌아가기</button>
+        </div>
+        <div class="item-card border-l-4 border-red-700">
+            <h3 class="text-3xl text-red-400 font-bold mb-6">악독한 트위스타드</h3>
+            <div class="space-y-3 text-gray-300 leading-relaxed">
+                <p>중앙대륙 남동쪽에 자리한 기회의 도시이자 도박의 도시, 트위스타드.</p>
+                <p>무너진 질서 아래 도시의 특징은 더욱 부각되었습니다.</p>
+                <p>지하에서 시작되었던 목숨을 건 도박은 이제 양지로 드러났고, 관람자들은 위험한 쾌락을 즐기고 있습니다.</p>
+                <p>이 도시에는 질서가 존재하지 않습니다.</p>
+                <p>아무리 많은 돈을 가지고 있더라도 다음 날이면 그 돈의 주인이 바뀔 수 있습니다. 아니면 원래 주인의 몸뚱이가 차갑게 식은 고깃덩어리가 되어 있을 수도 있습니다.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 mt-8">
+                <div class="rounded-lg border border-emerald-900/70 bg-emerald-950/20 p-5">
+                    <h4 class="font-bold text-emerald-400 mb-2">장점</h4>
+                    <p class="text-sm text-gray-300 leading-relaxed">큰 위험을 감수한 만큼 높은 수익을 얻을 기회가 많습니다.</p>
+                </div>
+                <div class="rounded-lg border border-red-900/70 bg-red-950/20 p-5">
+                    <h4 class="font-bold text-red-400 mb-2">단점</h4>
+                    <p class="text-sm text-gray-300 leading-relaxed">도시 이벤트와 습격 이벤트의 난도가 매우 높습니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-card">
+            <h3 class="text-2xl text-white font-bold mb-2">주요 장소</h3>
+            <p class="text-sm text-gray-500">주요 시설과 던전 정보가 추가될 예정입니다.</p>
         </div>
     </section>
 
@@ -1800,7 +1837,7 @@
                 document.getElementById('menu-environment-system')?.classList.add('active-menu');
                 document.getElementById('nav-environment-system')?.classList.add('active-tab');
             }
-            if(pageId === 'norriton-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
+            if(pageId === 'norriton-detail' || pageId === 'twisted-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
                 document.getElementById('menu-world-map').classList.add('active-menu');
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }

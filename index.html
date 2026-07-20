@@ -1461,12 +1461,12 @@
             <button onclick="showPage('status-stack')" class="item-card !mb-0 text-left hover:border-amber-500 transition">
                 <i class="fa-solid fa-layer-group text-3xl text-amber-500 mb-5"></i>
                 <h3 class="text-2xl font-bold text-white mb-3">스택형</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">일정 수치까지 누적되거나 매턴 감소/유지되는 상태이상입니다. 쾌락, 광기, 두려움, 출혈처럼 스택 관리가 핵심인 항목을 모았습니다.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">일정 수치까지 누적되거나 매턴 감소/유지되는 상태이상입니다. 광기, 두려움, 출혈처럼 스택 관리가 핵심인 항목을 모았습니다.</p>
             </button>
             <button onclick="showPage('status-instant')" class="item-card !mb-0 text-left hover:border-red-500 transition">
                 <i class="fa-solid fa-bolt-lightning text-3xl text-red-500 mb-5"></i>
                 <h3 class="text-2xl font-bold text-white mb-3">즉발형</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 조건을 만족하는 즉시 적용되는 상태이상입니다. 기절, 무장해제, 구토, 점착처럼 한 번 처리되거나 짧게 지속되는 항목을 모았습니다.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 조건을 만족하는 즉시 적용되는 상태이상입니다. 쾌락, 기절, 무장해제, 구토, 점착처럼 한 번 처리되거나 짧게 지속되는 항목을 모았습니다.</p>
             </button>
         </div>
     </section>
@@ -1480,7 +1480,6 @@
             <ul class="space-y-2 text-sm text-gray-300">
                 <li>- 임계점은 관련 능력치의 최대 수치입니다.</li>
                 <li>- 최대 임계점은 관련 능력치의 최대 수치 x2입니다.</li>
-                <li>- 쾌락은 예외적으로 임계점이 현재 스테미나, 최대 임계점이 최대 스테미나입니다.</li>
                 <li>- 임계점에 도달하면 각 항목에 적힌 발현 상태가 됩니다.</li>
                 <li>- 최대 임계점에 도달하면 각 항목에 적힌 강화 발현 상태가 됩니다.</li>
                 <li>- 발현 상태가 해제되면 해당 스택은 0이 되며, 이후 같은 원인으로 다시 스택을 받을 수 있습니다.</li>
@@ -1489,17 +1488,6 @@
         </div>
         
         <div class="space-y-16">
-            <div class="space-y-6">
-                <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-amber-600 mr-3"></span>스테미나 (Stamina)</h3>
-                <div class="status-item">
-                    <h4 class="text-pink-500 font-bold mb-2">💖 쾌락</h4>
-                    <p class="text-sm text-gray-400">성적 공격 당할 시 스택이 쌓입니다. 쾌락 스택이 현재 스테미나까지 쌓일 경우 절정에 이릅니다. 최대 스테미나에 도달하면 탈진 상태가 됩니다.</p>
-                    <p class="text-xs mt-3 text-white font-bold"><span class="text-amber-400">발현(임계점)</span> 절정: 행동 불가가 됩니다.</p>
-                    <p class="text-xs mt-2 text-white font-bold"><span class="text-red-400">강화 발현(최대 임계점)</span> 탈진: 절정 효과에 더해 해제 후 다음 1턴 동안 모든 판정 -3을 받습니다.</p>
-                    <p class="text-xs mt-2 text-white font-bold"><span class="text-green-400">해제</span>: 매턴 주사위(현재 건강)를 굴려 합계 값이 최대 건강 이상으로 나오면 해제됩니다.</p>
-                </div>
-            </div>
-
             <div class="space-y-6">
                 <h3 class="text-2xl font-bold text-white flex items-center"><span class="w-2 h-6 bg-blue-600 mr-3"></span>지혜 (Wisdom)</h3>
                 <div class="status-item">
@@ -1568,6 +1556,13 @@
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">스택 없이 즉시 적용되는 상태이상</p>
 
         <div class="space-y-6">
+            <div class="status-item">
+                <h4 class="text-pink-500 font-bold mb-2">💖 쾌락</h4>
+                <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 성적 피격, 최음 효과, 감각 자극, 유혹 계열 공격</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 별도 쾌락 스택을 쌓지 않고, 쾌락 피해량을 스테미나에 적용해 즉시 감소시킵니다. 이 감소로 스테미나가 0에 도달하면 절정 상태가 부여됩니다.</p>
+                <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">절정:</span> 행동 불가가 됩니다. 절정은 해제 후 최소 5턴 뒤에 재발생할 수 있습니다.</p>
+                <p class="text-xs mt-3 text-white font-bold">해제: 매턴 주사위(현재 건강)를 굴려 합계 값이 최대 건강 이상으로 나오면 해제되며 스테미나 회복이 됩니다.</p>
+            </div>
             <div class="status-item">
                 <h4 class="text-green-500 font-bold mb-2">🤢 구토</h4>
                 <p class="text-sm text-gray-400"><span class="text-gray-200 font-bold">발생 환경:</span> 독성 음식, 강한 악취, 혐오스러운 광경, 내장 충격, 특정 몬스터의 악취 공격</p>

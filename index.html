@@ -303,6 +303,7 @@
         <div id="sub-map" class="submenu">
             <div id="menu-norriton-detail" class="sub-btn" onclick="showPage('norriton-detail')">ㄴ 타락한 노리튼</div>
             <div id="menu-twisted-detail" class="sub-btn" onclick="showPage('twisted-detail')">ㄴ 악독한 트위스타드</div>
+            <div id="menu-eidelin-detail" class="sub-btn" onclick="showPage('eidelin-detail')">ㄴ 에이델린 원시림</div>
         </div>
 
         <div class="side-btn-container">
@@ -862,6 +863,11 @@
                 악독한 트위스타드
             </button>
 
+            <button class="city-marker" style="left: 30%; top: 52%;" onclick="showPage('eidelin-detail')">
+                <span class="city-dot"></span>
+                에이델린 원시림
+            </button>
+
             <button class="city-marker" style="left: 50%; top: 48%;" onclick="showPage('arcana-detail')">
                 <span class="city-dot"></span>
                 무너진 아르카나
@@ -985,6 +991,36 @@
         <div class="item-card">
             <h3 class="text-2xl text-white font-bold mb-2">주요 장소</h3>
             <p class="text-sm text-gray-500">주요 시설과 던전 정보가 추가될 예정입니다.</p>
+        </div>
+    </section>
+
+    <section id="eidelin-detail" class="page max-w-6xl mx-auto px-6 text-left">
+        <div class="flex justify-between items-center mb-10 border-b border-emerald-900/30 pb-6">
+            <h2 class="cinzel text-4xl text-white tracking-widest font-bold">EIDELIN PRIMEVAL FOREST</h2>
+            <button onclick="showPage('world-map')" class="text-emerald-500 font-bold hover:underline">← 지도로 돌아가기</button>
+        </div>
+        <div class="item-card border-l-4 border-emerald-700">
+            <h3 class="text-3xl text-emerald-400 font-bold mb-6">에이델린 원시림</h3>
+            <div class="space-y-3 text-gray-300 leading-relaxed">
+                <p>중앙대륙 서쪽의 야생에 자리한 에이델린 원시림.</p>
+                <p>수십 년 전 제국 시절, 이곳은 서부에서 가장 거룩한 종교 도시이자 안식처였습니다.</p>
+                <p>하지만 제국의 붕괴와 함께 원인을 알 수 없는 자연의 폭주가 시작되었습니다.</p>
+                <p>불과 수십 년 만에 거대한 정글이 도시 전체를 집어삼켰고, 과거의 성소와 문명은 광기 어린 야생 속에 묻혔습니다.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 mt-8">
+                <div class="rounded-lg border border-emerald-900/70 bg-emerald-950/20 p-5">
+                    <h4 class="font-bold text-emerald-400 mb-2">장점</h4>
+                    <p class="text-sm text-gray-300 leading-relaxed">옛 성소를 발견하거나 다양한 희귀 식물을 획득할 수 있습니다.</p>
+                </div>
+                <div class="rounded-lg border border-red-900/70 bg-red-950/20 p-5">
+                    <h4 class="font-bold text-red-400 mb-2">단점</h4>
+                    <p class="text-sm text-gray-300 leading-relaxed">광기에 물든 야생 환경과 예측할 수 없는 자연의 위협에 노출됩니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-card">
+            <h3 class="text-2xl text-white font-bold mb-2">주요 장소</h3>
+            <p class="text-sm text-gray-500">성소, 유적, 야생 지역 및 던전 정보가 추가될 예정입니다.</p>
         </div>
     </section>
 
@@ -1832,7 +1868,7 @@
                 document.getElementById('menu-environment-system')?.classList.add('active-menu');
                 document.getElementById('nav-environment-system')?.classList.add('active-tab');
             }
-            if(pageId === 'norriton-detail' || pageId === 'twisted-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
+            if(pageId === 'norriton-detail' || pageId === 'twisted-detail' || pageId === 'eidelin-detail' || pageId === 'arcana-detail' || pageId === 'world-map') {
                 document.getElementById('menu-world-map').classList.add('active-menu');
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }

@@ -322,6 +322,7 @@
         <div id="sub-status" class="submenu">
             <div id="menu-status-stack" class="sub-btn" onclick="showPage('status-stack')">스택형 상태이상</div>
             <div id="menu-status-instant" class="sub-btn" onclick="showPage('status-instant')">즉발형 상태이상</div>
+            <div id="menu-status-unique" class="sub-btn" onclick="showPage('status-unique')">고유형 상태이상</div>
         </div>
     </aside>
 
@@ -1608,16 +1609,21 @@
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Status Effects</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">상태이상 하위 카탈로그</p>
 
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-3 gap-6">
             <button onclick="showPage('status-stack')" class="item-card !mb-0 text-left hover:border-amber-500 transition">
                 <i class="fa-solid fa-layer-group text-3xl text-amber-500 mb-5"></i>
                 <h3 class="text-2xl font-bold text-white mb-3">스택형</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">일정 수치까지 누적되거나 매턴 감소/유지되는 상태이상입니다. 쾌락, 광기, 두려움, 출혈처럼 스택 관리가 핵심인 항목을 모았습니다.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">수치가 누적되어 발현하는 상태입니다. 쾌락, 광기, 두려움, 출혈 등의 규칙을 확인할 수 있습니다.</p>
             </button>
             <button onclick="showPage('status-instant')" class="item-card !mb-0 text-left hover:border-red-500 transition">
                 <i class="fa-solid fa-bolt-lightning text-3xl text-red-500 mb-5"></i>
                 <h3 class="text-2xl font-bold text-white mb-3">즉발형</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 조건을 만족하는 즉시 적용되는 상태이상입니다. 기절, 무장해제, 구토, 점착처럼 한 번 처리되거나 짧게 지속되는 항목을 모았습니다.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">스택 누적 없이 부여되는 상태입니다. 기절, 무장해제, 구토, 점착 등의 규칙을 확인할 수 있습니다.</p>
+            </button>
+            <button onclick="showPage('status-unique')" class="item-card !mb-0 text-left hover:border-teal-500 transition">
+                <i class="fa-solid fa-fingerprint text-3xl text-teal-400 mb-5"></i>
+                <h3 class="text-2xl font-bold text-white mb-3">고유형</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">특정 스킬, 장비, 개체 또는 상황의 고유 규칙으로 부여되는 상태입니다.</p>
             </button>
         </div>
     </section>
@@ -1625,6 +1631,11 @@
     <section id="status-stack" class="page max-w-5xl mx-auto px-6 text-left">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Stack Effects</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">누적되는 상태이상</p>
+        <nav aria-label="상태이상 분류" class="!static !h-auto !bg-transparent !border-0 !backdrop-blur-none flex flex-wrap gap-2 mb-10">
+            <button aria-current="page" class="px-4 py-2 border-b-2 border-amber-500 text-amber-400 font-bold">스택형</button>
+            <button onclick="showPage('status-instant')" class="px-4 py-2 border-b-2 border-transparent text-gray-400 hover:text-white">즉발형</button>
+            <button onclick="showPage('status-unique')" class="px-4 py-2 border-b-2 border-transparent text-gray-400 hover:text-white">고유형</button>
+        </nav>
 
         <div class="item-card border-l-4 border-amber-700 mb-12">
             <h3 class="text-2xl font-bold text-amber-400 mb-4">스택형 공통 규칙</h3>
@@ -1722,6 +1733,11 @@
     <section id="status-instant" class="page max-w-5xl mx-auto px-6 text-left">
         <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Instant Effects</h2>
         <p class="text-amber-700 mb-16 uppercase tracking-widest text-center">스택 없이 즉시 적용되는 상태이상</p>
+        <nav aria-label="상태이상 분류" class="!static !h-auto !bg-transparent !border-0 !backdrop-blur-none flex flex-wrap gap-2 mb-10">
+            <button onclick="showPage('status-stack')" class="px-4 py-2 border-b-2 border-transparent text-gray-400 hover:text-white">스택형</button>
+            <button aria-current="page" class="px-4 py-2 border-b-2 border-red-500 text-red-400 font-bold">즉발형</button>
+            <button onclick="showPage('status-unique')" class="px-4 py-2 border-b-2 border-transparent text-gray-400 hover:text-white">고유형</button>
+        </nav>
 
         <div class="space-y-6">
             <div class="status-item">
@@ -1796,6 +1812,50 @@
                 <p class="text-sm text-gray-400 mt-2"><span class="text-gray-200 font-bold">효과:</span> 다음 방어/회피 판정 -3, 반응 행동 1회 사용 불가</p>
                 <p class="text-xs mt-3 text-white font-bold">해제: 다음 자기 턴 시작 시 해제됩니다.</p>
             </div>
+        </div>
+    </section>
+
+    <section id="status-unique" class="page max-w-5xl mx-auto px-6 text-left">
+        <h2 class="cinzel text-5xl text-white mb-2 tracking-widest text-center uppercase">Unique Effects</h2>
+        <p class="text-teal-400 mb-16 text-center">개별 규칙으로 정의되는 상태이상</p>
+        <nav aria-label="상태이상 분류" class="!static !h-auto !bg-transparent !border-0 !backdrop-blur-none flex flex-wrap gap-2 mb-10">
+            <button onclick="showPage('status-stack')" class="px-4 py-2 border-b-2 border-transparent text-gray-400 hover:text-white">스택형</button>
+            <button onclick="showPage('status-instant')" class="px-4 py-2 border-b-2 border-transparent text-gray-400 hover:text-white">즉발형</button>
+            <button aria-current="page" class="px-4 py-2 border-b-2 border-teal-500 text-teal-400 font-bold">고유형</button>
+        </nav>
+
+        <div class="border-l-4 border-teal-600 pl-5 mb-12">
+            <h3 class="text-xl font-bold text-white mb-3">고유형 상태</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">특정 스킬, 장비, 개체 또는 상황에서 정의한 규칙으로 부여합니다. 표시 이름과 별도로 상태 식별자를 기록하고, 실제 효과와 조건은 해당 상태의 정의를 참조합니다. 다른 캐릭터가 부여한 상태도 스킬의 조건으로 이용할 수 있습니다.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <h3 class="text-xl font-bold text-teal-400 mb-4">공통 처리</h3>
+                <ul class="text-sm text-gray-300 leading-relaxed space-y-3 border-t border-gray-700 pt-4">
+                    <li>상태마다 효과, 적용 조건, 지속시간, 해제 및 재부여 방식을 정의합니다.</li>
+                    <li>연결 상대, 점유 부위, 자세, 단계처럼 필요한 정보만 추가로 기록합니다.</li>
+                    <li>서로 다른 연결 기록은 각각 유지하고 해제합니다.</li>
+                    <li>턴 지속형은 부여받은 대상의 턴 종료 시 남은 턴이 감소합니다.</li>
+                    <li>같은 기록을 다시 부여하면 더 긴 남은 지속시간을 유지합니다.</li>
+                    <li>상태 변경만으로 별도의 스킬이 자동 발동하지 않습니다. 상태에 정의된 해제 조건은 적용합니다.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-teal-400 mb-4">개별 상태 작성 항목</h3>
+                <dl class="text-sm text-gray-300 leading-relaxed border-t border-gray-700 divide-y divide-gray-800">
+                    <div class="py-3"><dt class="font-bold text-white">정체</dt><dd>표시 이름, 상태 식별자, 의미, 부여 원인</dd></div>
+                    <div class="py-3"><dt class="font-bold text-white">효과</dt><dd>보유 중 효과와 다른 스킬의 참조 조건</dd></div>
+                    <div class="py-3"><dt class="font-bold text-white">수명</dt><dd>지속시간, 해제 조건, 재부여 처리</dd></div>
+                    <div class="py-3"><dt class="font-bold text-white">기록</dt><dd>연결 상대, 점유 부위, 자세, 단계 등 필요 정보</dd></div>
+                </dl>
+            </div>
+        </div>
+
+        <div class="status-item !border-l-teal-600">
+            <p class="text-xs text-teal-400 font-bold mb-2">작성 예시</p>
+            <h3 class="text-lg font-bold text-white mb-3">추적 표식</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">대상에게 표식을 남긴 뒤, 표식이 있는 대상에게만 사용할 수 있는 스킬의 조건으로 참조합니다. 누가 표식을 부여했는지 기록할 수 있지만, 스킬 정의에 제한이 없다면 다른 아군도 이 조건을 이용할 수 있습니다. 지속시간과 해제 방식은 표식을 부여하는 스킬에서 정합니다.</p>
         </div>
     </section>
 
@@ -1997,7 +2057,7 @@
                 document.getElementById('menu-world-map').classList.add('active-menu');
                 document.getElementById('nav-world-map')?.classList.add('active-tab');
             }
-            if(pageId === 'status-stack' || pageId === 'status-instant') {
+            if(pageId === 'status-stack' || pageId === 'status-instant' || pageId === 'status-unique') {
                 document.getElementById('menu-status')?.classList.add('active-menu');
                 document.getElementById('nav-status')?.classList.add('active-tab');
             }
